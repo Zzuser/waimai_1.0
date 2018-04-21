@@ -36,4 +36,14 @@ public class OrdersServiceImpl implements OrdersService {
     public int updateByPrimaryKey(Orders record) {
         return ordersMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public List<Orders> selectByShopId(Integer shopId) {
+        return ordersMapper.selectByShopId(shopId);
+    }
+
+    @Override
+    public List<Orders> selectByUserId(Integer userId) {
+        return ordersMapper.selectByUserId(userId);
+    }
 }

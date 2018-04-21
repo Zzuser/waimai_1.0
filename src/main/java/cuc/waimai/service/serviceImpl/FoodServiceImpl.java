@@ -4,9 +4,10 @@ import cuc.waimai.Dao.Food;
 import cuc.waimai.mapper.FoodMapper;
 import cuc.waimai.service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class FoodServiceImpl implements FoodService {
 @Autowired
     FoodMapper foodMapper;

@@ -14,4 +14,8 @@ public interface OrdersMapper {
     List<Orders> selectAll();
 
     int updateByPrimaryKey(Orders record);
+
+    List<Orders> selectByShopId(Integer shopId);
+
+    List<Orders> selectByUserId(Integer userId);
 }

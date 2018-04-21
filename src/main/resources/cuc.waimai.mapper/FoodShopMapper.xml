@@ -49,4 +49,25 @@
     food_pic, food_des
     from food_shop
   </select>
+
+  <select id="selectByFoodId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select food_shop_id, food_id, shop_id, food_num, food_price, food_sales, food_ev,
+    food_pic, food_des
+    from food_shop
+    where food_id= #{foodId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByShopId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select food_shop_id, food_id, shop_id, food_num, food_price, food_sales, food_ev,
+    food_pic, food_des
+    from food_shop
+    where shop_id= #{shopId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByFoodIdAndShopId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select food_shop_id, food_id, shop_id, food_num, food_price, food_sales, food_ev,
+    food_pic, food_des
+    from food_shop
+    where food_id = #{foodId,jdbcType=INTEGER} AND shop_id = #{shopId,jdbcType=INTEGER}
+  </select>
 </mapper>

@@ -51,4 +51,19 @@
     arrive_time, order_number
     from orders
   </select>
+
+  <select id="selectByShopId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select order_id, user_id, shop_id, horseman_id, account, payment, status, order_time,
+    arrive_time, order_number
+    from orders
+    where shop_id = #{shopId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select order_id, user_id, shop_id, horseman_id, account, payment, status, order_time,
+    arrive_time, order_number
+    from orders
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+
 </mapper>

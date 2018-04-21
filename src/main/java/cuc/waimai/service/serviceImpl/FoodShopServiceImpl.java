@@ -35,4 +35,19 @@ public class FoodShopServiceImpl implements FoodShopService {
     public int updateByPrimaryKey(FoodShop record) {
         return foodShopMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public List<FoodShop> selectByFoodId(Integer foodId) {
+        return foodShopMapper.selectByFoodId(foodId);
+    }
+
+    @Override
+    public List<FoodShop> selectByShopId(Integer shopId) {
+        return foodShopMapper.selectByShopId(shopId);
+    }
+
+    @Override
+    public FoodShop selectByFoodIdAndShopId(Integer foodId, Integer shopId) {
+        return foodShopMapper.selectByFoodIdAndShopId(foodId,shopId);
+    }
 }

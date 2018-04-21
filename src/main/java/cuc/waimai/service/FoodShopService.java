@@ -1,6 +1,7 @@
 package cuc.waimai.service;
 
 import cuc.waimai.Dao.FoodShop;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,4 +15,11 @@ public interface FoodShopService {
     List<FoodShop> selectAll();
 
     int updateByPrimaryKey(FoodShop record);
+
+    List<FoodShop> selectByFoodId(Integer foodId);
+
+    List<FoodShop> selectByShopId(Integer shopId);
+
+    FoodShop selectByFoodIdAndShopId(@Param("foodId") Integer foodId, @Param("shopId") Integer shopId);
+
 }

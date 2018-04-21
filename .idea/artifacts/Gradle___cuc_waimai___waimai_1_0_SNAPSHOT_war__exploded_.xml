@@ -45,6 +45,7 @@
           <element id="library" level="project" name="Gradle: commons-io:commons-io:2.6" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-jcl:5.0.1.RELEASE" />
           <element id="library" level="project" name="Gradle: org.apache.commons:commons-lang3:3.3.2" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.2/3edcfe49d2c6053a70a2a47e4e1c2f94998a49cf/gson-2.8.2.jar" />
         </element>
       </element>
     </root>

@@ -14,4 +14,5 @@ public interface OrderFoodService {
     List<OrderFood> selectAll();
 
     int updateByPrimaryKey(OrderFood record);
+    List<OrderFood> selectByOrderId(Integer orderId);
 }

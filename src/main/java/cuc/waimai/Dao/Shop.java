@@ -152,4 +152,15 @@ public class Shop {
     public void setShopCreatetime(Date shopCreatetime) {
         this.shopCreatetime = shopCreatetime;
     }
+
+    @Override
+    public String toString() {
+        return "Shop{" +
+                "shopId=" + shopId +
+                ", shopName='" + shopName + '\'' +
+                ", shopPsw='" + shopPsw + '\'' +
+                ", shopTel=" + shopTel +
+                ", shopAdd='" + shopAdd + '\'' +
+                '}';
+    }
 }

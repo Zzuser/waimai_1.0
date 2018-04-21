@@ -36,4 +36,9 @@ public class OrderFoodServiceImpl implements OrderFoodService {
     public int updateByPrimaryKey(OrderFood record) {
         return orderFoodMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public List<OrderFood> selectByOrderId(Integer orderId) {
+        return orderFoodMapper.selectByOrderId(orderId);
+    }
 }

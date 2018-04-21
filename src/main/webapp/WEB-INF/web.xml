@@ -32,5 +32,6 @@
 
 	<!--filter.listener,servlet,and servlet-mapping等元素要在session-config之前-->
 	<session-config> <session-timeout>30</session-timeout> </session-config>
+
 	
 </web-app>
