@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cuc.waimai.mapper.FoodCategoryMapper" >
+  <resultMap id="BaseResultMap" type="cuc.waimai.Dao.FoodCategory" >
+    <id column="food_category_id" property="foodCategoryId" jdbcType="INTEGER" />
+    <result column="food_id" property="foodId" jdbcType="INTEGER" />
+    <result column="category_id" property="categoryId" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from food_category
+    where food_category_id = #{foodCategoryId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cuc.waimai.Dao.FoodCategory" >
+    insert into food_category (food_category_id, food_id, category_id
+      )
+    values (#{foodCategoryId,jdbcType=INTEGER}, #{foodId,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.FoodCategory" >
+    update food_category
+    set food_id = #{foodId,jdbcType=INTEGER},
+      category_id = #{categoryId,jdbcType=INTEGER}
+    where food_category_id = #{foodCategoryId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select food_category_id, food_id, category_id
+    from food_category
+    where food_category_id = #{foodCategoryId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select food_category_id, food_id, category_id
+    from food_category
+  </select>
+</mapper>

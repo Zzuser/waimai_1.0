@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cuc.waimai.mapper.CarMapper" >
+  <resultMap id="BaseResultMap" type="cuc.waimai.Dao.Car" >
+    <id column="car_id" property="carId" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="food_id" property="foodId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from car
+    where car_id = #{carId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cuc.waimai.Dao.Car" >
+    insert into car (car_id, order_id, food_id, 
+      user_id)
+    values (#{carId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{foodId,jdbcType=INTEGER}, 
+      #{userId,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.Car" >
+    update car
+    set order_id = #{orderId,jdbcType=INTEGER},
+      food_id = #{foodId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER}
+    where car_id = #{carId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select car_id, order_id, food_id, user_id
+    from car
+    where car_id = #{carId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select car_id, order_id, food_id, user_id
+    from car
+  </select>
+</mapper>

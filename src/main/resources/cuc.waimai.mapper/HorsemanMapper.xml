@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cuc.waimai.mapper.HorsemanMapper" >
+  <resultMap id="BaseResultMap" type="cuc.waimai.Dao.Horseman" >
+    <id column="horseman_id" property="horsemanId" jdbcType="INTEGER" />
+    <result column="horseman_name" property="horsemanName" jdbcType="VARCHAR" />
+    <result column="horseman_psd" property="horsemanPsd" jdbcType="VARCHAR" />
+    <result column="horseman_tel" property="horsemanTel" jdbcType="INTEGER" />
+    <result column="horseman_status" property="horsemanStatus" jdbcType="TINYINT" />
+    <result column="horeseman_add" property="horesemanAdd" jdbcType="VARCHAR" />
+    <result column="takeout_num" property="takeoutNum" jdbcType="TINYINT" />
+    <result column="accomplish_time" property="accomplishTime" jdbcType="TIMESTAMP" />
+    <result column="horseman_lon" property="horsemanLon" jdbcType="DOUBLE" />
+    <result column="horseman_lat" property="horsemanLat" jdbcType="DOUBLE" />
+    <result column="horseman_createtime" property="horsemanCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from horseman
+    where horseman_id = #{horsemanId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cuc.waimai.Dao.Horseman" >
+    insert into horseman (horseman_id, horseman_name, horseman_psd, 
+      horseman_tel, horseman_status, horeseman_add, 
+      takeout_num, accomplish_time, horseman_lon, 
+      horseman_lat, horseman_createtime)
+    values (#{horsemanId,jdbcType=INTEGER}, #{horsemanName,jdbcType=VARCHAR}, #{horsemanPsd,jdbcType=VARCHAR}, 
+      #{horsemanTel,jdbcType=INTEGER}, #{horsemanStatus,jdbcType=TINYINT}, #{horesemanAdd,jdbcType=VARCHAR}, 
+      #{takeoutNum,jdbcType=TINYINT}, #{accomplishTime,jdbcType=TIMESTAMP}, #{horsemanLon,jdbcType=DOUBLE}, 
+      #{horsemanLat,jdbcType=DOUBLE}, #{horsemanCreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.Horseman" >
+    update horseman
+    set horseman_name = #{horsemanName,jdbcType=VARCHAR},
+      horseman_psd = #{horsemanPsd,jdbcType=VARCHAR},
+      horseman_tel = #{horsemanTel,jdbcType=INTEGER},
+      horseman_status = #{horsemanStatus,jdbcType=TINYINT},
+      horeseman_add = #{horesemanAdd,jdbcType=VARCHAR},
+      takeout_num = #{takeoutNum,jdbcType=TINYINT},
+      accomplish_time = #{accomplishTime,jdbcType=TIMESTAMP},
+      horseman_lon = #{horsemanLon,jdbcType=DOUBLE},
+      horseman_lat = #{horsemanLat,jdbcType=DOUBLE},
+      horseman_createtime = #{horsemanCreatetime,jdbcType=TIMESTAMP}
+    where horseman_id = #{horsemanId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select horseman_id, horseman_name, horseman_psd, horseman_tel, horseman_status, horeseman_add, 
+    takeout_num, accomplish_time, horseman_lon, horseman_lat, horseman_createtime
+    from horseman
+    where horseman_id = #{horsemanId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select horseman_id, horseman_name, horseman_psd, horseman_tel, horseman_status, horeseman_add, 
+    takeout_num, accomplish_time, horseman_lon, horseman_lat, horseman_createtime
+    from horseman
+  </select>
+</mapper>

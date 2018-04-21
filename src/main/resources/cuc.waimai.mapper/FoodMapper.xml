@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cuc.waimai.mapper.FoodMapper" >
+  <resultMap id="BaseResultMap" type="cuc.waimai.Dao.Food" >
+    <id column="food_id" property="foodId" jdbcType="INTEGER" />
+    <result column="food_name" property="foodName" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from food
+    where food_id = #{foodId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cuc.waimai.Dao.Food" >
+    insert into food (food_id, food_name)
+    values (#{foodId,jdbcType=INTEGER}, #{foodName,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.Food" >
+    update food
+    set food_name = #{foodName,jdbcType=VARCHAR}
+    where food_id = #{foodId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select food_id, food_name
+    from food
+    where food_id = #{foodId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select food_id, food_name
+    from food
+  </select>
+</mapper>

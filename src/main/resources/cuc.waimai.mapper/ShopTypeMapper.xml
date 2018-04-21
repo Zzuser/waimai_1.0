@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cuc.waimai.mapper.ShopTypeMapper" >
+  <resultMap id="BaseResultMap" type="cuc.waimai.Dao.ShopType" >
+    <id column="shoptype_id" property="shoptypeId" jdbcType="INTEGER" />
+    <result column="type_name" property="typeName" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from shop_type
+    where shoptype_id = #{shoptypeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cuc.waimai.Dao.ShopType" >
+    insert into shop_type (shoptype_id, type_name)
+    values (#{shoptypeId,jdbcType=INTEGER}, #{typeName,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.ShopType" >
+    update shop_type
+    set type_name = #{typeName,jdbcType=VARCHAR}
+    where shoptype_id = #{shoptypeId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select shoptype_id, type_name
+    from shop_type
+    where shoptype_id = #{shoptypeId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select shoptype_id, type_name
+    from shop_type
+  </select>
+</mapper>

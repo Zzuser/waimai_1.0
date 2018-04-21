@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cuc.waimai.mapper.CategoryMapper" >
+  <resultMap id="BaseResultMap" type="cuc.waimai.Dao.Category" >
+    <id column="cat_id" property="catId" jdbcType="INTEGER" />
+    <result column="cat_name" property="catName" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from category
+    where cat_id = #{catId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cuc.waimai.Dao.Category" >
+    insert into category (cat_id, cat_name)
+    values (#{catId,jdbcType=INTEGER}, #{catName,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.Category" >
+    update category
+    set cat_name = #{catName,jdbcType=VARCHAR}
+    where cat_id = #{catId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select cat_id, cat_name
+    from category
+    where cat_id = #{catId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select cat_id, cat_name
+    from category
+  </select>
+</mapper>

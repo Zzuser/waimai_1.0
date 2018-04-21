@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cuc.waimai.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="cuc.waimai.Dao.User" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_portrait" property="userPortrait" jdbcType="VARCHAR" />
+    <result column="user_psd" property="userPsd" jdbcType="VARCHAR" />
+    <result column="user_tel" property="userTel" jdbcType="INTEGER" />
+    <result column="receive_add" property="receiveAdd" jdbcType="VARCHAR" />
+    <result column="receive_name" property="receiveName" jdbcType="VARCHAR" />
+    <result column="receive_tel" property="receiveTel" jdbcType="INTEGER" />
+    <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="last_login_ip" property="lastLoginIp" jdbcType="VARCHAR" />
+    <result column="user_lon" property="userLon" jdbcType="DOUBLE" />
+    <result column="user_lat" property="userLat" jdbcType="DOUBLE" />
+    <result column="user_createtime" property="userCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cuc.waimai.Dao.User" >
+    insert into user (user_id, user_name, user_portrait, 
+      user_psd, user_tel, receive_add, 
+      receive_name, receive_tel, last_login_time, 
+      last_login_ip, user_lon, user_lat, 
+      user_createtime)
+    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userPortrait,jdbcType=VARCHAR}, 
+      #{userPsd,jdbcType=VARCHAR}, #{userTel,jdbcType=INTEGER}, #{receiveAdd,jdbcType=VARCHAR}, 
+      #{receiveName,jdbcType=VARCHAR}, #{receiveTel,jdbcType=INTEGER}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
+      #{lastLoginIp,jdbcType=VARCHAR}, #{userLon,jdbcType=DOUBLE}, #{userLat,jdbcType=DOUBLE}, 
+      #{userCreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.User" >
+    update user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_portrait = #{userPortrait,jdbcType=VARCHAR},
+      user_psd = #{userPsd,jdbcType=VARCHAR},
+      user_tel = #{userTel,jdbcType=INTEGER},
+      receive_add = #{receiveAdd,jdbcType=VARCHAR},
+      receive_name = #{receiveName,jdbcType=VARCHAR},
+      receive_tel = #{receiveTel,jdbcType=INTEGER},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      user_lon = #{userLon,jdbcType=DOUBLE},
+      user_lat = #{userLat,jdbcType=DOUBLE},
+      user_createtime = #{userCreatetime,jdbcType=TIMESTAMP}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select user_id, user_name, user_portrait, user_psd, user_tel, receive_add, receive_name, 
+    receive_tel, last_login_time, last_login_ip, user_lon, user_lat, user_createtime
+    from user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select user_id, user_name, user_portrait, user_psd, user_tel, receive_add, receive_name, 
+    receive_tel, last_login_time, last_login_ip, user_lon, user_lat, user_createtime
+    from user
+  </select>
+</mapper>
