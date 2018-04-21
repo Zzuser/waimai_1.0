@@ -14,19 +14,19 @@ import java.util.Date;
 public class ShopRegController {
     @Autowired
     ShopService shopService;
-    @RequestMapping("shopReg.do")
+
+    @RequestMapping("/shopReg.do")
     @ResponseBody
     public int shopReg(@RequestParam("shopName") String shopName,
                        @RequestParam("shopPsw") String shopPsw,
                        @RequestParam("shopTel") Integer shopTel,
-                       @RequestParam("shopAdd") String shopAdd){
-        Shop shop=new Shop();
+                       @RequestParam("shopAdd") String shopAdd) {
+        Shop shop = new Shop();
         shop.setShopName(shopName);
         shop.setShopPsw(shopPsw);
         shop.setShopTel(shopTel);
         shop.setShopAdd(shopAdd);
         shop.setShopCreatetime(new Date());
-
-return 0;
+        return shopService.insert(shop);
     }
 }

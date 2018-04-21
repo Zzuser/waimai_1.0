@@ -28,7 +28,7 @@ billService.deleteByPrimaryKey(1);
         bill.setNewCollectionNum(100);
         bill.setOrderNum(100);
         bill.setShopId(1);
-        bill.setTotalmoney("12345");
+        bill.setTotalmoney(12324.0);
 
         billService.insert(bill);
     }
@@ -51,7 +51,7 @@ billService.deleteByPrimaryKey(1);
         bill.setNewCollectionNum(100);
         bill.setOrderNum(100);
         bill.setShopId(1);
-        bill.setTotalmoney("12345");
+        bill.setTotalmoney(12314.0);
 
         billService.updateByPrimaryKey(bill);
     }
