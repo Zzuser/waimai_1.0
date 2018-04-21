@@ -9,7 +9,7 @@ public class HorsemanEvaluate {
 
     private Integer outTimeCount;
 
-    private Float onTimeRate;
+    private Double onTimeRate;
 
     public Integer getEvId() {
         return evId;
@@ -43,11 +43,11 @@ public class HorsemanEvaluate {
         this.outTimeCount = outTimeCount;
     }
 
-    public Float getOnTimeRate() {
+    public Double getOnTimeRate() {
         return onTimeRate;
     }
 
-    public void setOnTimeRate(Float onTimeRate) {
+    public void setOnTimeRate(Double onTimeRate) {
         this.onTimeRate = onTimeRate;
     }
 }

@@ -5,7 +5,7 @@
     <id column="ev_id" property="evId" jdbcType="INTEGER" />
     <result column="shop_id" property="shopId" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="ev_all" property="evAll" jdbcType="REAL" />
+    <result column="ev_all" property="evAll" jdbcType="DOUBLE" />
     <result column="ev_comment" property="evComment" jdbcType="VARCHAR" />
     <result column="ev_pic" property="evPic" jdbcType="VARCHAR" />
   </resultMap>
@@ -18,14 +18,14 @@
       ev_all, ev_comment, ev_pic
       )
     values (#{evId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
-      #{evAll,jdbcType=REAL}, #{evComment,jdbcType=VARCHAR}, #{evPic,jdbcType=VARCHAR}
+      #{evAll,jdbcType=DOUBLE}, #{evComment,jdbcType=VARCHAR}, #{evPic,jdbcType=VARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.ShopEvaluate" >
     update shop_evaluate
     set shop_id = #{shopId,jdbcType=INTEGER},
       user_id = #{userId,jdbcType=INTEGER},
-      ev_all = #{evAll,jdbcType=REAL},
+      ev_all = #{evAll,jdbcType=DOUBLE},
       ev_comment = #{evComment,jdbcType=VARCHAR},
       ev_pic = #{evPic,jdbcType=VARCHAR}
     where ev_id = #{evId,jdbcType=INTEGER}

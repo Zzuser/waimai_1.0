@@ -16,7 +16,7 @@
     <result column="province_id" property="provinceId" jdbcType="INTEGER" />
     <result column="shop_lat" property="shopLat" jdbcType="DOUBLE" />
     <result column="shop_lon" property="shopLon" jdbcType="DOUBLE" />
-    <result column="shop_createtime" property="shopCreatetime" jdbcType="INTEGER" />
+    <result column="shop_createtime" property="shopCreatetime" jdbcType="TIMESTAMP" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from shop
@@ -33,7 +33,7 @@
       #{shopTel,jdbcType=INTEGER}, #{shopAdd,jdbcType=VARCHAR}, #{deliveryFee,jdbcType=VARCHAR}, 
       #{shopProclamation,jdbcType=VARCHAR}, #{monthSales,jdbcType=INTEGER}, #{orderNum,jdbcType=VARCHAR}, 
       #{collectionNum,jdbcType=INTEGER}, #{cityId,jdbcType=INTEGER}, #{provinceId,jdbcType=INTEGER}, 
-      #{shopLat,jdbcType=DOUBLE}, #{shopLon,jdbcType=DOUBLE}, #{shopCreatetime,jdbcType=INTEGER}
+      #{shopLat,jdbcType=DOUBLE}, #{shopLon,jdbcType=DOUBLE}, #{shopCreatetime,jdbcType=TIMESTAMP}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.Shop" >
@@ -51,7 +51,7 @@
       province_id = #{provinceId,jdbcType=INTEGER},
       shop_lat = #{shopLat,jdbcType=DOUBLE},
       shop_lon = #{shopLon,jdbcType=DOUBLE},
-      shop_createtime = #{shopCreatetime,jdbcType=INTEGER}
+      shop_createtime = #{shopCreatetime,jdbcType=TIMESTAMP}
     where shop_id = #{shopId,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >

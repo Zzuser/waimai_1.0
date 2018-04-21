@@ -1,6 +1,7 @@
 package cuc.waimai.mapper;
 
 import cuc.waimai.Dao.ShopType;
+
 import java.util.List;
 
 public interface ShopTypeMapper {

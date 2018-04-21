@@ -6,7 +6,7 @@
     <result column="food_id" property="foodId" jdbcType="INTEGER" />
     <result column="shop_id" property="shopId" jdbcType="INTEGER" />
     <result column="food_num" property="foodNum" jdbcType="INTEGER" />
-    <result column="food_price" property="foodPrice" jdbcType="REAL" />
+    <result column="food_price" property="foodPrice" jdbcType="DOUBLE" />
     <result column="food_sales" property="foodSales" jdbcType="INTEGER" />
     <result column="food_ev" property="foodEv" jdbcType="VARCHAR" />
     <result column="food_pic" property="foodPic" jdbcType="VARCHAR" />
@@ -22,7 +22,7 @@
       food_ev, food_pic, food_des
       )
     values (#{foodShopId,jdbcType=INTEGER}, #{foodId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, 
-      #{foodNum,jdbcType=INTEGER}, #{foodPrice,jdbcType=REAL}, #{foodSales,jdbcType=INTEGER}, 
+      #{foodNum,jdbcType=INTEGER}, #{foodPrice,jdbcType=DOUBLE}, #{foodSales,jdbcType=INTEGER}, 
       #{foodEv,jdbcType=VARCHAR}, #{foodPic,jdbcType=VARCHAR}, #{foodDes,jdbcType=VARCHAR}
       )
   </insert>
@@ -31,7 +31,7 @@
     set food_id = #{foodId,jdbcType=INTEGER},
       shop_id = #{shopId,jdbcType=INTEGER},
       food_num = #{foodNum,jdbcType=INTEGER},
-      food_price = #{foodPrice,jdbcType=REAL},
+      food_price = #{foodPrice,jdbcType=DOUBLE},
       food_sales = #{foodSales,jdbcType=INTEGER},
       food_ev = #{foodEv,jdbcType=VARCHAR},
       food_pic = #{foodPic,jdbcType=VARCHAR},

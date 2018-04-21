@@ -1,6 +1,7 @@
 package cuc.waimai.mapper;
 
 import cuc.waimai.Dao.Horseman;
+
 import java.util.List;
 
 public interface HorsemanMapper {

@@ -9,7 +9,7 @@ public class FoodShop {
 
     private Integer foodNum;
 
-    private Float foodPrice;
+    private Double foodPrice;
 
     private Integer foodSales;
 
@@ -51,11 +51,11 @@ public class FoodShop {
         this.foodNum = foodNum;
     }
 
-    public Float getFoodPrice() {
+    public Double getFoodPrice() {
         return foodPrice;
     }
 
-    public void setFoodPrice(Float foodPrice) {
+    public void setFoodPrice(Double foodPrice) {
         this.foodPrice = foodPrice;
     }
 

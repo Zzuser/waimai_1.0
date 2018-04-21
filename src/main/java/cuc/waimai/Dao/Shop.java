@@ -1,5 +1,7 @@
 package cuc.waimai.Dao;
 
+import java.util.Date;
+
 public class Shop {
     private Integer shopId;
 
@@ -29,7 +31,7 @@ public class Shop {
 
     private Double shopLon;
 
-    private Integer shopCreatetime;
+    private Date shopCreatetime;
 
     public Integer getShopId() {
         return shopId;
@@ -143,11 +145,11 @@ public class Shop {
         this.shopLon = shopLon;
     }
 
-    public Integer getShopCreatetime() {
+    public Date getShopCreatetime() {
         return shopCreatetime;
     }
 
-    public void setShopCreatetime(Integer shopCreatetime) {
+    public void setShopCreatetime(Date shopCreatetime) {
         this.shopCreatetime = shopCreatetime;
     }
 }

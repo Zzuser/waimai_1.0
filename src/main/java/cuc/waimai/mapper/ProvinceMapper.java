@@ -1,6 +1,7 @@
 package cuc.waimai.mapper;
 
 import cuc.waimai.Dao.Province;
+
 import java.util.List;
 
 public interface ProvinceMapper {

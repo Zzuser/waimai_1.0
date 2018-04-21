@@ -7,7 +7,7 @@ public class ShopEvaluate {
 
     private Integer userId;
 
-    private Float evAll;
+    private Double evAll;
 
     private String evComment;
 
@@ -37,11 +37,11 @@ public class ShopEvaluate {
         this.userId = userId;
     }
 
-    public Float getEvAll() {
+    public Double getEvAll() {
         return evAll;
     }
 
-    public void setEvAll(Float evAll) {
+    public void setEvAll(Double evAll) {
         this.evAll = evAll;
     }
 

@@ -9,7 +9,7 @@ public class DailyBill {
 
     private Integer orderNum;
 
-    private String totalmoney;
+    private Double totalmoney;
 
     private Integer newCollectionNum;
 
@@ -39,12 +39,12 @@ public class DailyBill {
         this.orderNum = orderNum;
     }
 
-    public String getTotalmoney() {
+    public Double getTotalmoney() {
         return totalmoney;
     }
 
-    public void setTotalmoney(String totalmoney) {
-        this.totalmoney = totalmoney == null ? null : totalmoney.trim();
+    public void setTotalmoney(Double totalmoney) {
+        this.totalmoney = totalmoney;
     }
 
     public Integer getNewCollectionNum() {

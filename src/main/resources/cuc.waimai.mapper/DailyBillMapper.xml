@@ -5,7 +5,7 @@
     <id column="bill_id" property="billId" jdbcType="INTEGER" />
     <result column="shop_id" property="shopId" jdbcType="INTEGER" />
     <result column="order_num" property="orderNum" jdbcType="INTEGER" />
-    <result column="totalmoney" property="totalmoney" jdbcType="CHAR" />
+    <result column="totalmoney" property="totalmoney" jdbcType="DOUBLE" />
     <result column="new_collection_num" property="newCollectionNum" jdbcType="INTEGER" />
     <result column="bill_time" property="billTime" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -18,14 +18,14 @@
       totalmoney, new_collection_num, bill_time
       )
     values (#{billId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{orderNum,jdbcType=INTEGER}, 
-      #{totalmoney,jdbcType=CHAR}, #{newCollectionNum,jdbcType=INTEGER}, #{billTime,jdbcType=TIMESTAMP}
+      #{totalmoney,jdbcType=DOUBLE}, #{newCollectionNum,jdbcType=INTEGER}, #{billTime,jdbcType=TIMESTAMP}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.DailyBill" >
     update daily_bill
     set shop_id = #{shopId,jdbcType=INTEGER},
       order_num = #{orderNum,jdbcType=INTEGER},
-      totalmoney = #{totalmoney,jdbcType=CHAR},
+      totalmoney = #{totalmoney,jdbcType=DOUBLE},
       new_collection_num = #{newCollectionNum,jdbcType=INTEGER},
       bill_time = #{billTime,jdbcType=TIMESTAMP}
     where bill_id = #{billId,jdbcType=INTEGER}
