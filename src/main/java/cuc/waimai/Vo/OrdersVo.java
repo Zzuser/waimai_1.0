@@ -7,6 +7,7 @@ import java.util.List;
 
 public class OrdersVo {
     private String order_number;
+    private String order_status;
     private Date order_time;
     private Date arrive_time;
     private int horseman_id;
@@ -95,5 +96,13 @@ public class OrdersVo {
 
     public void setFood_list(List<FoodVo> food_list) {
         this.food_list = food_list;
+    }
+
+    public String getOrder_status() {
+        return order_status;
+    }
+
+    public void setOrder_status(String order_status) {
+        this.order_status = order_status;
     }
 }

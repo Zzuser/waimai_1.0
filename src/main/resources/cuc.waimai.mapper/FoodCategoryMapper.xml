@@ -31,4 +31,5 @@
     select food_category_id, food_id, category_id
     from food_category
   </select>
+
 </mapper>

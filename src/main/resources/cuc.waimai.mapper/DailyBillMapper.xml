@@ -8,6 +8,7 @@
     <result column="totalmoney" property="totalmoney" jdbcType="DOUBLE" />
     <result column="new_collection_num" property="newCollectionNum" jdbcType="INTEGER" />
     <result column="bill_time" property="billTime" jdbcType="TIMESTAMP" />
+    <result column="shop_status" property="shopStatus" jdbcType="VARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from daily_bill
@@ -15,11 +16,11 @@
   </delete>
   <insert id="insert" parameterType="cuc.waimai.Dao.DailyBill" >
     insert into daily_bill (bill_id, shop_id, order_num, 
-      totalmoney, new_collection_num, bill_time
-      )
+      totalmoney, new_collection_num, bill_time,
+      shop_status)
     values (#{billId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{orderNum,jdbcType=INTEGER}, 
-      #{totalmoney,jdbcType=DOUBLE}, #{newCollectionNum,jdbcType=INTEGER}, #{billTime,jdbcType=TIMESTAMP}
-      )
+      #{totalmoney,jdbcType=DOUBLE}, #{newCollectionNum,jdbcType=INTEGER}, #{billTime,jdbcType=TIMESTAMP},
+      #{shopStatus,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.DailyBill" >
     update daily_bill
@@ -27,16 +28,24 @@
       order_num = #{orderNum,jdbcType=INTEGER},
       totalmoney = #{totalmoney,jdbcType=DOUBLE},
       new_collection_num = #{newCollectionNum,jdbcType=INTEGER},
-      bill_time = #{billTime,jdbcType=TIMESTAMP}
+      bill_time = #{billTime,jdbcType=TIMESTAMP},
+      shop_status = #{shopStatus,jdbcType=VARCHAR}
     where bill_id = #{billId,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select bill_id, shop_id, order_num, totalmoney, new_collection_num, bill_time
+    select bill_id, shop_id, order_num, totalmoney, new_collection_num, bill_time, shop_status
     from daily_bill
     where bill_id = #{billId,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select bill_id, shop_id, order_num, totalmoney, new_collection_num, bill_time
+    select bill_id, shop_id, order_num, totalmoney, new_collection_num, bill_time, shop_status
     from daily_bill
   </select>
+
+  <select id="selectByShopId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select bill_id, shop_id, order_num, totalmoney, new_collection_num, bill_time, shop_status
+    from daily_bill
+    where shop_id = #{shopId,jdbcType=INTEGER}
+  </select>
+
 </mapper>

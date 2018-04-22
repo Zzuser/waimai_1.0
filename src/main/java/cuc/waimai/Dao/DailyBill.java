@@ -15,6 +15,8 @@ public class DailyBill {
 
     private Date billTime;
 
+    private String shopStatus;
+
     public Integer getBillId() {
         return billId;
     }
@@ -61,5 +63,13 @@ public class DailyBill {
 
     public void setBillTime(Date billTime) {
         this.billTime = billTime;
+    }
+
+    public String getShopStatus() {
+        return shopStatus;
+    }
+
+    public void setShopStatus(String shopStatus) {
+        this.shopStatus = shopStatus == null ? null : shopStatus.trim();
     }
 }

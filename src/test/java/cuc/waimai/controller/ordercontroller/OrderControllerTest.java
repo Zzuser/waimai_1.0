@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.servlet.http.HttpSession;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 //告诉junit spring的配置文件
@@ -14,12 +16,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class OrderControllerTest {
 @Autowired
 OrderController orderController;
-    @Test
-    public void ordersSelectALLByShopId() {
-        Gson gson=new Gson();
-        System.out.println(gson.toJson( orderController.ordersSelectALLByShopId(1)));
-
-    }
+//    @Test
+//    public void ordersSelectALLByShopId() {
+//        Gson gson=new Gson();
+//        System.out.println(gson.toJson( orderController.ordersSelectALLByShopId(1)));
+//
+//    }
 
     @Test
     public void ordersSelectALLByUserId() {

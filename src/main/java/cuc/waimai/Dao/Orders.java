@@ -21,7 +21,7 @@ public class Orders {
 
     private Date arriveTime;
 
-    private Double orderNumber;
+    private String orderNumber;
 
     public Integer getOrderId() {
         return orderId;
@@ -95,11 +95,11 @@ public class Orders {
         this.arriveTime = arriveTime;
     }
 
-    public Double getOrderNumber() {
+    public String getOrderNumber() {
         return orderNumber;
     }
 
-    public void setOrderNumber(Double orderNumber) {
-        this.orderNumber = orderNumber;
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber == null ? null : orderNumber.trim();
     }
 }

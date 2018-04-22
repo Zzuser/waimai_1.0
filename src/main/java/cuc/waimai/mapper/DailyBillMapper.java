@@ -1,7 +1,6 @@
 package cuc.waimai.mapper;
 
 import cuc.waimai.Dao.DailyBill;
-
 import java.util.List;
 
 public interface DailyBillMapper {
@@ -14,4 +13,6 @@ public interface DailyBillMapper {
     List<DailyBill> selectAll();
 
     int updateByPrimaryKey(DailyBill record);
+
+    DailyBill selectByShopId(Integer shopId);
 }

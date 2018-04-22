@@ -4,27 +4,31 @@
   <resultMap id="BaseResultMap" type="cuc.waimai.Dao.Food" >
     <id column="food_id" property="foodId" jdbcType="INTEGER" />
     <result column="food_name" property="foodName" jdbcType="VARCHAR" />
+    <result column="category_id" property="categoryId" jdbcType="INTEGER" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from food
     where food_id = #{foodId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cuc.waimai.Dao.Food" >
-    insert into food (food_id, food_name)
-    values (#{foodId,jdbcType=INTEGER}, #{foodName,jdbcType=VARCHAR})
+    insert into food (food_id, food_name, category_id
+      )
+    values (#{foodId,jdbcType=INTEGER}, #{foodName,jdbcType=VARCHAR}, #{categoryId,jdbcType=INTEGER}
+      )
   </insert>
   <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.Food" >
     update food
-    set food_name = #{foodName,jdbcType=VARCHAR}
+    set food_name = #{foodName,jdbcType=VARCHAR},
+      category_id = #{categoryId,jdbcType=INTEGER}
     where food_id = #{foodId,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select food_id, food_name
+    select food_id, food_name, category_id
     from food
     where food_id = #{foodId,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select food_id, food_name
+    select food_id, food_name, category_id
     from food
   </select>
 </mapper>

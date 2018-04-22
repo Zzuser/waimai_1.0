@@ -14,4 +14,6 @@ public interface ShopMapper {
     List<Shop> selectAll();
 
     int updateByPrimaryKey(Shop record);
+
+    Shop selectByShopTel(Integer shopTel);
 }

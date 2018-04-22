@@ -11,7 +11,7 @@
     <result column="status" property="status" jdbcType="VARCHAR" />
     <result column="order_time" property="orderTime" jdbcType="TIMESTAMP" />
     <result column="arrive_time" property="arriveTime" jdbcType="TIMESTAMP" />
-    <result column="order_number" property="orderNumber" jdbcType="DOUBLE" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from orders
@@ -25,7 +25,7 @@
     values (#{orderId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, 
       #{horsemanId,jdbcType=INTEGER}, #{account,jdbcType=CHAR}, #{payment,jdbcType=VARCHAR}, 
       #{status,jdbcType=VARCHAR}, #{orderTime,jdbcType=TIMESTAMP}, #{arriveTime,jdbcType=TIMESTAMP}, 
-      #{orderNumber,jdbcType=DOUBLE})
+      #{orderNumber,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.Orders" >
     update orders
@@ -37,7 +37,7 @@
       status = #{status,jdbcType=VARCHAR},
       order_time = #{orderTime,jdbcType=TIMESTAMP},
       arrive_time = #{arriveTime,jdbcType=TIMESTAMP},
-      order_number = #{orderNumber,jdbcType=DOUBLE}
+      order_number = #{orderNumber,jdbcType=VARCHAR}
     where order_id = #{orderId,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >

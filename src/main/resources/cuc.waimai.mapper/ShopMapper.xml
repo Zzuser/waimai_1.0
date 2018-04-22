@@ -67,4 +67,12 @@
     shop_createtime
     from shop
   </select>
+
+  <select id="selectByShopTel" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select shop_id, shop_name, shop_psw, shop_tel, shop_add, delivery_fee, shop_proclamation,
+    month_sales, order_num, collection_num, city_id, province_id, shop_lat, shop_lon,
+    shop_createtime
+    from shop
+    where shop_tel = #{shopTel,jdbcType=INTEGER}
+  </select>
 </mapper>

@@ -35,4 +35,9 @@ public class DailyBillServiceImpl implements DailyBillService {
     public int updateByPrimaryKey(DailyBill record) {
         return billMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public DailyBill selectByShopId(Integer shopId) {
+        return billMapper.selectByShopId(shopId);
+    }
 }

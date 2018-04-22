@@ -14,4 +14,6 @@ public interface DailyBillService {
     List<DailyBill> selectAll();
 
     int updateByPrimaryKey(DailyBill record);
+
+    DailyBill selectByShopId(Integer shopId);
 }

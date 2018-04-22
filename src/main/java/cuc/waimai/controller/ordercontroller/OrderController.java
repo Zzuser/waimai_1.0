@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,11 +35,12 @@ public class OrderController {
 
     @RequestMapping("/ordersSelectALLByShopId.do")
     @ResponseBody
-    public List<OrdersVo> ordersSelectALLByShopId(@RequestParam("shopId") Integer shopId) {
+    public List<OrdersVo> ordersSelectALLByShopId(@RequestParam("shopId") Integer shopId, HttpSession session) {
         List<OrdersVo> ordersVoList = new ArrayList<>();
         List<Orders> ordersList = ordersService.selectByShopId(shopId);
         for (Orders orders : ordersList) {
             OrdersVo ordersVo = new OrdersVo();
+            ordersVo.setOrder_status("finish");
             ordersVo.setShop_id(shopId);
             ordersVo.setOrder_number(orders.getOrderNumber().toString());
             ordersVo.setOrder_time(orders.getOrderTime());
@@ -51,12 +53,12 @@ public class OrderController {
             List<FoodVo> foodVoList = new ArrayList<>();
             List<OrderFood> orderFoodList = orderFoodService.selectByOrderId(orders.getOrderId());
             for (OrderFood orderFood : orderFoodList) {
-                foodVoList.add(foodController.foodVoSelectByFoodIdAndShopId(orderFood.getFoodId(),shopId));
+                foodVoList.add(foodController.foodVoSelectByFoodIdAndShopId(orderFood.getFoodId(), shopId));
             }
             ordersVo.setFood_list(foodVoList);
             ordersVoList.add(ordersVo);
         }
-
+        session.setAttribute("ordersVoList", ordersVoList);
         return ordersVoList;
 
     }

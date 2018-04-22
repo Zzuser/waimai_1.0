@@ -5,6 +5,8 @@ public class Food {
 
     private String foodName;
 
+    private Integer categoryId;
+
     public Integer getFoodId() {
         return foodId;
     }
@@ -19,5 +21,13 @@ public class Food {
 
     public void setFoodName(String foodName) {
         this.foodName = foodName == null ? null : foodName.trim();
+    }
+
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 }
