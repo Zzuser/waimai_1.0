@@ -5,6 +5,7 @@ import cuc.waimai.Dao.FoodShop;
 public class FoodVo {
     private int food_id;
     private String food_name;
+    private Integer food_count;
     private String category;
     private FoodShop foodShop;
 
@@ -38,5 +39,13 @@ public class FoodVo {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public Integer getFood_count() {
+        return food_count;
+    }
+
+    public void setFood_count(Integer food_count) {
+        this.food_count = food_count;
     }
 }

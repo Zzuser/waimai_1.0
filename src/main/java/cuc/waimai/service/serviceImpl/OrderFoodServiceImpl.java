@@ -41,4 +41,9 @@ public class OrderFoodServiceImpl implements OrderFoodService {
     public List<OrderFood> selectByOrderId(Integer orderId) {
         return orderFoodMapper.selectByOrderId(orderId);
     }
+
+    @Override
+    public OrderFood selectByFoodIdAndOrderId(Integer orderId, Integer foodId) {
+        return orderFoodMapper.selectByFoodIdAndOrderId(foodId,orderId);
+    }
 }

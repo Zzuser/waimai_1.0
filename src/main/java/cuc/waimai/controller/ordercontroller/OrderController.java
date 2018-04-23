@@ -36,7 +36,7 @@ public class OrderController {
     @RequestMapping("/ordersSelectALLByShopId.do")
     @ResponseBody
     public List<OrdersVo> ordersSelectALLByShopId(@RequestParam("shopId") String shopIdst, HttpSession session) {
-        int shopId=Integer.parseInt(shopIdst);
+        int shopId = Integer.parseInt(shopIdst);
         List<OrdersVo> ordersVoList = new ArrayList<>();
         List<Orders> ordersList = ordersService.selectByShopId(shopId);
         for (Orders orders : ordersList) {
@@ -54,7 +54,11 @@ public class OrderController {
             List<FoodVo> foodVoList = new ArrayList<>();
             List<OrderFood> orderFoodList = orderFoodService.selectByOrderId(orders.getOrderId());
             for (OrderFood orderFood : orderFoodList) {
-                foodVoList.add(foodController.foodVoSelectByFoodIdAndShopId(orderFood.getFoodId(), shopId));
+                FoodVo foodVo = foodController.foodVoSelectByFoodIdAndShopId(orderFood.getFoodId(), shopId);
+                foodVo.setFood_count(orderFoodService.selectByFoodIdAndOrderId(
+                        orders.getOrderId(), orderFood.getFoodId())
+                        .getFoodCount());
+                foodVoList.add(foodVo);
             }
             ordersVo.setFood_list(foodVoList);
             ordersVoList.add(ordersVo);
@@ -83,8 +87,13 @@ public class OrderController {
             List<FoodVo> foodVoList = new ArrayList<>();
             List<OrderFood> orderFoodList = orderFoodService.selectByOrderId(orders.getOrderId());
             for (OrderFood orderFood : orderFoodList) {
-                foodVoList.add(foodController.foodVoSelectByFoodIdAndShopId(orderFood.getFoodId(),
-                        ordersService.selectByPrimaryKey(orders.getOrderId()).getShopId()));
+
+                FoodVo foodVo = foodController.foodVoSelectByFoodIdAndShopId(orderFood.getFoodId(),
+                        ordersService.selectByPrimaryKey(orders.getOrderId()).getShopId());
+                foodVo.setFood_count(orderFoodService.selectByFoodIdAndOrderId(
+                        orders.getOrderId(), orderFood.getFoodId())
+                        .getFoodCount());
+                foodVoList.add(foodVo);
             }
             ordersVo.setFood_list(foodVoList);
             ordersVoList.add(ordersVo);

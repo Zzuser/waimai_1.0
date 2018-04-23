@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -16,12 +17,13 @@ import javax.servlet.http.HttpSession;
 public class OrderControllerTest {
 @Autowired
 OrderController orderController;
-//    @Test
-//    public void ordersSelectALLByShopId() {
-//        Gson gson=new Gson();
-//        System.out.println(gson.toJson( orderController.ordersSelectALLByShopId(1)));
-//
-//    }
+    @Test
+    public void ordersSelectALLByShopId() {
+        MockHttpSession session=new MockHttpSession();
+        Gson gson=new Gson();
+        System.out.println(gson.toJson( orderController.ordersSelectALLByShopId("1",session)));
+
+    }
 
     @Test
     public void ordersSelectALLByUserId() {

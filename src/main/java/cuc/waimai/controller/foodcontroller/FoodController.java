@@ -5,6 +5,7 @@ import cuc.waimai.Dao.OrderFood;
 import cuc.waimai.Vo.FoodVo;
 import cuc.waimai.service.FoodService;
 import cuc.waimai.service.FoodShopService;
+import cuc.waimai.service.OrderFoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,8 @@ public class FoodController {
     FoodShopService foodShopService;
 @Autowired
     FoodService foodService;
+@Autowired
+OrderFoodService orderFoodService;
     @RequestMapping("/foodSelectAllByShopId.do")
     @ResponseBody
     public List<FoodVo> foodSelectAllByShopId(
