@@ -18,7 +18,7 @@ public class IndexController {
     }
     @RequestMapping("/shopLogin")
     public String shopLogin(){
-        return"shopLogin";
+        return "shopLogin";
     }
     @RequestMapping("/session")
     public String session(HttpSession session){

@@ -11,7 +11,7 @@
     <title>Session测试</title>
 </head>
 <body>
-${sessionScope}<br>
+${sessionScope.shop.shopId}<br>
 <button id="logout">注销</button>
 </body>
 </html>
