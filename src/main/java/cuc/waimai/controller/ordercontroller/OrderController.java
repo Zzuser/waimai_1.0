@@ -35,7 +35,8 @@ public class OrderController {
 
     @RequestMapping("/ordersSelectALLByShopId.do")
     @ResponseBody
-    public List<OrdersVo> ordersSelectALLByShopId(@RequestParam("shopId") Integer shopId, HttpSession session) {
+    public List<OrdersVo> ordersSelectALLByShopId(@RequestParam("shopId") String shopIdst, HttpSession session) {
+        int shopId=Integer.parseInt(shopIdst);
         List<OrdersVo> ordersVoList = new ArrayList<>();
         List<Orders> ordersList = ordersService.selectByShopId(shopId);
         for (Orders orders : ordersList) {
