@@ -38,6 +38,7 @@ public class ShopLoginController {
             if (shop != null) {
                 if (shop.getShopPsw().equals(psw)) {
                     httpSession.setAttribute("shop", shop);
+                    httpSession.setAttribute("shop_id",shop.getShopId());
                     httpSession.setAttribute("flag", "on");
                     return 1;
                 } else {

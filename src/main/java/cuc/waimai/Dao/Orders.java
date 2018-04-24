@@ -23,6 +23,8 @@ public class Orders {
 
     private String orderNumber;
 
+    private Double orderMoney;
+
     public Integer getOrderId() {
         return orderId;
     }

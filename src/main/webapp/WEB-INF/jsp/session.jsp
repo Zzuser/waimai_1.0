@@ -5,48 +5,92 @@
   Time: 下午11:01
   To change this template use File | Settings | File Templates.
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Session测试</title>
-    //以下是写在html
-    <head>标签中的tmpl模板：
-        <script>
-            // 给多个按钮添加ID
-            var cartList = [
-                {classification: "饮料", name: "可口可乐", price: "3", unit: "瓶", id: "1"},
-                {classification: "饮料", name: "雪碧", price: "3", unit: "瓶", id: "2"},
-                {classification: "水果", name: "苹果", price: "5.5", unit: "斤", id: "3"},
-                {classification: "水果", name: "荔枝", price: "15", unit: "斤", id: "4"},
-                {classification: "生活用品", name: "电池", price: "2", unit: "个", id: "5"},
-                {classification: "食品", name: "方便面", price: "4.5", unit: "袋", id: "6"}
-            ]
-        </script>
-        <script>
-             function loadAll() {
-                var list = document.getElementById("list");
-                var result = "<table>",z;
-                result += "<tr><td>商品</td><td>价格</td><td>操作</td></tr>";
-                for (z = 0; z < 10; z++) {
-                    result += "<tr><td>" + cartList[z].id + "</td>" +
-                        "<td>" +  cartList[z].name + "" + "</td>" +
-                        "<td><button id = 'btn3' onclick='alal(this)'>删除</button></td></tr>";
+</head>
+<head lang="en">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script src="../resources/js/sockjs-0.3.min.js"></script>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="../../resources/js/jquery-3.3.1.min.js"></script>
+    <!--<script type="text/javascript" src="js/jquery-1.7.2.js"></script>-->
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="../../resources/js/bootstrap.min.js"></script>
+    <title>webSocket测试</title>
+    <script type="text/javascript">
+        $(function(){
+            var websocket;
+            if ('WebSocket' in window) {
+                websocket = new WebSocket("ws://localhost:8080/echo");
+            } else if ('MozWebSocket' in window) {
+                websocket = new MozWebSocket("ws://echo");
+            } else {
+                websocket = new SockJS("/sockjs/echo");
+            }
+            websocket.onopen = function (evnt) {
+                $("#tou").html("链接服务器成功!")
+            };
+            websocket.onmessage = function (evnt) {
+                $("#msg").html($("#msg").html() + "<br/>" + evnt.data);
+            };
+            websocket.onerror = function (evnt) {
+            };
+            websocket.onclose = function (evnt) {
+                $("#tou").html("与服务器断开了链接!")
+            }
+            $('#send').bind('click', function() {
+                send();
+            });
+            function send(){
+                if (websocket != null) {
+                    var message = document.getElementById('message').value;
+                    var toId = document.getElementById('toId').value;
+
+
+                    var data = {};//新建data对象，并规定属性名与相应的值
+
+                    data['toId'] = toId;
+                    data['messageText'] = message;
+                    websocket.send(JSON.stringify(data));
+
+
+                    websocket.send(message);
+                } else {
+                    alert('未与服务器链接.');
                 }
-                    list.innerHTML = result;
-//每次加载商品信息同时刷新总价格
             }
-            function alal() {
-                alert("ddddd")
+            function disconnect() {
+                if (ws != null) {
+                    ws.close();
+                    ws = null;
+                }
             }
-        </script>
-    </head>
+        });
+    </script>
+
+</head>
 <body>
 ${sessionScope}<br>
-<button id="add" onclick="addClickEvent()">add</button>
-<br>
-********************************************<br>
-
-
+<button id="logout">注销</button>
+<div class="page-header" id="tou">
+    webSocket chatroom
+</div>
+<div class="well" id="msg">
+</div>
+<div class="col-lg">
+    <div class="mui-input-group">
+        <input type="text" class="form-control" placeholder="发送信息..." id="message">
+        <input type="text" class="form-control" placeholder="发给谁的"  id="toId">
+        <span class="input-group-btn">
+        <button class="btn btn-default" type="button" id="send" >发送</button>
+      </span>
+    </div><!-- /input-group -->
+</div><!-- /.col-lg-6 -->
+</div>
 </body>
 </html>

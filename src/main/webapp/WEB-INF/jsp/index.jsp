@@ -24,7 +24,13 @@
 
 
 
+
 <a href="/userLogin">userLogin</a>
 <a href="/userReg">userReg</a>
+<ul>
+    <li>
+        <a href="/test">test</a>
+    </li>
+</ul>
 </body>
 </html>

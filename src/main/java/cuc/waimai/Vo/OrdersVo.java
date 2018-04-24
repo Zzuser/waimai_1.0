@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 public class OrdersVo {
+    private int order_id;
+    private double order_money;
     private String order_number;
     private String order_status;
     private Date order_time;
@@ -98,8 +100,24 @@ public class OrdersVo {
         this.food_list = food_list;
     }
 
+    public int getOrder_id() {
+        return order_id;
+    }
+
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
+    }
+
     public String getOrder_status() {
         return order_status;
+    }
+
+    public double getOrder_money() {
+        return order_money;
+    }
+
+    public void setOrder_money(double order_money) {
+        this.order_money = order_money;
     }
 
     public void setOrder_status(String order_status) {

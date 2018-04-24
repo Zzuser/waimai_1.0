@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.webjars.npm:debug:2.6.9">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.webjars.npm/debug/2.6.9/c24da0c3e98aa4a613361cebc702daff22674c20/debug-2.6.9.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.webjars.npm/debug/2.6.9/b04f3ee8f5e43fa3b162981b50bb72fe1acabb33/debug-2.6.9-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

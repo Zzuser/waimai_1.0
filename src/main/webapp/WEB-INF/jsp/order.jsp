@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="../../resources/css/mui.min.css">
     <script src="../../resources/js/jquery-3.3.1.min.js"></script>
     <script src="../../resources/js/mui.min.js"></script>
-    <script src="../../resources/js/template-web.js"></script>
     <style>
         html, body {
             background-color: #efeff4;
@@ -47,7 +46,7 @@
 
     <%--</script>--%>
 </head>
-<body onload="init()">
+<body onload="init();init1();init2()">
 
 
 <div id="pullrefresh" class="mui-content mui-scroll-wrapper">
@@ -75,6 +74,7 @@
                         var bussinessid =${sessionScope.shop.shopId};
 
                         function init() {
+                            $('#外部').empty();
                             $.ajax({
                                     type: 'POST',
                                     url: "/ordersSelectALLByShopId.do",
@@ -87,36 +87,68 @@
                                         var str;
 
                                         for (z = 0; z < data.length; z++) {
-                                            var c = 1;
-                                            $('#外部').append(
-                                                '<div class="mui-card">' +
-                                                '<div class="mui-card-header" id="' + z + 'shangbu"></div>' +
-                                                '<div class="mui-card-header" id="' + z + 'zhongbu' + 1 + '"></div>' +
-                                                '<div class="mui-card-header" id="' + z + 'zhongbu' + 2 + '"></div>' +
-                                                '<div class="mui-card-header" id="' + z + 'zhongbu' + 3 + '"></div>' +
-                                                '<div class="mui-card-header mui-pull-right" id="' + z + 'xiabu"></div>' +
-                                                '</div>');
-                                            $('#' + z + 'shangbu').append(
-                                                '<h4>用户：' + data[z].user_name + '</h4>' +
-                                                '<button  id="' + data[z].order_number + '" class="mui-btn-blue">订单详情</button>'
-                                            );
-                                            try {
-                                                for (x = 0; x < 3; x++) {
+                                            if(data[z].order_status=="未接单"){
+                                                var c = 1;
+                                                $('#外部').append(
+                                                    '<div class="mui-card" style="background-color: rgba(247,247,247,.75);">' +
+                                                    '<div class="mui-card-header" id="' + z + 'shangbu"></div>' +
+                                                    '<div class="mui-card-content" id="' + z + 'zhongbu"></div>' +
 
-                                                    $('#' + z + 'zhongbu' + c++).append(
-                                                        '<div class="mui-pull-left">' + data[z].food_list[x].food_name + '</div>' +
-                                                        '<div class="mui-pull-right">x' + data[z].food_list[x].food_count + '</div>'
-                                                    );
-                                                }
-                                            } catch (err) {
-                                                continue;
-                                            } finally {
-                                                $('#' + z + 'xiabu').append(
-                                                    '<button class="mui-btn-blue mui-pull-right" type="button">接单' + data[z].user_tel + '</button>'
+                                                    '<div class="mui-card-footer mui-pull-right" id="' + z + 'xiabu"></div>' +
+                                                    '</div>');
+                                                $('#' + z + 'shangbu').append(
+                                                    '<h4>用户：' + data[z].user_name + '</h4>' +
+                                                    '<button  id="' + data[z].order_number + '" class="mui-btn mui-btn-danger mui-btn-outlined  mui-icon mui-icon-plus mui-right">订单详情</button>'
                                                 );
-                                                document.getElementById(data[z].order_number).addEventListener('click', function () {
-                                                    window.location.href = "/orderdetail";
-                                                }, false);
+                                                try {
+                                                    for (x = 0; x < 3; x++) {
+
+                                                        $('#' + z + 'zhongbu').append(
+                                                            '<ul><h5>' + data[z].food_list[x].food_name + 'x' + data[z].food_list[x].food_count + '</h5>'
+                                                        );
+                                                    }
+                                                } catch (err) {
+                                                    continue;
+                                                } finally {
+                                                    $('#' + z + 'xiabu').append(
+                                                        '<button class="mui-btn-danger mui-pull-right" type="button" id="'+z+'">接单</button>'
+                                                    );
+                                                    document.getElementById(data[z].order_number).addEventListener('click', function () {
+                                                        window.location.href = "/orderdetail";
+                                                    }, false);
+                                                    var p=data[z].order_id;
+                                                    document.getElementById(z).addEventListener('click', function () {
+                                                        $.ajax(
+                                                            {
+                                                                type:"post",
+                                                                url:"/receiveOrder",
+                                                                data:
+                                                                    {
+                                                                        "orderId":p
+                                                                    },
+                                                                 success:(function(msg) {
+                                                                     if(msg.valueOf()==1)
+                                                                     {
+                                                                         mui.alert("接单成功！");
+                                                                         init();
+                                                                         init1();
+                                                                     }
+                                                                     else
+                                                                     {
+                                                                         mui.alert("接单失败！");
+                                                                     }}),
+                                                                error:(function () {
+                                                                        mui.alert("服务器错误");
+                                                                    }
+
+                                                                )
+
+
+                                                            }
+                                                        )
+                                                    }, false);
+
+                                            }
                                             }
                                         }
 
@@ -133,38 +165,157 @@
                 </div>
                 <div id="item2mobile" class="mui-slider-item mui-control-content">
                     <!--遍历订单结果-->
-                    <div id="result2">
-                        <%--<script type="text/javascript">--%>
-                        <%--var url = '/ordersSelectALLByShopId.do';--%>
-                        <%--$.getJSON(url,function(data){--%>
-                        <%--var z;--%>
-                        <%--for(z=0;z<10;z++){--%>
-                        <%--$('#result2').append('<div class="mui-card" style="margin-bottom: 35px">'+--%>
-                        <%--'<div class="mui-card-header">'+--%>
-                        <%--'<h4>用户：</h4>'+--%>
-                        <%--'</div>'+--%>
-                        <%--'<div class="mui-card-header">'+--%>
+                    <script type="text/javascript" charset="UTF-8">
+                        var bussinessid =${sessionScope.shop.shopId};
+
+                        function init1() {
+                            $('#外部1').empty();
+                            $.ajax({
+                                    type: 'POST',
+                                    url: "/ordersSelectALLByShopId.do",
+                                    data: {
+                                        "shopId": bussinessid
+                                    },
+                                    success: function (data) {
+                                        var z;
+                                        var x;
+                                        var str;
+
+                                        for (z = 0; z < data.length; z++) {
+                                            if(data[z].order_status=="未配送"){
+                                                var c = 1;
+                                                $('#外部1').append(
+                                                    '<div class="mui-card" style="background-color: rgba(247,247,247,.75);">' +
+                                                    '<div class="mui-card-header" id="' + z + 'shangbu"></div>' +
+                                                    '<div class="mui-card-content" id="' + z + 'zhongbu"></div>' +
+                                                    '<div class="mui-card-footer mui-pull-right" id="' + z + 'xiabu"></div>' +
+                                                    '</div>');
+                                                $('#' + z + 'shangbu').append(
+                                                    '<h4>用户：' + data[z].user_name + '</h4>' +
+                                                    '<button  id="' + data[z].order_number + '" class="mui-btn mui-btn-danger mui-btn-outlined  mui-icon mui-icon-plus mui-right">订单详情</button>'
+                                                );
+                                                try {
+                                                    for (x = 0; x < 3; x++) {
+                                                        $('#' + z + 'zhongbu').append(
+                                                            '<ul><h5>' + data[z].food_list[x].food_name + 'x' + data[z].food_list[x].food_count + '</h5>'
+                                                        );
+                                                    }
+                                                } catch (err) {
+                                                    continue;
+                                                } finally {
+                                                    $('#' + z + 'xiabu').append(
+                                                        '<button class="mui-btn-danger mui-pull-right" type="button" id="'+z+'">配送</button>'
+                                                    );
+                                                    document.getElementById(data[z].order_number).addEventListener('click', function () {
+                                                        window.location.href = "/orderdetail";
+                                                    }, false);
+                                                    var p=data[z].order_id;
+                                                    document.getElementById(z).addEventListener('click', function () {
+                                                        $.ajax(
+                                                            {
+                                                                type:"post",
+                                                                url:"/dispatchOrder",
+                                                                data:
+                                                                    {
+                                                                        "orderId":p
+                                                                    },
+                                                                success:(function(msg) {
+                                                                    if(msg.valueOf()==1)
+                                                                    {
+                                                                        mui.alert("发送配送成功！");
+                                                                        init1();
+                                                                        init2();
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        mui.alert("发送配送失败！");
+                                                                    }}),
+                                                                error:(function () {
+                                                                        mui.alert("服务器错误");
+                                                                    }
+
+                                                                )
 
 
-                        <%--'<div class="mui-pull-left">'+--%>
-                        <%--'菜品</div>'+--%>
-                        <%--'<div class="mui-pull-right">数量</div>'+--%>
+                                                            }
+                                                        )
+                                                    }, false);
 
+                                                }
+                                            }
+                                        }
 
-                        <%--'</div>'+--%>
-                        <%--'<div class="mui-card-header mui-pull-right">'+--%>
-                        <%--'<button class="mui-badge-success">接单</button>'+--%>
-                        <%--'</div>'+--%>
-                        <%--'</div>');--%>
-                        <%--//后面的也都一样--%>
-                        <%--}--%>
-                        <%--});--%>
-                        <%--</script>--%>
+                                    },
+
+                                }
+                            )
+                        }
+
+                    </script>
+                    <div id="外部1" >
+
                     </div>
                 </div>
                 <div id="item3mobile" class="mui-slider-item mui-control-content">
                     <!--遍历订单结果-->
-                    <div class="mui-card">
+                    <script type="text/javascript" charset="UTF-8">
+                        var bussinessid =${sessionScope.shop.shopId};
+
+                        function init2() {
+                            $('#外部2').empty();
+                            $.ajax({
+                                    type: 'POST',
+                                    url: "/ordersSelectALLByShopId.do",
+                                    data: {
+                                        "shopId": bussinessid
+                                    },
+                                    success: function (data) {
+                                        var z;
+                                        var x;
+                                        var str;
+
+                                        for (z = 0; z < data.length; z++) {
+                                            if(data[z].order_status=="已完成"){
+                                                var c = 1;
+                                                $('#外部2').append(
+                                                    '<div class="mui-card" style="background-color: rgba(247,247,247,.75);">' +
+                                                    '<div class="mui-card-header" id="' + z + 'shangbu"></div>' +
+                                                    '<div class="mui-card-content" id="' + z + 'zhongbu"></div>' +
+
+                                                    '<div class="mui-card-footer mui-pull-right" id="' + z + 'xiabu"></div>' +
+                                                    '</div>');
+                                                $('#' + z + 'shangbu').append(
+                                                    '<h4>用户：' + data[z].user_name + '</h4>' +
+                                                    '<button  id="' + data[z].order_number + '" class="mui-btn mui-btn-danger mui-btn-outlined  mui-icon mui-icon-plus mui-right">订单详情</button>'
+                                                );
+                                                try {
+                                                    for (x = 0; x < 3; x++) {
+
+                                                        $('#' + z + 'zhongbu').append(
+                                                            '<ul><h5>' + data[z].food_list[x].food_name + 'x' + data[z].food_list[x].food_count + '</h5>'
+                                                        );
+                                                    }
+                                                } catch (err) {
+                                                    continue;
+                                                } finally {
+                                                    $('#' + z + 'xiabu').append(
+                                                        '<button class="mui-btn-danger mui-pull-right" type="button" id="' + z + '删除">删除</button>'
+                                                    );
+                                                    document.getElementById(data[z].order_number).addEventListener('click', function () {
+                                                        window.location.href = "/orderdetail";
+                                                    }, false);
+                                                }
+                                            }
+                                        }
+
+                                    },
+
+                                }
+                            )
+                        }
+
+                    </script>
+                    <div id="外部2" >
 
                     </div>
                 </div>

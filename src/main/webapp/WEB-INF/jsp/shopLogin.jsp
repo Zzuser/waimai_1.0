@@ -116,7 +116,7 @@
                 mui.toast("已取消");
             } else {
                 mui.innerText="进入注册界面";
-                window.location.href="reg.html";
+                window.location.href="/shopReg";
             }
         })
     }

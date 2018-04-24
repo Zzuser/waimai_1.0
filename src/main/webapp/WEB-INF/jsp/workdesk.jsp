@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: wang
@@ -17,30 +18,37 @@
     <link href="../../resources/css/mui.min.css" rel="stylesheet"/>
 </head>
 <body>
+    <ul class="mui-table-view mui-grid-view mui-grid-9">
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+            <span class="mui-icon">100</span>
+            <div class="mui-media-body">待处理</div></a></li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+            <span class="mui-icon">200</span>
+            <div class="mui-media-body">待配送</div></a></li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+            <span class="mui-icon">300</span>
+            <div class="mui-media-body">已完成</div></a></li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+            <span class="mui-icon mui-icon-location"></span>
+            <div class="mui-media-body">location</div></a></li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+            <span class="mui-icon mui-icon-search"></span>
+            <div class="mui-media-body">Search</div></a></li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+            <span class="mui-icon mui-icon-phone"></span>
+            <div class="mui-media-body">Phone</div></a></li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+            <span class="mui-icon mui-icon-gear"></span>
+            <div class="mui-media-body">Setting</div></a></li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+            <span class="mui-icon mui-icon-info"></span>
+            <div class="mui-media-body">about</div></a></li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+            <span class="mui-icon mui-icon-more"></span>
+            <div class="mui-media-body">more</div></a></li>
+    </ul>
 
-<div class="mui-content">
-    <div class="mui-row">
-        <div class="mui-col-sm-6 mui-col-xs-12">
-                <div class="mui-card">
-                    <div class="mui-card-header">
-                        <div class="mui-input-row">
-                            <label>你好</label>
-                            <input id='shopId' type="text" class="mui-input-clear mui-input" placeholder="请输入账号">
-                        </div>
-                    </div>
-                </div>
-        </div>
-        <div class="mui-col-sm-6 mui-col-xs-12">
-            <div class="mui-card">
-                <div class="mui-card-header">
-                    <div class="mui-input-row">
-                        <label>商户号</label>
-                        <input id='shopId' type="text" class="mui-input-clear mui-input" placeholder="请输入账号">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+
 </body>
 </html>

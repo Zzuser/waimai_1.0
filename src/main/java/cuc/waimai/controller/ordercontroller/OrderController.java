@@ -32,6 +32,8 @@ public class OrderController {
     FoodService foodService;
     @Autowired
     FoodController foodController;
+    @Autowired
+    ShopService shopService;
 
     @RequestMapping("/ordersSelectALLByShopId.do")
     @ResponseBody
@@ -41,7 +43,8 @@ public class OrderController {
         List<Orders> ordersList = ordersService.selectByShopId(shopId);
         for (Orders orders : ordersList) {
             OrdersVo ordersVo = new OrdersVo();
-            ordersVo.setOrder_status("finish");
+            ordersVo.setOrder_id(orders.getOrderId());
+            ordersVo.setOrder_status(ordersService.selectByPrimaryKey(orders.getOrderId()).getStatus());
             ordersVo.setShop_id(shopId);
             ordersVo.setOrder_number(orders.getOrderNumber().toString());
             ordersVo.setOrder_time(orders.getOrderTime());
@@ -53,13 +56,18 @@ public class OrderController {
             ordersVo.setUser_add(userService.selectByPrimaryKey(orders.getUserId()).getReceiveAdd());
             List<FoodVo> foodVoList = new ArrayList<>();
             List<OrderFood> orderFoodList = orderFoodService.selectByOrderId(orders.getOrderId());
+            Double foodMoney=0.0;
             for (OrderFood orderFood : orderFoodList) {
                 FoodVo foodVo = foodController.foodVoSelectByFoodIdAndShopId(orderFood.getFoodId(), shopId);
+
                 foodVo.setFood_count(orderFoodService.selectByFoodIdAndOrderId(
                         orders.getOrderId(), orderFood.getFoodId())
                         .getFoodCount());
+                foodMoney+=(foodVo.getFoodShop().getFoodPrice()*foodVo.getFood_count());
                 foodVoList.add(foodVo);
             }
+            foodMoney+=  Double.parseDouble( shopService.selectByPrimaryKey(shopId).getDeliveryFee());
+            ordersVo.setOrder_money(foodMoney);
             ordersVo.setFood_list(foodVoList);
             ordersVoList.add(ordersVo);
         }
@@ -76,6 +84,7 @@ public class OrderController {
         for (Orders orders : ordersList) {
             OrdersVo ordersVo = new OrdersVo();
             ordersVo.setShop_id(ordersService.selectByPrimaryKey(orders.getOrderId()).getShopId());
+            ordersVo.setOrder_status(ordersService.selectByPrimaryKey(orders.getOrderId()).getStatus());
             ordersVo.setOrder_number(orders.getOrderNumber().toString());
             ordersVo.setOrder_time(orders.getOrderTime());
             ordersVo.setArrive_time(orders.getArriveTime());
@@ -86,15 +95,19 @@ public class OrderController {
             ordersVo.setUser_add(userService.selectByPrimaryKey(userId).getReceiveAdd());
             List<FoodVo> foodVoList = new ArrayList<>();
             List<OrderFood> orderFoodList = orderFoodService.selectByOrderId(orders.getOrderId());
-            for (OrderFood orderFood : orderFoodList) {
 
-                FoodVo foodVo = foodController.foodVoSelectByFoodIdAndShopId(orderFood.getFoodId(),
-                        ordersService.selectByPrimaryKey(orders.getOrderId()).getShopId());
+            Double foodMoney=0.0;
+            for (OrderFood orderFood : orderFoodList) {
+                FoodVo foodVo = foodController.foodVoSelectByFoodIdAndShopId(orderFood.getFoodId(),  ordersService.selectByPrimaryKey(orders.getOrderId()).getShopId());
+
                 foodVo.setFood_count(orderFoodService.selectByFoodIdAndOrderId(
                         orders.getOrderId(), orderFood.getFoodId())
                         .getFoodCount());
+                foodMoney+=(foodVo.getFoodShop().getFoodPrice()*foodVo.getFood_count());
                 foodVoList.add(foodVo);
             }
+            foodMoney+=  Double.parseDouble( shopService.selectByPrimaryKey( ordersService.selectByPrimaryKey(orders.getOrderId()).getShopId()).getDeliveryFee());
+            ordersVo.setOrder_money(foodMoney);
             ordersVo.setFood_list(foodVoList);
             ordersVoList.add(ordersVo);
         }
@@ -103,5 +116,13 @@ public class OrderController {
 
     }
 
+    @RequestMapping("/receiveOrder")
+    @ResponseBody
+    public Integer  receiveOrder(@RequestParam("orderId") Integer orderId){
+        Orders orders=ordersService.selectByPrimaryKey(orderId);
+        orders.setStatus("未配送");
+        return ordersService.updateByPrimaryKey(orders);
+
+    }
 
 }

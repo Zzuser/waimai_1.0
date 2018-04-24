@@ -31,7 +31,7 @@ public class FoodAddController {
 
     @RequestMapping("/foodOfOneShopSelectAllByCategoryId.do")
     @ResponseBody
-    public List<FoodVo> foodOfOneShopSelectAllByCategoryId(
+    public List<FoodVo> foodSelectAllByCategoryId(
             @RequestParam("shopId") Integer shopId,
             @RequestParam("categoryId") Integer categoryId) {
         List<FoodVo> foodVoList = new ArrayList<>();

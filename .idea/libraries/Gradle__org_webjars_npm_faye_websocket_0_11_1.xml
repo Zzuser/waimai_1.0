@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.webjars.npm:faye-websocket:0.11.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.webjars.npm/faye-websocket/0.11.1/762a075e48c5abe91468620a474e3b9728a6e01a/faye-websocket-0.11.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.webjars.npm/faye-websocket/0.11.1/b04f3ee8f5e43fa3b162981b50bb72fe1acabb33/faye-websocket-0.11.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
