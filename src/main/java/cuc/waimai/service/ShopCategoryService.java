@@ -14,4 +14,6 @@ public interface ShopCategoryService {
     List<ShopCategory> selectAll();
 
     int updateByPrimaryKey(ShopCategory record);
+
+    List<ShopCategory> selectByCategoryId(Integer categoryId);
 }

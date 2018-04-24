@@ -1,6 +1,7 @@
 package cuc.waimai.service;
 
 import cuc.waimai.Dao.Food;
+import cuc.waimai.Dao.FoodShop;
 
 import java.util.List;
 
@@ -14,4 +15,7 @@ public interface FoodService {
     List<Food> selectAll();
 
     int updateByPrimaryKey(Food record);
+
+    List<Food>selectByCategoryId(Integer categoryId);
+
 }

@@ -35,4 +35,10 @@ public class FoodServiceImpl implements FoodService {
     public int updateByPrimaryKey(Food record) {
         return foodMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public List<Food> selectByCategoryId(Integer categoryId) {
+        return foodMapper.selectByCategoryId(categoryId);
+    }
+
 }

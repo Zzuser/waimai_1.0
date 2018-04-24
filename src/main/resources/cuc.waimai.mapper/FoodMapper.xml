@@ -31,4 +31,11 @@
     select food_id, food_name, category_id
     from food
   </select>
+
+  <select id="selectByCategoryId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select food_id, food_name, category_id
+    from food
+    where category_id = #{categoryId,jdbcType=INTEGER}
+  </select>
+
 </mapper>

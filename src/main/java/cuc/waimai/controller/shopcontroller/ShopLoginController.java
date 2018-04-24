@@ -22,25 +22,33 @@ public class ShopLoginController {
             , HttpSession httpSession
     ) {
         Shop shop = new Shop();
-        shop = shopService.selectByPrimaryKey(Integer.parseInt(shopIdOrTel));
-        if (shop == null) {
-            shop = shopService.selectByShopTel(Integer.parseInt(shopIdOrTel));
+        try {
+
+            shop = shopService.selectByPrimaryKey(Integer.parseInt(shopIdOrTel));
+            if (shop == null) {
+                shop = shopService.selectByShopTel(Integer.parseInt(shopIdOrTel));
+            }
+
+            System.out.println("ID:" + shopIdOrTel + "PSW:" + psw);
+            System.out.println(shop.toString());
+            System.out.println("pd" + shop.getShopPsw().equals(psw));
+        } catch (Exception e) {
+
+        } finally {
+            if (shop != null) {
+                if (shop.getShopPsw().equals(psw)) {
+                    httpSession.setAttribute("shop", shop);
+                    httpSession.setAttribute("flag", "on");
+                    return 1;
+                } else {
+                    return 0;
+                }
+            } else {
+                return 2;
+            }
         }
 
-        System.out.println("ID:" + shopIdOrTel + "PSW:" + psw);
-        System.out.println(shop.toString());
-        System.out.println("pd" + shop.getShopPsw().equals(psw));
-        if (shop != null) {
-            if (shop.getShopPsw().equals(psw)) {
-                httpSession.setAttribute("shop", shop);
-                httpSession.setAttribute("flag", "on");
-                return 1;
-            } else {
-                return 0;
-            }
-        } else {
-            return 2;
-        }
+
     }
 
     @RequestMapping("/shopLogOut.do")

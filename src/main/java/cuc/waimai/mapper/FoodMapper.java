@@ -14,4 +14,6 @@ public interface FoodMapper {
     List<Food> selectAll();
 
     int updateByPrimaryKey(Food record);
+
+    List<Food>selectByCategoryId(Integer categoryId);
 }

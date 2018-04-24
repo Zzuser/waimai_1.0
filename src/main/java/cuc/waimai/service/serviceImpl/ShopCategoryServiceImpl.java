@@ -36,4 +36,10 @@ public class ShopCategoryServiceImpl implements ShopCategoryService {
     public int updateByPrimaryKey(ShopCategory record) {
         return shopCategoryMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public List<ShopCategory> selectByCategoryId(Integer categoryId) {
+        return shopCategoryMapper.selectByCategoryId(categoryId);
+    }
+
 }

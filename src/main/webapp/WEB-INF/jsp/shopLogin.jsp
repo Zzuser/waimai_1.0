@@ -77,7 +77,7 @@
     <div class="mui-card-header">
       <div class="mui-input-row">
         <label>商户号</label>
-        <input id='shopId' type="text" class="mui-input-clear mui-input" placeholder="请输入账号">
+        <input id='shopId' type="text" class="mui-input-clear mui-input" placeholder="请输入账号或手机号">
       </div>
     </div>
   </div>

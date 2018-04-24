@@ -3,6 +3,7 @@ package cuc.waimai.controller.foodcontroller;
 import cuc.waimai.Dao.FoodShop;
 import cuc.waimai.Dao.OrderFood;
 import cuc.waimai.Vo.FoodVo;
+import cuc.waimai.service.CategoryService;
 import cuc.waimai.service.FoodService;
 import cuc.waimai.service.FoodShopService;
 import cuc.waimai.service.OrderFoodService;

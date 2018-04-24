@@ -49,4 +49,12 @@ public class IndexController {
     public String shop(){
         return "shop";
     }
+    @RequestMapping("/userReg")
+    public String userReg(){
+        return "userReg";
+    }
+    @RequestMapping("/userLogin")
+    public String userLogin(){
+        return "userLogin";
+    }
 }
