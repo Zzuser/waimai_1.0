@@ -5,8 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 
+@SuppressWarnings("SpringMVCViewInspection")
 @Controller
 public class IndexController {
+
     @RequestMapping("/")
     public String index(HttpSession session){
         session.setAttribute("flag","off");
@@ -61,4 +63,13 @@ public class IndexController {
     public String test(){
         return "test";
     }
+    @RequestMapping("/webtest")
+    public String webtest(){
+        return "webtest";
+    }
+    @RequestMapping("/webtest2")
+    public String webtest2(){
+        return "webtest2";
+    }
+
 }

@@ -9,11 +9,9 @@
         <fileset id="web mvc-dispatcher servlet context" name="MVC mvc-dispatcher servlet context" removed="true">
           <file>file://$MODULE_DIR$/../../src/main/resources/config/spring/springMVC.xml</file>
         </fileset>
-        <fileset id="fileset" name="Spring Application Context" removed="false">
+        <fileset id="fileset2" name="Spring Application Context (2)" removed="false">
           <file>file://$MODULE_DIR$/../../src/main/resources/config/spring/applicationContext.xml</file>
-          <file>file://$MODULE_DIR$/../../src/main/resources/config/spring/spring-WebSocket.xml</file>
           <file>file://$MODULE_DIR$/../../src/main/resources/config/spring/springMVC.xml</file>
-          <file>file://$MODULE_DIR$/../../src/main/resources/config/spring/spring-WebSocket.xml</file>
         </fileset>
       </configuration>
     </facet>
