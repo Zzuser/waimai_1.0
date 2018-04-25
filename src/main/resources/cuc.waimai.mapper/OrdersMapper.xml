@@ -18,7 +18,7 @@
     delete from orders
     where order_id = #{orderId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert"  keyProperty="orderId" parameterType="cuc.waimai.Dao.Orders" >
+  <insert id="insert" useGeneratedKeys="true"  keyProperty="orderId" parameterType="cuc.waimai.Dao.Orders" >
     insert into orders (order_id, user_id, shop_id, 
       horseman_id, account, payment, 
       status, order_time, arrive_time, 

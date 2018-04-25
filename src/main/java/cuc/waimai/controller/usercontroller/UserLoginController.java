@@ -18,14 +18,16 @@ public class UserLoginController {
     @RequestMapping("/userLogin.do")
     @ResponseBody
     public int userLogin(@RequestParam("userId") String userId,
-                         @RequestParam("userPsw")String psw){
+                         @RequestParam("userPsw")String psw,HttpSession session){
         User user=userService.selectByPrimaryKey(Integer.parseInt(userId));
         System.out.println("ID:"+userId+"PSW:"+psw);
         System.out.println(user.toString());
         System.out.println("pd:"+user.getUserPsd().equals(psw));
         if(user!=null){
             if(user.getUserPsd().equals(psw)){
+                session.setAttribute("user",user);
                return 1;
+
             }
             else {
                 return 0;

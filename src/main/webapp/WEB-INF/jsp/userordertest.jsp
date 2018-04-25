@@ -19,6 +19,7 @@
             var foodId = document.getElementById("foodId").value;
             var foodNum = document.getElementById("foodNum").value;
             var msg = {};
+            msg['userId'] = ${sessionScope.user.userId};
             msg['shopId'] = shopId;
             msg['foodId'] = foodId;
             msg['foodNum'] = foodNum;

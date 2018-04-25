@@ -1,6 +1,7 @@
 package cuc.waimai.po;
 
 public class Message {
+    private  String userId;
     private String shopId;
     private String foodId;
     private String foodNum;
@@ -27,5 +28,13 @@ public class Message {
 
     public void setFoodNum(String foodNum) {
         this.foodNum = foodNum;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

@@ -15,15 +15,11 @@ public class ShopRegControllerTest {
     ShopRegController shopRegController;
 @Autowired
 ShopLoginController shopLoginController;
-@Autowired
-    MessageTestController messageTestController;
+
     @Test
     public void shopReg() {
         MockHttpSession session=new MockHttpSession();
         shopLoginController.shopLogin("123","12",session);
     }
-    @Test
-    public void messageTestController() {
-        messageTestController.sendMsg("1","666");
-    }
+
 }

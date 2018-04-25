@@ -114,7 +114,7 @@
                     if (data.valueOf()==1)
                     {
                         mui.alert("你已登录成功","登陆提醒","确认",function(){
-                            window.location.href="/session";
+                            window.location.href="/userordertest";
                         })
                         //window.location.href="/reg";
                     }

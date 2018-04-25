@@ -17,25 +17,18 @@
           <element id="dir-copy" path="$PROJECT_DIR$/out/production/resources" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Gradle: org.apache.tomcat:tomcat-servlet-api:8.5.23" />
-          <element id="library" level="project" name="Gradle: jstl:jstl:1.2" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-webmvc:5.0.1.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-websocket:5.0.1.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-web:5.0.1.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-jdbc:5.0.1.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-tx:5.0.1.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-context:5.0.1.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-messaging:5.0.1.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-aop:5.0.1.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-jdbc:5.0.1.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-webmvc:5.0.1.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-beans:5.0.1.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-expression:5.0.1.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-test:5.0.1.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-core:5.0.1.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-aspects:5.0.1.RELEASE" />
-          <element id="library" level="project" name="Gradle: com.alibaba:druid:1.0.15" />
-          <element id="library" level="project" name="Gradle: org.json:json:20171018" />
-          <element id="library" level="project" name="Gradle: org.aspectj:aspectjweaver:1.8.12" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-aop:5.0.1.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-web:5.0.1.RELEASE" />
           <element id="library" level="project" name="Gradle: mysql:mysql-connector-java:5.1.44" />
+          <element id="library" level="project" name="Gradle: org.aspectj:aspectjweaver:1.8.12" />
           <element id="library" level="project" name="Gradle: org.mybatis:mybatis-spring:1.3.1" />
           <element id="library" level="project" name="Gradle: org.mybatis:mybatis:3.4.5" />
           <element id="library" level="project" name="Gradle: javax.servlet:javax.servlet-api:3.1-b07" />
@@ -46,28 +39,18 @@
           <element id="library" level="project" name="Gradle: commons-fileupload:commons-fileupload:1.3.3" />
           <element id="library" level="project" name="Gradle: commons-io:commons-io:2.6" />
           <element id="library" level="project" name="Gradle: com.google.code.gson:gson:2.8.2" />
-          <element id="library" level="project" name="Gradle: org.webjars.npm:sockjs:0.3.19" />
-          <element id="library" level="project" name="Gradle: org.webjars.npm:sockjs-client:1.1.4" />
-          <element id="library" level="project" name="Gradle: com.thetransactioncompany:cors-filter:2.6" />
-          <element id="library" level="project" name="Gradle: com.thetransactioncompany:java-property-utils:1.13" />
-          <element id="library" level="project" name="Gradle: log4j:log4j:1.2.17" />
           <element id="library" level="project" name="Gradle: org.apache.tomcat.embed:tomcat-embed-websocket:8.5.20" />
+          <element id="library" level="project" name="Gradle: log4j:log4j:1.2.17" />
+          <element id="library" level="project" name="Gradle: org.json:json:20171018" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-jcl:5.0.1.RELEASE" />
           <element id="library" level="project" name="Gradle: org.apache.commons:commons-lang3:3.3.2" />
-          <element id="library" level="project" name="Gradle: org.webjars.npm:eventsource:0.1.6" />
-          <element id="library" level="project" name="Gradle: org.webjars.npm:original:1.0.0" />
-          <element id="library" level="project" name="Gradle: org.webjars.npm:url-parse:1.2.0" />
-          <element id="library" level="project" name="Gradle: org.webjars.npm:faye-websocket:0.11.1" />
-          <element id="library" level="project" name="Gradle: org.webjars.npm:json3:3.3.2" />
-          <element id="library" level="project" name="Gradle: org.webjars.npm:debug:2.6.9" />
-          <element id="library" level="project" name="Gradle: org.webjars.npm:inherits:2.0.3" />
           <element id="library" level="project" name="Gradle: org.apache.tomcat.embed:tomcat-embed-core:8.5.20" />
-          <element id="library" level="project" name="Gradle: org.webjars.npm:querystringify:1.0.0" />
-          <element id="library" level="project" name="Gradle: org.webjars.npm:requires-port:1.0.0" />
-          <element id="library" level="project" name="Gradle: org.webjars.npm:websocket-driver:0.7.0" />
-          <element id="library" level="project" name="Gradle: org.webjars.npm:ms:2.0.0" />
-          <element id="library" level="project" name="Gradle: org.webjars.npm:http-parser-js:0.4.11" />
-          <element id="library" level="project" name="Gradle: org.webjars.npm:websocket-extensions:0.1.3" />
+          <element id="library" level="project" name="Gradle: com.thetransactioncompany:java-property-utils:1.13" />
+          <element id="library" level="project" name="Gradle: com.thetransactioncompany:cors-filter:2.6" />
+          <element id="library" level="project" name="Gradle: com.alibaba:druid:1.0.15" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-context:5.0.1.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.apache.tomcat:tomcat-servlet-api:8.5.23" />
+          <element id="library" level="project" name="Gradle: jstl:jstl:1.2" />
         </element>
       </element>
     </root>
