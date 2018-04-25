@@ -1,22 +1,31 @@
 package cuc.waimai.po;
 
 public class Message {
-    private String messagetext;
-    private String toId;
+    private String shopId;
+    private String foodId;
+    private String foodNum;
 
-    public String getMessagetext() {
-        return messagetext;
+    public String getShopId() {
+        return shopId;
     }
 
-    public String getToId() {
-        return toId;
+    public void setShopId(String shopId) {
+        this.shopId = shopId;
     }
 
-    public void setMessagetext(String messagetext) {
-        this.messagetext = messagetext;
+    public String getFoodId() {
+        return foodId;
     }
 
-    public void setToId(String toId) {
-        this.toId = toId;
+    public void setFoodId(String foodId) {
+        this.foodId = foodId;
+    }
+
+    public String getFoodNum() {
+        return foodNum;
+    }
+
+    public void setFoodNum(String foodNum) {
+        this.foodNum = foodNum;
     }
 }

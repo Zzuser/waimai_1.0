@@ -71,5 +71,9 @@ public class IndexController {
     public String webtest2(){
         return "webtest2";
     }
+    @RequestMapping("/userordertest")
+    public String userordertest(){
+        return "userordertest";
+    }
 
 }
