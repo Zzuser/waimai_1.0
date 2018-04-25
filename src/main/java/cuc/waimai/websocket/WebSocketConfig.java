@@ -6,18 +6,17 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
+import org.springframework.web.socket.config.annotation.WebSocketConfigurationSupport;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 
 /**
  * Description : WebSocket配置文件类
- * Created by ljf-梁燕双栖 on 2016/7/16.
  */
 
 @Configuration
-@EnableWebMvc
 @EnableWebSocket
-public class  WebSocketConfig extends WebMvcConfigurationSupport implements WebSocketConfigurer {
+public class  WebSocketConfig  extends WebSocketConfigurationSupport implements WebSocketConfigurer {
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
@@ -27,7 +26,7 @@ public class  WebSocketConfig extends WebMvcConfigurationSupport implements WebS
                 .withSockJS();
     }
 
-    @Bean
+    @Bean(name = "SystemWebSocketHandler")
     public WebSocketHandler systemWebSocketHandler(){
         return new SystemWebSocketHandler();
     }

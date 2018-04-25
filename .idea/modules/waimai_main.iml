@@ -81,6 +81,7 @@
     <orderEntry type="library" name="Gradle: com.thetransactioncompany:cors-filter:2.6" level="project" />
     <orderEntry type="library" name="Gradle: com.thetransactioncompany:java-property-utils:1.13" level="project" />
     <orderEntry type="library" name="Gradle: log4j:log4j:1.2.17" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.tomcat.embed:tomcat-embed-websocket:8.5.20" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-jcl:5.0.1.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.commons:commons-lang3:3.3.2" level="project" />
     <orderEntry type="library" name="Gradle: org.webjars.npm:eventsource:0.1.6" level="project" />
@@ -90,6 +91,7 @@
     <orderEntry type="library" name="Gradle: org.webjars.npm:json3:3.3.2" level="project" />
     <orderEntry type="library" name="Gradle: org.webjars.npm:debug:2.6.9" level="project" />
     <orderEntry type="library" name="Gradle: org.webjars.npm:inherits:2.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.tomcat.embed:tomcat-embed-core:8.5.20" level="project" />
     <orderEntry type="library" name="Gradle: org.webjars.npm:querystringify:1.0.0" level="project" />
     <orderEntry type="library" name="Gradle: org.webjars.npm:requires-port:1.0.0" level="project" />
     <orderEntry type="library" name="Gradle: org.webjars.npm:websocket-driver:0.7.0" level="project" />

@@ -21,6 +21,7 @@
     </context:component-scan>
 
     <mvc:annotation-driven />
+    <context:component-scan base-package="cuc.waimai.websocket"/>
 
     <!-- 配置多媒体文件解析器 -->
     <!-- 文件上传 -->

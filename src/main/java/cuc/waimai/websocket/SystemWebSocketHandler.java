@@ -1,12 +1,15 @@
 package cuc.waimai.websocket;
 
 import com.google.gson.Gson;
+import cuc.waimai.Dao.Shop;
 import cuc.waimai.controller.MessageTestController;
 import cuc.waimai.controller.ordercontroller.OrderController;
 import cuc.waimai.po.Message;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.mock.web.MockHttpSession;
+import org.springframework.stereotype.Component;
 import org.springframework.web.socket.*;
 
 import javax.servlet.http.HttpSession;
@@ -17,11 +20,9 @@ import java.util.List;
 /**
  * Created by ljf-梁燕双栖 on 2016/7/16.
  */
+@Component
 public class SystemWebSocketHandler implements WebSocketHandler {
-    @Autowired
-    OrderController orderController;
-    @Autowired
-    MessageTestController messageTestController;
+
 
     private static final Logger log = Logger.getLogger(SystemWebSocketHandler.class);
     private static final List<WebSocketSession> users;
@@ -38,19 +39,15 @@ public class SystemWebSocketHandler implements WebSocketHandler {
         users.add(webSocketSession);
         log.info("connect websocket success.......");
         String username = (String) webSocketSession.getAttributes().get("WEBSOCKET_USERNAME");
-        if (username != null) {
-            String count ="" ;
-            webSocketSession.sendMessage(new TextMessage(count + ""));
+        if(username != null){
+            System.out.println("当前连接用户======"+username);
         }
+        System.out.println("webSocket连接数量====="+users.size());
     }
 
 @Override
     public void handleMessage(WebSocketSession webSocketSession, WebSocketMessage<?> webSocketMessage) throws Exception {
-        Gson gson = new Gson();
-        Message message=parseJSONWithGSON(webSocketMessage.getPayload().toString());
-        MockHttpSession session=new MockHttpSession();
-       System.out.println("你是不是msg" + webSocketMessage.getPayload());
-        sendMessageToUser(message.getToId(),new TextMessage(  gson.toJson( orderController.ordersSelectALLByShopId("1",session))));
+        sendMessageToUsers(new TextMessage(webSocketMessage.getPayload().toString()));
     }
 
     @Override
@@ -111,10 +108,4 @@ public class SystemWebSocketHandler implements WebSocketHandler {
         }
     }
 
-    private Message parseJSONWithGSON(String jsonData) {
-        Gson gson = new Gson();
-        Message message = gson.fromJson(jsonData, Message.class);
-        return message;
-
-    }
 }
