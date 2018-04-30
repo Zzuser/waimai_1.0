@@ -132,23 +132,14 @@
     </li>
 </ul >
 <ul class="mui-table-view mui-table-view-chevron">
-    <li class="mui-table-view-cell">
-        <label  class="mui-navigate-right">总销售额<b class="mui-pull-right" style="color: red">17K</b></label>
-
-    </li>
-    <li class="mui-table-view-cell">
-        <a  class="mui-navigate-right">总销量<b class="mui-pull-right" style="color: red">700</b></a>
-    </li>
-    <li class="mui-table-view-cell">
-        <a class="mui-navigate-right">月销售额<b class="mui-pull-right" style="color: red">3K</b></a>
-    </li>
-    <li class="mui-table-view-cell">
-        <a class="mui-navigate-right">月销量<b class="mui-pull-right" style="color: red">50</b></a>
-    </li>
+    <li class="mui-table-view-cell">总销售额<span class="mui-badge mui-badge-danger">100K</span></li>
+    <li class="mui-table-view-cell">总销量<span class="mui-badge mui-badge-danger">100K</span></li>
+    <li class="mui-table-view-cell">月销售额<span class="mui-badge mui-badge-danger">100K</span></li>
+    <li class="mui-table-view-cell">月销量<span class="mui-badge mui-badge-danger">100K</span></li>
 </ul>
 <ul class="mui-table-view mui-table-view-chevron">
     <li class="mui-table-view-cell">
-        <a  class="mui-navigate-right">关于我们<i class="mui-pull-right update">V1.0</i></a>
+        <a  class="mui-navigate-right">关于我们<i class="mui-pull-right update">waimaiV1.0</i></a>
     </li>
 </ul>
 <ul class="mui-table-view">

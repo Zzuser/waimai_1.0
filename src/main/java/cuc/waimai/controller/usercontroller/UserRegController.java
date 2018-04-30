@@ -20,7 +20,7 @@ public class UserRegController {
 
     public int userReg(@RequestParam("userName") String userName,
                        @RequestParam("userPsw") String userPsw,
-                       @RequestParam("userTel") Integer userTel) {
+                       @RequestParam("userTel") String userTel) {
         User user = new User();
         user.setUserName(userName);
         user.setUserPsd(userPsw);

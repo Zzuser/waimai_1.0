@@ -69,4 +69,10 @@
     where shop_id = #{shopId,jdbcType=INTEGER}
   </select>
 
+  <select id="selectByStatus" resultMap="BaseResultMap" parameterType="java.util.Map"  >
+    select order_id, user_id, shop_id, horseman_id, account, payment, status, order_time,
+    arrive_time, order_number
+    from orders
+    where status = #{status,jdbcType=VARCHAR} AND shop_id = #{shopId,jdbcType=INTEGER}
+  </select>
 </mapper>

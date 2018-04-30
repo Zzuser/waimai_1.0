@@ -6,7 +6,7 @@
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="user_portrait" property="userPortrait" jdbcType="VARCHAR" />
     <result column="user_psd" property="userPsd" jdbcType="VARCHAR" />
-    <result column="user_tel" property="userTel" jdbcType="INTEGER" />
+    <result column="user_tel" property="userTel" jdbcType="VARCHAR" />
     <result column="receive_add" property="receiveAdd" jdbcType="VARCHAR" />
     <result column="receive_name" property="receiveName" jdbcType="VARCHAR" />
     <result column="receive_tel" property="receiveTel" jdbcType="INTEGER" />
@@ -27,7 +27,7 @@
       last_login_ip, user_lon, user_lat, 
       user_createtime)
     values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userPortrait,jdbcType=VARCHAR}, 
-      #{userPsd,jdbcType=VARCHAR}, #{userTel,jdbcType=INTEGER}, #{receiveAdd,jdbcType=VARCHAR}, 
+      #{userPsd,jdbcType=VARCHAR}, #{userTel,jdbcType=VARCHAR}, #{receiveAdd,jdbcType=VARCHAR},
       #{receiveName,jdbcType=VARCHAR}, #{receiveTel,jdbcType=INTEGER}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
       #{lastLoginIp,jdbcType=VARCHAR}, #{userLon,jdbcType=DOUBLE}, #{userLat,jdbcType=DOUBLE}, 
       #{userCreatetime,jdbcType=TIMESTAMP})
@@ -37,7 +37,7 @@
     set user_name = #{userName,jdbcType=VARCHAR},
       user_portrait = #{userPortrait,jdbcType=VARCHAR},
       user_psd = #{userPsd,jdbcType=VARCHAR},
-      user_tel = #{userTel,jdbcType=INTEGER},
+      user_tel = #{userTel,jdbcType=VARCHAR},
       receive_add = #{receiveAdd,jdbcType=VARCHAR},
       receive_name = #{receiveName,jdbcType=VARCHAR},
       receive_tel = #{receiveTel,jdbcType=INTEGER},

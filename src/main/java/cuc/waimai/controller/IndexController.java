@@ -2,6 +2,9 @@ package cuc.waimai.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 
@@ -39,10 +42,6 @@ public class IndexController {
     public String order(){
         return "order";
     }
-    @RequestMapping("/orderdetail")
-    public String orderdetail(){
-        return "orderdetail";
-    }
     @RequestMapping("/workdesk")
     public String workdesk(){
         return "workdesk";
@@ -75,5 +74,19 @@ public class IndexController {
     public String userordertest(){
         return "userordertest";
     }
+    @RequestMapping("/ordertiao1")
+    public String ordertiao1(){
+        return "ordertiao1";
+    }
+    @RequestMapping("/orderdetail")
+    @ResponseBody
+    public ModelAndView orderdetail(@RequestParam("local") String z){
+        ModelAndView modelAndView=new ModelAndView();
+        System.out.print(z);
+        modelAndView.setViewName("orderdetail");
+        modelAndView.addObject("local",z);
+        return modelAndView;
+    }
+
 
 }

@@ -7,22 +7,57 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Title</title>
+<head>    <meta charset="utf-8">
+    <title>下单</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../resources/css/mui.min.css">
+    <script src="../../resources/js/jquery-3.3.1.min.js"></script>
+    <script src="../../resources/js/mui.min.js"></script>
+    <style>
+        html, body {
+            background-color: #efeff4;
+        }
+
+
+    </style>
 </head>
 <script src="../../resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" charset="utf-8">
-    $(document).ready(function () {
+    var foodCount1;
+    var foodCount2;
+    var foodList=[];
+    function foodInput() {
+        $('#foodInput').append(
+            '<div class="mui-card">' +
+            '<div class="mui-card-content">foodId :<br>\n' +
+            '<input id="'+foodCount1+'" type="text"></div>' +
+            '<div class="mui-card-content">foodNum :<br>\n' +
+            '<input id="'+foodCount2+'" type="text"></div>' +
+            '</div>');
 
+    }
+
+    $(document).ready(function () {
+        $("#foodAdd").click(function () {
+            var food={}
+            food.foodId=($('#'+foodCount1).val());
+            food.foodNum=($('#'+foodCount2).val());
+            foodList.push(food);
+            foodCount1++;
+            foodCount2++;
+            foodInput();
+        });
         $("#zhuce").click(function () {
+
+            $("#foodInput").empty();
             var shopId = document.getElementById("shopId").value;
-            var foodId = document.getElementById("foodId").value;
-            var foodNum = document.getElementById("foodNum").value;
             var msg = {};
             msg['userId'] = ${sessionScope.user.userId};
             msg['shopId'] = shopId;
-            msg['foodId'] = foodId;
-            msg['foodNum'] = foodNum;
+            msg['foodInOrderList'] = foodList;
+
 var data=JSON.stringify(msg);
 
             $.ajax({
@@ -37,6 +72,9 @@ var data=JSON.stringify(msg);
                 success: function (data) {
                     if (data.valueOf() == 1) {
                         alert("下单成功");
+                        foodCount1=0;
+                        foodCount2=0;
+                        foodList=[];
                     }
                     else {
                         alert("下单失败");
@@ -53,13 +91,11 @@ var data=JSON.stringify(msg);
         });
     });
 </script>
-<body>
+<body onload="foodInput()">
 shopId：<br>
 <input id="shopId" name="shopId" type="text"><br></form>
-foodId :<br>
-<input id="foodId" name="foodId" type="text"><br>
-foodNum :<br>
-<input id="foodNum" name="foodNum" type="text"><br>
+<div id="foodInput"></div>
+<button class="mui-btn-danger mui-pull-right" type="button" id="foodAdd">添加</button>
 <button id="zhuce" >下单</button>
 </body>
 </html>

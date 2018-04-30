@@ -21,7 +21,7 @@ OrderController orderController;
     public void ordersSelectALLByShopId() {
         MockHttpSession session=new MockHttpSession();
         Gson gson=new Gson();
-        System.out.println(gson.toJson( orderController.ordersSelectALLByShopId("1",session)));
+        System.out.println(gson.toJson( orderController.ordersSelectALLByShopId("123",session)));
 
     }
 
@@ -29,6 +29,17 @@ OrderController orderController;
     public void ordersSelectALLByUserId() {
         Gson gson=new Gson();
         System.out.println(gson.toJson( orderController.ordersSelectALLByUserId(1)));
+
+    }
+    @Test
+    public void carryOrder() {
+        Gson gson=new Gson();
+        System.out.println(gson.toJson( orderController.carryOrder(59)));
+
+    }
+    @Test
+    public void jiedan(){
+        System.out.println(orderController.orderCFM(1,1));
 
     }
 }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cuc.waimai.mapper.ShopMapper" >
+  <resultMap id="BaseResultMap" type="cuc.waimai.Dao.Shop" >
+    <id column="shop_id" property="shopId" jdbcType="INTEGER" />
+    <result column="shop_name" property="shopName" jdbcType="VARCHAR" />
+    <result column="shop_psw" property="shopPsw" jdbcType="VARCHAR" />
+    <result column="shop_tel" property="shopTel" jdbcType="VARCHAR" />
+    <result column="shop_add" property="shopAdd" jdbcType="VARCHAR" />
+    <result column="shop_img" property="shopImg" jdbcType="VARCHAR" />
+    <result column="delivery_fee" property="deliveryFee" jdbcType="VARCHAR" />
+    <result column="shop_proclamation" property="shopProclamation" jdbcType="VARCHAR" />
+    <result column="month_sales" property="monthSales" jdbcType="INTEGER" />
+    <result column="order_num" property="orderNum" jdbcType="VARCHAR" />
+    <result column="collection_num" property="collectionNum" jdbcType="INTEGER" />
+    <result column="city_id" property="cityId" jdbcType="INTEGER" />
+    <result column="province_id" property="provinceId" jdbcType="INTEGER" />
+    <result column="shop_lat" property="shopLat" jdbcType="DOUBLE" />
+    <result column="shop_lon" property="shopLon" jdbcType="DOUBLE" />
+    <result column="shop_createtime" property="shopCreatetime" jdbcType="TIMESTAMP" />
+    <result column="shop_status" property="shopStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from shop
+    where shop_id = #{shopId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cuc.waimai.Dao.Shop" >
+    insert into shop (shop_id, shop_name, shop_psw, 
+      shop_tel, shop_add, shop_img, 
+      delivery_fee, shop_proclamation, month_sales, 
+      order_num, collection_num, city_id, 
+      province_id, shop_lat, shop_lon, 
+      shop_createtime, shop_status)
+    values (#{shopId,jdbcType=INTEGER}, #{shopName,jdbcType=VARCHAR}, #{shopPsw,jdbcType=VARCHAR}, 
+      #{shopTel,jdbcType=VARCHAR}, #{shopAdd,jdbcType=VARCHAR}, #{shopImg,jdbcType=VARCHAR}, 
+      #{deliveryFee,jdbcType=VARCHAR}, #{shopProclamation,jdbcType=VARCHAR}, #{monthSales,jdbcType=INTEGER}, 
+      #{orderNum,jdbcType=VARCHAR}, #{collectionNum,jdbcType=INTEGER}, #{cityId,jdbcType=INTEGER}, 
+      #{provinceId,jdbcType=INTEGER}, #{shopLat,jdbcType=DOUBLE}, #{shopLon,jdbcType=DOUBLE}, 
+      #{shopCreatetime,jdbcType=TIMESTAMP}, #{shopStatus,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.Shop" >
+    update shop
+    set shop_name = #{shopName,jdbcType=VARCHAR},
+      shop_psw = #{shopPsw,jdbcType=VARCHAR},
+      shop_tel = #{shopTel,jdbcType=VARCHAR},
+      shop_add = #{shopAdd,jdbcType=VARCHAR},
+      shop_img = #{shopImg,jdbcType=VARCHAR},
+      delivery_fee = #{deliveryFee,jdbcType=VARCHAR},
+      shop_proclamation = #{shopProclamation,jdbcType=VARCHAR},
+      month_sales = #{monthSales,jdbcType=INTEGER},
+      order_num = #{orderNum,jdbcType=VARCHAR},
+      collection_num = #{collectionNum,jdbcType=INTEGER},
+      city_id = #{cityId,jdbcType=INTEGER},
+      province_id = #{provinceId,jdbcType=INTEGER},
+      shop_lat = #{shopLat,jdbcType=DOUBLE},
+      shop_lon = #{shopLon,jdbcType=DOUBLE},
+      shop_createtime = #{shopCreatetime,jdbcType=TIMESTAMP},
+      shop_status = #{shopStatus,jdbcType=VARCHAR}
+    where shop_id = #{shopId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select shop_id, shop_name, shop_psw, shop_tel, shop_add, shop_img, delivery_fee, 
+    shop_proclamation, month_sales, order_num, collection_num, city_id, province_id, 
+    shop_lat, shop_lon, shop_createtime, shop_status
+    from shop
+    where shop_id = #{shopId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select shop_id, shop_name, shop_psw, shop_tel, shop_add, shop_img, delivery_fee, 
+    shop_proclamation, month_sales, order_num, collection_num, city_id, province_id, 
+    shop_lat, shop_lon, shop_createtime, shop_status
+    from shop
+  </select>
+</mapper>

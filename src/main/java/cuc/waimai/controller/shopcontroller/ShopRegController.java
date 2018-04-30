@@ -19,7 +19,7 @@ public class ShopRegController {
     @ResponseBody
     public int shopReg(@RequestParam("shopName") String shopName,
                        @RequestParam("shopPsw") String shopPsw,
-                       @RequestParam("shopTel") Integer shopTel,
+                       @RequestParam("shopTel") String shopTel,
                        @RequestParam("shopAdd") String shopAdd) {
         Shop shop = new Shop();
         shop.setShopName(shopName);

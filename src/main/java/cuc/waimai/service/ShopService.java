@@ -15,5 +15,5 @@ public interface ShopService {
 
     int updateByPrimaryKey(Shop record);
 
-    Shop selectByShopTel(Integer shopTel);
+    Shop selectByShopTel(String shopTel);
 }

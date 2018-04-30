@@ -38,7 +38,7 @@ public class ShopServiceImpl implements ShopService{
     }
 
     @Override
-    public Shop selectByShopTel(Integer shopTel) {
+    public Shop selectByShopTel(String shopTel) {
         return shopMapper.selectByShopTel(shopTel);
     }
 }

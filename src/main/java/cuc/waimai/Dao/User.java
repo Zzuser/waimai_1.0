@@ -11,7 +11,7 @@ public class User {
 
     private String userPsd;
 
-    private Integer userTel;
+    private String userTel;
 
     private String receiveAdd;
 
@@ -61,11 +61,11 @@ public class User {
         this.userPsd = userPsd == null ? null : userPsd.trim();
     }
 
-    public Integer getUserTel() {
+    public String getUserTel() {
         return userTel;
     }
 
-    public void setUserTel(Integer userTel) {
+    public void setUserTel(String userTel) {
         this.userTel = userTel;
     }
 

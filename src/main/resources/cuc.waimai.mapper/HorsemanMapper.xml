@@ -5,7 +5,7 @@
     <id column="horseman_id" property="horsemanId" jdbcType="INTEGER" />
     <result column="horseman_name" property="horsemanName" jdbcType="VARCHAR" />
     <result column="horseman_psd" property="horsemanPsd" jdbcType="VARCHAR" />
-    <result column="horseman_tel" property="horsemanTel" jdbcType="INTEGER" />
+    <result column="horseman_tel" property="horsemanTel" jdbcType="VARCHAR" />
     <result column="horseman_status" property="horsemanStatus" jdbcType="TINYINT" />
     <result column="horeseman_add" property="horesemanAdd" jdbcType="VARCHAR" />
     <result column="takeout_num" property="takeoutNum" jdbcType="TINYINT" />
@@ -24,7 +24,7 @@
       takeout_num, accomplish_time, horseman_lon, 
       horseman_lat, horseman_createtime)
     values (#{horsemanId,jdbcType=INTEGER}, #{horsemanName,jdbcType=VARCHAR}, #{horsemanPsd,jdbcType=VARCHAR}, 
-      #{horsemanTel,jdbcType=INTEGER}, #{horsemanStatus,jdbcType=TINYINT}, #{horesemanAdd,jdbcType=VARCHAR}, 
+      #{horsemanTel,jdbcType=VARCHAR}, #{horsemanStatus,jdbcType=TINYINT}, #{horesemanAdd,jdbcType=VARCHAR},
       #{takeoutNum,jdbcType=TINYINT}, #{accomplishTime,jdbcType=TIMESTAMP}, #{horsemanLon,jdbcType=DOUBLE}, 
       #{horsemanLat,jdbcType=DOUBLE}, #{horsemanCreatetime,jdbcType=TIMESTAMP})
   </insert>
@@ -32,7 +32,7 @@
     update horseman
     set horseman_name = #{horsemanName,jdbcType=VARCHAR},
       horseman_psd = #{horsemanPsd,jdbcType=VARCHAR},
-      horseman_tel = #{horsemanTel,jdbcType=INTEGER},
+      horseman_tel = #{horsemanTel,jdbcType=VARCHAR},
       horseman_status = #{horsemanStatus,jdbcType=TINYINT},
       horeseman_add = #{horesemanAdd,jdbcType=VARCHAR},
       takeout_num = #{takeoutNum,jdbcType=TINYINT},

@@ -15,5 +15,5 @@ public interface ShopMapper {
 
     int updateByPrimaryKey(Shop record);
 
-    Shop selectByShopTel(Integer shopTel);
+    Shop selectByShopTel(String shopTel);
 }

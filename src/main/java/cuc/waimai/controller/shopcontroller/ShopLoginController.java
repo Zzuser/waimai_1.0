@@ -26,14 +26,14 @@ public class ShopLoginController {
 
             shop = shopService.selectByPrimaryKey(Integer.parseInt(shopIdOrTel));
             if (shop == null) {
-                shop = shopService.selectByShopTel(Integer.parseInt(shopIdOrTel));
+                shop = shopService.selectByShopTel(shopIdOrTel);
             }
 
             System.out.println("ID:" + shopIdOrTel + "PSW:" + psw);
             System.out.println(shop.toString());
             System.out.println("pd" + shop.getShopPsw().equals(psw));
         } catch (Exception e) {
-
+e.printStackTrace();
         } finally {
             if (shop != null) {
                 if (shop.getShopPsw().equals(psw)) {

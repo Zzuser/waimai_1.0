@@ -104,4 +104,29 @@ public class Orders {
     public void setOrderNumber(String orderNumber) {
         this.orderNumber = orderNumber == null ? null : orderNumber.trim();
     }
+
+    public Double getOrderMoney() {
+        return orderMoney;
+    }
+
+    public void setOrderMoney(Double orderMoney) {
+        this.orderMoney = orderMoney;
+    }
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "orderId=" + orderId +
+                ", userId=" + userId +
+                ", shopId=" + shopId +
+                ", horsemanId=" + horsemanId +
+                ", account='" + account + '\'' +
+                ", payment='" + payment + '\'' +
+                ", status='" + status + '\'' +
+                ", orderTime=" + orderTime +
+                ", arriveTime=" + arriveTime +
+                ", orderNumber='" + orderNumber + '\'' +
+                ", orderMoney=" + orderMoney +
+                '}';
+    }
 }

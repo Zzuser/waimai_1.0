@@ -9,9 +9,11 @@ public class Shop {
 
     private String shopPsw;
 
-    private Integer shopTel;
+    private String shopTel;
 
     private String shopAdd;
+
+    private String shopImg;
 
     private String deliveryFee;
 
@@ -32,6 +34,8 @@ public class Shop {
     private Double shopLon;
 
     private Date shopCreatetime;
+
+    private String shopStatus;
 
     public Integer getShopId() {
         return shopId;
@@ -57,11 +61,11 @@ public class Shop {
         this.shopPsw = shopPsw == null ? null : shopPsw.trim();
     }
 
-    public Integer getShopTel() {
+    public String getShopTel() {
         return shopTel;
     }
 
-    public void setShopTel(Integer shopTel) {
+    public void setShopTel(String shopTel) {
         this.shopTel = shopTel;
     }
 
@@ -71,6 +75,14 @@ public class Shop {
 
     public void setShopAdd(String shopAdd) {
         this.shopAdd = shopAdd == null ? null : shopAdd.trim();
+    }
+
+    public String getShopImg() {
+        return shopImg;
+    }
+
+    public void setShopImg(String shopImg) {
+        this.shopImg = shopImg == null ? null : shopImg.trim();
     }
 
     public String getDeliveryFee() {
@@ -147,6 +159,14 @@ public class Shop {
 
     public Date getShopCreatetime() {
         return shopCreatetime;
+    }
+
+    public String getShopStatus() {
+        return shopStatus;
+    }
+
+    public void setShopStatus(String shopStatus) {
+        this.shopStatus = shopStatus;
     }
 
     public void setShopCreatetime(Date shopCreatetime) {

@@ -9,7 +9,7 @@ public class Horseman {
 
     private String horsemanPsd;
 
-    private Integer horsemanTel;
+    private String horsemanTel;
 
     private Byte horsemanStatus;
 
@@ -49,11 +49,11 @@ public class Horseman {
         this.horsemanPsd = horsemanPsd == null ? null : horsemanPsd.trim();
     }
 
-    public Integer getHorsemanTel() {
+    public String getHorsemanTel() {
         return horsemanTel;
     }
 
-    public void setHorsemanTel(Integer horsemanTel) {
+    public void setHorsemanTel(String horsemanTel) {
         this.horsemanTel = horsemanTel;
     }
 
@@ -107,6 +107,23 @@ public class Horseman {
 
     public Date getHorsemanCreatetime() {
         return horsemanCreatetime;
+    }
+
+    @Override
+    public String toString() {
+        return "Horseman{" +
+                "horsemanId=" + horsemanId +
+                ", horsemanName='" + horsemanName + '\'' +
+                ", horsemanPsd='" + horsemanPsd + '\'' +
+                ", horsemanTel='" + horsemanTel + '\'' +
+                ", horsemanStatus=" + horsemanStatus +
+                ", horesemanAdd='" + horesemanAdd + '\'' +
+                ", takeoutNum=" + takeoutNum +
+                ", accomplishTime=" + accomplishTime +
+                ", horsemanLon=" + horsemanLon +
+                ", horsemanLat=" + horsemanLat +
+                ", horsemanCreatetime=" + horsemanCreatetime +
+                '}';
     }
 
     public void setHorsemanCreatetime(Date horsemanCreatetime) {

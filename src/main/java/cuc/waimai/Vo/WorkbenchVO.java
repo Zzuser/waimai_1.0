@@ -1,9 +1,6 @@
 package cuc.waimai.Vo;
 
-import cuc.waimai.Dao.DailyBill;
-
 public class WorkbenchVO {
-    private DailyBill dailyBill;
     private int pending_num;
     private int carrying_num;
     private int finish_num;
@@ -11,13 +8,6 @@ public class WorkbenchVO {
     private int new_collection;
     private int all_colledtion;
 
-    public DailyBill getDailyBill() {
-        return dailyBill;
-    }
-
-    public void setDailyBill(DailyBill dailyBill) {
-        this.dailyBill = dailyBill;
-    }
 
     public int getPending_num() {
         return pending_num;
@@ -61,6 +51,18 @@ public class WorkbenchVO {
 
     public int getAll_colledtion() {
         return all_colledtion;
+    }
+
+    @Override
+    public String toString() {
+        return "WorkbenchVO{" +
+                ", pending_num=" + pending_num +
+                ", carrying_num=" + carrying_num +
+                ", finish_num=" + finish_num +
+                ", shop_statue='" + shop_statue + '\'' +
+                ", new_collection=" + new_collection +
+                ", all_colledtion=" + all_colledtion +
+                '}';
     }
 
     public void setAll_colledtion(int all_colledtion) {

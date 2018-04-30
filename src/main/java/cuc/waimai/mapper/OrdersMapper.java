@@ -1,6 +1,7 @@
 package cuc.waimai.mapper;
 
 import cuc.waimai.Dao.Orders;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface OrdersMapper {
     List<Orders> selectByShopId(Integer shopId);
 
     List<Orders> selectByUserId(Integer userId);
+
+    List<Orders> selectByStatus(@Param("status") String status,@Param("shopId") Integer shopId);
 }

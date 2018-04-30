@@ -14,26 +14,43 @@ public class OrdersVo {
     private Date arrive_time;
     private int horseman_id;
     private int shop_id;
-    private  int horseman_tel;
+    private String horseman_tel;
     private String user_name;
     private String user_add;
-    private int user_tel;
+    private String user_tel;
     private List<FoodVo> food_list;
+
+    public int getOrder_id() {
+
+        return order_id;
+    }
+
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
+    }
+
+    public double getOrder_money() {
+        return order_money;
+    }
+
+    public void setOrder_money(double order_money) {
+        this.order_money = order_money;
+    }
 
     public String getOrder_number() {
         return order_number;
     }
 
-    public int getShop_id() {
-        return shop_id;
-    }
-
-    public void setShop_id(int shop_id) {
-        this.shop_id = shop_id;
-    }
-
     public void setOrder_number(String order_number) {
         this.order_number = order_number;
+    }
+
+    public String getOrder_status() {
+        return order_status;
+    }
+
+    public void setOrder_status(String order_status) {
+        this.order_status = order_status;
     }
 
     public Date getOrder_time() {
@@ -60,11 +77,19 @@ public class OrdersVo {
         this.horseman_id = horseman_id;
     }
 
-    public int getHorseman_tel() {
+    public int getShop_id() {
+        return shop_id;
+    }
+
+    public void setShop_id(int shop_id) {
+        this.shop_id = shop_id;
+    }
+
+    public String getHorseman_tel() {
         return horseman_tel;
     }
 
-    public void setHorseman_tel(int horseman_tel) {
+    public void setHorseman_tel(String horseman_tel) {
         this.horseman_tel = horseman_tel;
     }
 
@@ -84,11 +109,11 @@ public class OrdersVo {
         this.user_add = user_add;
     }
 
-    public int getUser_tel() {
+    public String getUser_tel() {
         return user_tel;
     }
 
-    public void setUser_tel(int user_tel) {
+    public void setUser_tel(String user_tel) {
         this.user_tel = user_tel;
     }
 
@@ -98,29 +123,5 @@ public class OrdersVo {
 
     public void setFood_list(List<FoodVo> food_list) {
         this.food_list = food_list;
-    }
-
-    public int getOrder_id() {
-        return order_id;
-    }
-
-    public void setOrder_id(int order_id) {
-        this.order_id = order_id;
-    }
-
-    public String getOrder_status() {
-        return order_status;
-    }
-
-    public double getOrder_money() {
-        return order_money;
-    }
-
-    public void setOrder_money(double order_money) {
-        this.order_money = order_money;
-    }
-
-    public void setOrder_status(String order_status) {
-        this.order_status = order_status;
     }
 }

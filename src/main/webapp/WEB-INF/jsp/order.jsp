@@ -64,6 +64,7 @@
             <div class="mui-slider-group">
                 <div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
                     <!--遍历订单结果-->
+                    <audio src="../../resources/audio/jidan.mp3" class="mui-hidden" id="jiedanyes"></audio>
                     <script type="text/javascript" charset="UTF-8">
                         var bussinessid =${sessionScope.shop.shopId};
 
@@ -92,7 +93,12 @@
                                                     '</div>');
                                                 $('#' + z + 'shangbu').append(
                                                     '<h4>用户：' + data[z].user_name + '</h4>' +
-                                                    '<button  id="' + data[z].order_number + '" class="mui-btn mui-btn-danger mui-btn-outlined  mui-icon mui-icon-plus mui-right">订单详情</button>'
+                                                //     '<form  action="post" value="'+z+'" name="local" id="' + data[z].order_number + '" class="mui-btn mui-btn-danger mui-btn-outlined  mui-icon mui-icon-plus mui-right">订单详情</form>'
+                                                     //订单详情
+                                                    '<form method="post" action="/orderdetail">'+
+                                                    '<input class="mui-hidden" value="'+z+'" name="local">'+
+                                                    '<button type="submit" value="查看详情" class="mui-btn mui-btn-danger mui-btn-outlined  mui-icon mui-icon-plus mui-right">查看详情</button>'+
+                                                    '</form>'
                                                 );
                                                 try {
                                                     for (x = 0; x < 3; x++) {
@@ -107,9 +113,12 @@
                                                     $('#' + z + 'xiabu').append(
                                                         '<button class="mui-btn-danger mui-pull-right" type="button" id="'+z+'">接单</button>'
                                                     );
-                                                    document.getElementById(data[z].order_number).addEventListener('click', function () {
-                                                        window.location.href = "/orderdetail";
-                                                    }, false);
+
+                                                    // 订单详情
+                                                    // document.getElementById(data[z].order_number).addEventListener('click', function () {
+                                                    //     window.location.href = "/orderdetail";
+                                                    // }, false);
+                                                    //接单按钮
                                                     var p=data[z].order_id;
                                                     document.getElementById(z).addEventListener('click', function () {
                                                         $.ajax(
@@ -123,7 +132,9 @@
                                                                  success:(function(msg) {
                                                                      if(msg.valueOf()==1)
                                                                      {
+                                                                         var jiedan=document.getElementById("jiedanyes");
                                                                          mui.alert("接单成功！");
+                                                                         jiedan.play();
                                                                          init();
                                                                          init1();
                                                                      }
@@ -186,7 +197,11 @@
                                                     '</div>');
                                                 $('#' + z + 'shangbu').append(
                                                     '<h4>用户：' + data[z].user_name + '</h4>' +
-                                                    '<button  id="' + data[z].order_number + '" class="mui-btn mui-btn-danger mui-btn-outlined  mui-icon mui-icon-plus mui-right">订单详情</button>'
+                                                //     '<button  id="' + data[z].order_number + '" class="mui-btn mui-btn-danger mui-btn-outlined  mui-icon mui-icon-plus mui-right">订单详情</button>'
+                                                    '<form method="post" action="/orderdetail">'+
+                                                    '<input class="mui-hidden" value="'+z+'" name="local">'+
+                                                    '<button type="submit" value="查看详情" class="mui-btn mui-btn-danger mui-btn-outlined  mui-icon mui-icon-plus mui-right">查看详情</button>'+
+                                                    '</form>'
                                                 );
                                                 try {
                                                     for (x = 0; x < 3; x++) {
@@ -200,21 +215,21 @@
                                                     $('#' + z + 'xiabu').append(
                                                         '<button class="mui-btn-danger mui-pull-right" type="button" id="'+z+'">配送</button>'
                                                     );
-                                                    document.getElementById(data[z].order_number).addEventListener('click', function () {
-                                                        window.location.href = "/orderdetail";
-                                                    }, false);
+                                                    // document.getElementById(data[z].order_number).addEventListener('click', function () {
+                                                    //     window.location.href = "/orderdetail";
+                                                    // }, false);
                                                     var p=data[z].order_id;
                                                     document.getElementById(z).addEventListener('click', function () {
                                                         $.ajax(
                                                             {
                                                                 type:"post",
-                                                                url:"/dispatchOrder",
+                                                                url:"/carryOrder",
                                                                 data:
                                                                     {
                                                                         "orderId":p
                                                                     },
                                                                 success:(function(msg) {
-                                                                    if(msg.valueOf()==1)
+                                                                    if(msg.valueOf()==200)
                                                                     {
                                                                         mui.alert("发送配送成功！");
                                                                         init1();
@@ -280,8 +295,10 @@
                                                     '</div>');
                                                 $('#' + z + 'shangbu').append(
                                                     '<h4>用户：' + data[z].user_name + '</h4>' +
-                                                    '<button  id="' + data[z].order_number + '" class="mui-btn mui-btn-danger mui-btn-outlined  mui-icon mui-icon-plus mui-right">订单详情</button>'
-                                                );
+                                                    '<form method="post" action="/orderdetail">'+
+                                                    '<input class="mui-hidden" value="'+z+'" name="local">'+
+                                                    '<button type="submit" value="查看详情" class="mui-btn mui-btn-danger mui-btn-outlined  mui-icon mui-icon-plus mui-right">查看详情</button>'+
+                                                    '</form>');
                                                 try {
                                                     for (x = 0; x < 3; x++) {
 
@@ -295,9 +312,9 @@
                                                     $('#' + z + 'xiabu').append(
                                                         '<button class="mui-btn-danger mui-pull-right" type="button" id="' + z + '删除">删除</button>'
                                                     );
-                                                    document.getElementById(data[z].order_number).addEventListener('click', function () {
-                                                        window.location.href = "/orderdetail";
-                                                    }, false);
+                                                    // document.getElementById(data[z].order_number).addEventListener('click', function () {
+                                                    //     window.location.href = "/orderdetail";
+                                                    // }, false);
                                                 }
                                             }
                                         }
@@ -363,8 +380,9 @@
      * 下拉刷新具体业务实现
      */
     function pulldownRefresh() {
-        $('#外部').empty();
         init();
+        init1();
+        init2();
         setTimeout(function () {
             mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
         }, 1000);
