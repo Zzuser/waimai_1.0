@@ -36,7 +36,7 @@
         var websocket = null;
         //判断当前浏览器是否支持WebSocket
         if('WebSocket' in window){
-            websocket = new WebSocket("ws://localhost:8080/websocket?client"+busesid);
+            websocket = new WebSocket("ws://43.226.69.220:8080/websocket?client"+busesid);
         }
         else{
             alert('Not support websocket');
@@ -214,9 +214,9 @@
         <li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-3"><a href="#">
             <span class="mui-icon">${sessionScope.shop.shopTel}</span>
             <div class="mui-media-body">电话</div></a></li>
-        <li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-3"><a href="#">
+        <li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-3"　id="daoru"><a onclick="dianji()">
             <span class="mui-icon mui-icon-gear"></span>
-            <div class="mui-media-body">Setting</div></a></li>
+            <div class="mui-media-body">批量导入</div></a></li>
         <li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-3"><a href="#">
             <span class="mui-icon mui-icon-info"></span>
             <div class="mui-media-body">about</div></a></li>
@@ -225,6 +225,11 @@
 <div class="mui-text-center">${sessionScope}</div>
 </div>
 </div>
+<script type="text/javascript" charset="UTF-8">
+    function dianji() {
+        window.location.href="/test";
+    }
+</script>
 <!--实现下拉刷新-->
 <script>
     mui.init({
@@ -263,5 +268,6 @@
         }, 1000);
     }
 </script>
+
 </body>
 </html>

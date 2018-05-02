@@ -42,7 +42,7 @@ public class OrderController {
         int shopId = Integer.parseInt(shopIdst);
         List<OrdersVo> ordersVoList = new ArrayList<>();
         List<Orders> ordersList = ordersService.selectByShopId(shopId);
-        System.out.println("njskdfnaisdvndjkfvnidvnindv++++++++"+ordersList.size());
+        System.out.println("ordersList.size"+ordersList.size());
         for (Orders orders : ordersList) {
             OrdersVo ordersVo = new OrdersVo();
             ordersVo.setOrder_id(orders.getOrderId());
