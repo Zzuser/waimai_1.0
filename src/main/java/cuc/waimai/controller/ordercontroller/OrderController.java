@@ -42,7 +42,7 @@ public class OrderController {
         int shopId = Integer.parseInt(shopIdst);
         List<OrdersVo> ordersVoList = new ArrayList<>();
         List<Orders> ordersList = ordersService.selectByShopId(shopId);
-        System.out.println("ordersList.size"+ordersList.size());
+        System.out.println("ordersList.size" + ordersList.size());
         for (Orders orders : ordersList) {
             OrdersVo ordersVo = new OrdersVo();
             ordersVo.setOrder_id(orders.getOrderId());
@@ -52,42 +52,39 @@ public class OrderController {
             ordersVo.setOrder_time(orders.getOrderTime());
             ordersVo.setArrive_time(orders.getArriveTime());
 //            try {
-            if (orders.getHorsemanId()==0){
+            if (orders.getHorsemanId() == 0) {
 
-            }else { ordersVo.setHorseman_id(orders.getHorsemanId());
+            } else {
+                ordersVo.setHorseman_id(orders.getHorsemanId());
                 ordersVo.setHorseman_tel(horsemanService.selectByPrimaryKey(orders.getHorsemanId()).getHorsemanTel());
-         }
+            }
 //                 } catch (Exception e) {
 //                e.printStackTrace();
 //                continue;
 //            } finally {
-                ordersVo.setUser_name(userService.selectByPrimaryKey(orders.getUserId()).getUserName());
-                ordersVo.setUser_tel(userService.selectByPrimaryKey(orders.getUserId()).getUserTel());
-                ordersVo.setUser_add(userService.selectByPrimaryKey(orders.getUserId()).getReceiveAdd());
-                List<FoodVo> foodVoList = new ArrayList<>();
-                List<OrderFood> orderFoodList = orderFoodService.selectByOrderId(orders.getOrderId());
-                Double foodMoney = 0.0;
-                for (OrderFood orderFood : orderFoodList) {
-                    FoodVo foodVo = foodController.foodVoSelectByFoodIdAndShopId(orderFood.getFoodId(), shopId);
+            ordersVo.setUser_name(userService.selectByPrimaryKey(orders.getUserId()).getUserName());
+            ordersVo.setUser_tel(userService.selectByPrimaryKey(orders.getUserId()).getUserTel());
+            ordersVo.setUser_add(userService.selectByPrimaryKey(orders.getUserId()).getReceiveAdd());
+            List<FoodVo> foodVoList = new ArrayList<>();
+            List<OrderFood> orderFoodList = orderFoodService.selectByOrderId(orders.getOrderId());
+            Double foodMoney = 0.0;
+            for (OrderFood orderFood : orderFoodList) {
+                FoodVo foodVo = foodController.foodVoSelectByFoodIdAndShopId(orderFood.getFoodId(), shopId);
 
-                    foodVo.setFood_count(orderFoodService.selectByFoodIdAndOrderId(
-                            orders.getOrderId(), orderFood.getFoodId())
-                            .getFoodCount());
-                    foodMoney += (foodVo.getFoodShop().getFoodPrice() * foodVo.getFood_count());
-                    foodVoList.add(foodVo);
-                }
-                foodMoney += Double.parseDouble(shopService.selectByPrimaryKey(shopId).getDeliveryFee());
-                ordersVo.setOrder_money(foodMoney);
-                ordersVo.setFood_list(foodVoList);
-                ordersVoList.add(ordersVo);
+                foodVo.setFood_count(orderFoodService.selectByFoodIdAndOrderId(
+                        orders.getOrderId(), orderFood.getFoodId())
+                        .getFoodCount());
+                foodMoney += (foodVo.getFoodShop().getFoodPrice() * foodVo.getFood_count());
+                foodVoList.add(foodVo);
             }
-            session.setAttribute("ordersVoList", ordersVoList);
-            return ordersVoList;
+            foodMoney += Double.parseDouble(shopService.selectByPrimaryKey(shopId).getDeliveryFee());
+            ordersVo.setOrder_money(foodMoney);
+            ordersVo.setFood_list(foodVoList);
+            ordersVoList.add(ordersVo);
         }
-
-
-
-//    }
+        session.setAttribute("ordersVoList", ordersVoList);
+        return ordersVoList;
+    }
 
     @RequestMapping("/ordersSelectALLByUserId.do")
     @ResponseBody
@@ -165,45 +162,42 @@ public class OrderController {
         ordersVo.setArrive_time(orders.getArriveTime());
 
 
+        ordersVo.setUser_name(userService.selectByPrimaryKey(orders.getUserId()).getUserName());
+        ordersVo.setUser_tel(userService.selectByPrimaryKey(orders.getUserId()).getUserTel());
+        ordersVo.setUser_add(userService.selectByPrimaryKey(orders.getUserId()).getReceiveAdd());
+        List<FoodVo> foodVoList = new ArrayList<>();
+        List<OrderFood> orderFoodList = orderFoodService.selectByOrderId(orders.getOrderId());
+        Double foodMoney = 0.0;
+        for (OrderFood orderFood : orderFoodList) {
+            FoodVo foodVo = foodController.foodVoSelectByFoodIdAndShopId(orderFood.getFoodId(), orders.getShopId());
 
-            ordersVo.setUser_name(userService.selectByPrimaryKey(orders.getUserId()).getUserName());
-            ordersVo.setUser_tel(userService.selectByPrimaryKey(orders.getUserId()).getUserTel());
-            ordersVo.setUser_add(userService.selectByPrimaryKey(orders.getUserId()).getReceiveAdd());
-            List<FoodVo> foodVoList = new ArrayList<>();
-            List<OrderFood> orderFoodList = orderFoodService.selectByOrderId(orders.getOrderId());
-            Double foodMoney = 0.0;
-            for (OrderFood orderFood : orderFoodList) {
-                FoodVo foodVo = foodController.foodVoSelectByFoodIdAndShopId(orderFood.getFoodId(), orders.getShopId());
-
-                foodVo.setFood_count(orderFoodService.selectByFoodIdAndOrderId(
-                        orders.getOrderId(), orderFood.getFoodId())
-                        .getFoodCount());
-                foodMoney += (foodVo.getFoodShop().getFoodPrice() * foodVo.getFood_count());
-                foodVoList.add(foodVo);
-            }
-            foodMoney += Double.parseDouble(shopService.selectByPrimaryKey(orders.getShopId()).getDeliveryFee());
-            ordersVo.setOrder_money(foodMoney);
-            ordersVo.setFood_list(foodVoList);
-            return ordersVo;
+            foodVo.setFood_count(orderFoodService.selectByFoodIdAndOrderId(
+                    orders.getOrderId(), orderFood.getFoodId())
+                    .getFoodCount());
+            foodMoney += (foodVo.getFoodShop().getFoodPrice() * foodVo.getFood_count());
+            foodVoList.add(foodVo);
+        }
+        foodMoney += Double.parseDouble(shopService.selectByPrimaryKey(orders.getShopId()).getDeliveryFee());
+        ordersVo.setOrder_money(foodMoney);
+        ordersVo.setFood_list(foodVoList);
+        return ordersVo;
 
     }
 
     @RequestMapping("/orderCFM.do")
     @ResponseBody
     public int orderCFM(@RequestParam("orderId") Integer orderId, @RequestParam("horsemanId") Integer horsemanId) {
-        System.out.println("orderCFM"+"orderId:"+orderId+"\n"+"horsemanId:"+horsemanId);
-       Orders orders= ordersService.selectByPrimaryKey(orderId);
-        System.out.println("orderCFM"+"orderId:"+orders.toString());
-        System.out.println("orderCFM"+"getHorsemanId:"+orders.getHorsemanId());
-       if (orders.getHorsemanId()==0){
-           orders.setHorsemanId(horsemanId);
-           ordersService.updateByPrimaryKey(orders);
-           return 200;
-    }
-       else {
-           return 400;
-       }
-
+        System.out.println("orderCFM" + "orderId:" + orderId + "\n" + "horsemanId:" + horsemanId);
+        Orders orders = ordersService.selectByPrimaryKey(orderId);
+        System.out.println("orderCFM" + "orderId:" + orders.toString());
+        System.out.println("orderCFM" + "getHorsemanId:" + orders.getHorsemanId());
+        if (orders.getHorsemanId() == 0) {
+            orders.setHorsemanId(horsemanId);
+            ordersService.updateByPrimaryKey(orders);
+            return 200;
+        } else {
+            return 400;
+        }
 
 
     }
@@ -211,19 +205,24 @@ public class OrderController {
     @RequestMapping("/orderFNS.do")
     @ResponseBody
     public int orderFNS(@RequestParam("orderId") Integer orderId, @RequestParam("horsemanId") Integer horsemanId) {
-        System.out.println("orderId:"+orderId+"\n"+"horsemanId:"+horsemanId);
-        Orders orders= ordersService.selectByPrimaryKey(orderId);
-        if (orders.getHorsemanId().equals(horsemanId)){
+        System.out.println("orderId:" + orderId + "\n" + "horsemanId:" + horsemanId);
+        Orders orders = ordersService.selectByPrimaryKey(orderId);
+        if (orders.getHorsemanId().equals(horsemanId)) {
             orders.setStatus("已完成");
             ordersService.updateByPrimaryKey(orders);
             return 200;
-        }else {
+        } else {
             return 400;
         }
 
     }
 
-
+    @RequestMapping("/orderPlaceTest.do")
+    @ResponseBody
+    public int orderPlace(@RequestParam("orderPlace") String orderPlace) {
+        System.out.println(orderPlace);
+        return 1;
+    }
 
 
 }

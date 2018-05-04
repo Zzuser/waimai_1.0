@@ -10,7 +10,7 @@
     delete from food
     where food_id = #{foodId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cuc.waimai.Dao.Food" >
+  <insert id="insert"  useGeneratedKeys="true"  keyProperty="foodId" parameterType="cuc.waimai.Dao.Food" >
     insert into food (food_id, food_name, category_id
       )
     values (#{foodId,jdbcType=INTEGER}, #{foodName,jdbcType=VARCHAR}, #{categoryId,jdbcType=INTEGER}
@@ -38,4 +38,9 @@
     where category_id = #{categoryId,jdbcType=INTEGER}
   </select>
 
+  <select id="selectByFoodName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select food_id, food_name, category_id
+    from food
+    where food_name = #{foodName,jdbcType=VARCHAR}
+  </select>
 </mapper>

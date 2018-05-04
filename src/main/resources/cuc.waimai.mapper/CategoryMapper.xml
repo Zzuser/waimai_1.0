@@ -9,7 +9,7 @@
     delete from category
     where cat_id = #{catId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cuc.waimai.Dao.Category" >
+  <insert id="insert" useGeneratedKeys="true"  keyProperty="catId" parameterType="cuc.waimai.Dao.Category" >
     insert into category (cat_id, cat_name)
     values (#{catId,jdbcType=INTEGER}, #{catName,jdbcType=VARCHAR})
   </insert>
@@ -26,5 +26,11 @@
   <select id="selectAll" resultMap="BaseResultMap" >
     select cat_id, cat_name
     from category
+  </select>
+
+  <select id="selectByCatName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select cat_id, cat_name
+    from category
+    where cat_name = #{catName,jdbcType=VARCHAR}
   </select>
 </mapper>

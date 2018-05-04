@@ -32,7 +32,10 @@
                 选择一个文件:
                 <br/><br/>
                 <input hidden type="text" name="shopId" value=${sessionScope.shop.shopId} >
+                <ul>电子表格文件</ul>
                 <input type="file" name="uploadFile" style="color: red"/>
+                <ul>图片压缩包</ul>
+                <input type="file" name="uploadZip" style="color: red"/>
                 <br/><br/>
                 <button type="submit" class="mui-right mui-btn-danger" style="width: 100px;height: 40px">上传文件</button>
             </form>

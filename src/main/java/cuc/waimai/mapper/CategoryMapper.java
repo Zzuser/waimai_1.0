@@ -13,4 +13,6 @@ public interface CategoryMapper {
     List<Category> selectAll();
 
     int updateByPrimaryKey(Category record);
+
+    Category selectByCatName(String catName);
 }
