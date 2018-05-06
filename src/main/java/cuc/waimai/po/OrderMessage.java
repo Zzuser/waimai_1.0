@@ -1,14 +1,14 @@
 package cuc.waimai.po;
 
 
+import cuc.waimai.Vo.FoodVo;
+
 import java.util.List;
 
 public class OrderMessage {
-    private  String userId;
+    private String userId;
     private String shopId;
-    private List<FoodInOrder> foodInOrderList;
-
-
+    private List<FoodVo> foodVoList;
 
     public String getUserId() {
         return userId;
@@ -26,20 +26,11 @@ public class OrderMessage {
         this.shopId = shopId;
     }
 
-    public List<FoodInOrder> getFoodInOrderList() {
-        return foodInOrderList;
+    public List<FoodVo> getFoodVoList() {
+        return foodVoList;
     }
 
-    @Override
-    public String toString() {
-        return "OrderMessage{" +
-                "userId='" + userId + '\'' +
-                ", shopId='" + shopId + '\'' +
-                ", foodInOrderList=" + foodInOrderList +
-                '}';
-    }
-
-    public void setFoodInOrderList(List<FoodInOrder> foodInOrderList) {
-        this.foodInOrderList = foodInOrderList;
+    public void setFoodVoList(List<FoodVo> foodVoList) {
+        this.foodVoList = foodVoList;
     }
 }

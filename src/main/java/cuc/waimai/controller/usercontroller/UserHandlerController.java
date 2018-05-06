@@ -1,13 +1,11 @@
 package cuc.waimai.controller.usercontroller;
 
 import com.google.gson.Gson;
-import cuc.waimai.Dao.Food;
 import cuc.waimai.Dao.OrderFood;
 import cuc.waimai.Dao.Orders;
 import cuc.waimai.Vo.FoodVo;
 import cuc.waimai.Vo.OrdersVo;
 import cuc.waimai.controller.MsgPushController.ShopMsgPushController;
-import cuc.waimai.po.FoodInOrder;
 import cuc.waimai.po.OrderMessage;
 import cuc.waimai.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,33 +40,25 @@ public class UserHandlerController {
     @RequestMapping("/orderPlace.do")
     @ResponseBody
     public Integer UserPlaceOrder(@RequestParam("orderJson") String orderJson) {
+
         Date date=new Date();
         try {
             System.out.println(orderJson);
             OrderMessage message = parseJson(orderJson);
             Orders orders = new Orders();
             orders.setShopId(Integer.parseInt(message.getShopId()));
-            orders.setUserId(1);
+            orders.setUserId(Integer.parseInt(message.getUserId()));
             orders.setStatus("未接单");
             orders.setOrderTime(date);
             orders.setHorsemanId(0);
             ordersService.insert(orders);
             List<FoodVo> foodVoList = new ArrayList<>();
-            for (FoodInOrder foodInOrder : message.getFoodInOrderList()) {
+            for (FoodVo foodVo : message.getFoodVoList()) {
                 OrderFood orderFood = new OrderFood();
-                orderFood.setFoodId(Integer.parseInt(foodInOrder.getFoodId()));
-                orderFood.setFoodCount(Integer.parseInt(foodInOrder.getFoodNum()));
+                orderFood.setFoodId(foodVo.getFood_id());
+                orderFood.setFoodCount(foodVo.getFood_count());
                 orderFood.setOrderId(orders.getOrderId());
                 orderFoodService.insert(orderFood);
-                FoodVo foodVo = new FoodVo();
-                Food food = foodService.selectByPrimaryKey(Integer.parseInt(foodInOrder.getFoodId()));
-                foodVo.setFood_id(Integer.parseInt(foodInOrder.getFoodId()));
-                foodVo.setFood_count(Integer.parseInt(foodInOrder.getFoodNum()));
-                foodVo.setFoodShop(
-                        foodShopService.selectByFoodIdAndShopId(
-                                Integer.parseInt(foodInOrder.getFoodId()), orders.getShopId()));
-                foodVo.setFood_name(food.getFoodName());
-                foodVo.setCategory(categoryService.selectByPrimaryKey(food.getCategoryId()).getCatName());
                 foodVoList.add(foodVo);
             }
 

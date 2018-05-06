@@ -26,6 +26,9 @@ public class ShopRegController {
         shop.setShopPsw(shopPsw);
         shop.setShopTel(shopTel);
         shop.setShopAdd(shopAdd);
+        shop.setDeliveryFee("0");
+        shop.setCollectionNum(0);
+        shop.setShopImg("resources/img/cbd.jpg");
         shop.setShopCreatetime(new Date());
         return shopService.insert(shop);
     }

@@ -219,7 +219,7 @@ public class OrderController {
 
     @RequestMapping("/orderPlaceTest.do")
     @ResponseBody
-    public int orderPlace(@RequestParam("orderPlace") String orderPlace) {
+    public int orderPlace(@RequestParam("orderJson") String orderPlace) {
         System.out.println(orderPlace);
         return 1;
     }

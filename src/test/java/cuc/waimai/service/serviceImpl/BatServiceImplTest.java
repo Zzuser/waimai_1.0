@@ -13,8 +13,8 @@ import static org.junit.Assert.*;
 public class BatServiceImplTest {
 @Autowired
 BatServiceImpl batService;
-    @Test
-    public void bat() {
-        batService.bat("/home/zz/ideaprojects/waimai/src/main/webapp/resources/batchdata/s1Thu May 03 11:11:21 CST 2018.csv",1);
-    }
+//    @Test
+//    public void bat() {
+//        batService.bat("/home/zz/ideaprojects/waimai/src/main/webapp/resources/batchdata/s1Thu May 03 11:11:21 CST 2018.csv",1);
+//    }
 }

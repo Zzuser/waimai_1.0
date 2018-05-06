@@ -21,11 +21,11 @@
 <div class="mui-card">
 
     <div class="mui-card-content">
-        <ul><h3>采用批量导入</h3><br></ul>
+        <ul><h3>批量导入</h3><br></ul>
         <ul><h4>第一步：下载并阅读说明</h4></ul>
-        <ul><a href="resources/doc/批量导入说明.doc" style="color: red">批量导入说明</a></ul>
+        <ul><a href="resources/doc/批量导入说明.pdf" style="color: red">批量导入说明</a></ul>
         <ul><h4>第二步：下载电子表格模板</h4></ul>
-        <ul><a href="resources/doc/菜单模板.csv" style="color: red">菜单模板</a></ul>
+        <ul><a href="resources/doc/菜单模板.xls" style="color: red">菜单模板</a></ul>
         <ul><h4>第三步： 上传电子表格</h4></ul>
         <ul>
             <form method="post" action="/fileUpload.do" enctype="multipart/form-data">

@@ -25,6 +25,7 @@ public class UserRegController {
         user.setUserName(userName);
         user.setUserPsd(userPsw);
         user.setUserTel(userTel);
+        user.setUserPortrait("resources/img/logo.png");
         user.setUserCreatetime(new Date());
         return userService.insert(user);
     }
