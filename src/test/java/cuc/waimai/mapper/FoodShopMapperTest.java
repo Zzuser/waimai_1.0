@@ -1,5 +1,6 @@
 package cuc.waimai.mapper;
 
+import cuc.waimai.Dao.FoodShop;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,16 @@ public class FoodShopMapperTest {
     @Test
     public void selectByFoodIdAndShopId() {
         System.out.print(foodShopMapper.selectByFoodIdAndShopId(1, 1));
+    }
+
+    @Test
+    public void update() {
+        FoodShop foodShop=new FoodShop();
+        foodShop.setFoodId(30);
+        foodShop.setShopId(125);
+        foodShop.setFoodPrice(Double.parseDouble("1"));
+        foodShop.setFoodDes("wwwwwww");
+
+        System.out.print(foodShopMapper.updateByPrimaryKey(foodShop));
     }
 }

@@ -115,10 +115,10 @@ public class BatServiceImpl implements BatService {
                     fileOperationUtil.logCreate(batchLog.getPath(), TAG + "商铺" + shopId + "更新食品条目：" + food.getFoodName()+"\r\n");
                     File deletImg = new File(ServerPath.RESOURSES_PATH + foodShopData.getFoodPic());
                     fileOperationUtil.logCreate(batchLog.getPath(), TAG + "原来的图片" + deletImg.getPath()+"\r\n");
-//                    if (deletImg.exists()){
-//                        deletImg.delete();
-//                    }
-                    foodShopMapper.updateByPrimaryKey(foodShop);
+                    foodShop.setFoodShopId(foodShopData.getFoodShopId());
+                   int r= foodShopMapper.updateByPrimaryKey(foodShop);
+                    fileOperationUtil.logCreate(batchLog.getPath(), TAG + "更新结果" + r+"\r\n");
+
                 }
                 fileOperationUtil.logCreate(batchLog.getPath(), "================================================="+"\r\n");
             }
