@@ -42,8 +42,6 @@
     <%--</script>--%>
 </head>
 <body onload="init();init1();init2()">
-
-
 <div id="pullrefresh" class="mui-content mui-scroll-wrapper">
     <div class="mui-scroll">
         <div id="slider" class="mui-slider">
@@ -59,7 +57,6 @@
                     已完成
                 </a>
             </div>
-            <!--横线或许？？-->
             <div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4 "></div>
             <div class="mui-slider-group">
                 <div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
@@ -67,7 +64,6 @@
                     <audio src="../../resources/audio/jidan.mp3" class="mui-hidden" id="jiedanyes"></audio>
                     <script type="text/javascript" charset="UTF-8">
                         var bussinessid =${sessionScope.shop.shopId};
-
                         function init() {
                             $('#外部').empty();
                             $.ajax({
@@ -85,24 +81,22 @@
                                             if(data[z].order_status=="未接单"){
                                                 var c = 1;
                                                 $('#外部').append(
+                                                    '<div class="mui-col-sm-6 mui-col-xs-12 mui-table-view-cell">'+
                                                     '<div class="mui-card">' +
                                                     '<div class="mui-card-header" id="' + z + 'shangbu"></div>' +
                                                     '<div class="mui-card-content" id="' + z + 'zhongbu"></div>' +
 
                                                     '<div class="mui-card-footer mui-pull-right" id="' + z + 'xiabu"></div>' +
-                                                    '</div>');
+                                                    '</div></div>');
                                                 $('#' + z + 'shangbu').append(
                                                     '<h4>用户：' + data[z].user_name + '</h4>' +
-                                                //     '<form  action="post" value="'+z+'" name="local" id="' + data[z].order_number + '" class="mui-btn mui-btn-danger mui-btn-outlined  mui-icon mui-icon-plus mui-right">订单详情</form>'
-                                                     //订单详情
-                                                    '<form method="post" action="/orderdetail">'+
+                                                      '<form method="post" action="/orderdetail">'+
                                                     '<input class="mui-hidden" value="'+z+'" name="local">'+
                                                     '<button type="submit" value="查看详情" class="mui-btn mui-btn-danger mui-btn-outlined  mui-icon mui-icon-plus mui-right">查看详情</button>'+
                                                     '</form>'
                                                 );
                                                 try {
                                                     for (x = 0; x < 3; x++) {
-
                                                         $('#' + z + 'zhongbu').append(
                                                             '<ul><h5>' + data[z].food_list[x].food_name + 'x' + data[z].food_list[x].food_count + '</h5>'
                                                         );
@@ -113,11 +107,6 @@
                                                     $('#' + z + 'xiabu').append(
                                                         '<button class="mui-btn-danger mui-pull-right" type="button" id="'+z+'">接单</button>'
                                                     );
-
-                                                    // 订单详情
-                                                    // document.getElementById(data[z].order_number).addEventListener('click', function () {
-                                                    //     window.location.href = "/orderdetail";
-                                                    // }, false);
                                                     //接单按钮
                                                     var p=data[z].order_id;
                                                     document.getElementById(z).addEventListener('click', function () {
@@ -162,9 +151,8 @@
                                 }
                             )
                         }
-
                     </script>
-                    <div id="外部" >
+                    <div id="外部" class="mui-row mui-table-view">
 
                     </div>
                 </div>
@@ -190,11 +178,12 @@
                                             if(data[z].order_status=="未配送"){
                                                 var c = 1;
                                                 $('#外部1').append(
+                                                    '<div class="mui-col-sm-6 mui-col-xs-12 mui-table-view-cell">'+
                                                     '<div class="mui-card">' +
                                                     '<div class="mui-card-header" id="' + z + 'shangbu"></div>' +
                                                     '<div class="mui-card-content" id="' + z + 'zhongbu"></div>' +
                                                     '<div class="mui-card-footer mui-pull-right" id="' + z + 'xiabu"></div>' +
-                                                    '</div>');
+                                                    '</div></div>');
                                                 $('#' + z + 'shangbu').append(
                                                     '<h4>用户：' + data[z].user_name + '</h4>' +
                                                 //     '<button  id="' + data[z].order_number + '" class="mui-btn mui-btn-danger mui-btn-outlined  mui-icon mui-icon-plus mui-right">订单详情</button>'
@@ -261,12 +250,15 @@
                         }
 
                     </script>
-                    <div id="外部1" >
+                    <div id="外部1" class="mui-row mui-table-view">
 
                     </div>
                 </div>
                 <div id="item3mobile" class="mui-slider-item mui-control-content">
                     <!--遍历订单结果-->
+                    <div id="外部2" class="mui-row mui-table-view">
+
+                    </div>
                     <script type="text/javascript" charset="UTF-8">
                         var bussinessid =${sessionScope.shop.shopId};
 
@@ -287,12 +279,14 @@
                                             if(data[z].order_status=="已完成"){
                                                 var c = 1;
                                                 $('#外部2').append(
+                                                    '<div class="mui-col-sm-6 mui-col-xs-12 mui-table-view-cell">'+
                                                     '<div class="mui-card">' +
                                                     '<div class="mui-card-header" id="' + z + 'shangbu"></div>' +
                                                     '<div class="mui-card-content" id="' + z + 'zhongbu"></div>' +
 
                                                     '<div class="mui-card-footer mui-pull-right" id="' + z + 'xiabu"></div>' +
-                                                    '</div>');
+                                                    '</div>'+'</div>'
+                                                    );
                                                 $('#' + z + 'shangbu').append(
                                                     '<h4>用户：' + data[z].user_name + '</h4>' +
                                                     '<form method="post" action="/orderdetail">'+
@@ -326,41 +320,12 @@
                         }
 
                     </script>
-                    <div id="外部2" >
 
-                    </div>
                 </div>
             </div>
         </div>
-        <%--<div class="mui-card">--%>
-            <%--<form class="mui-input-group">--%>
-
-                <%--<div class="mui-input-row mui-radio">--%>
-                    <%--<label><span class="mui-bg-negative" style="display:block;width:25px;height:25px;"></span>--%>
-                    <%--</label>--%>
-                    <%--<input name="radio1" type="radio" value="negative">--%>
-                <%--</div>--%>
-            <%--</form>--%>
-        <%--</div>--%>
-
-
     </div>
 </div>
-
-
-
-<%--<script type="text/javascript">--%>
-    <%--var sliderSegmentedControl = document.getElementById('sliderSegmentedControl');--%>
-    <%--$('.mui-input-group').on('change', 'input', function() {--%>
-        <%--if (this.checked) {--%>
-            <%--sliderSegmentedControl.className = 'mui-slider-indicator mui-segmented-control mui-segmented-control-inverted mui-segmented-control-' + this.value;--%>
-            <%--//force repaint--%>
-            <%--sliderProgressBar.setAttribute('style', sliderProgressBar.getAttribute('style'));--%>
-        <%--}--%>
-    <%--});--%>
-<%--</script>--%>
-
-<!--实现下拉刷新-->
 <script>
     mui.init({
         swipeBack: false,
@@ -375,7 +340,6 @@
             }
         }
     });
-
     /**
      * 下拉刷新具体业务实现
      */
@@ -387,9 +351,7 @@
             mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
         }, 1000);
     }
-
     var count = 0;
-
     /**
      * 上拉加载具体业务实现
      */
@@ -409,8 +371,8 @@
         $('.mui-scroll-wrapper').scroll({
             indicators: true //是否显示滚动条
         });
-        var html2 = '<ul class="mui-table-view"><li class="mui-table-view-cell">第二个选项卡子项-1</li><li class="mui-table-view-cell">第二个选项卡子项-2</li><li class="mui-table-view-cell">第二个选项卡子项-3</li><li class="mui-table-view-cell">第二个选项卡子项-4</li><li class="mui-table-view-cell">第二个选项卡子项-5</li></ul>';
-        var html3 = '<ul class="mui-table-view"><li class="mui-table-view-cell">第三个选项卡子项-1</li><li class="mui-table-view-cell">第三个选项卡子项-2</li><li class="mui-table-view-cell">第三个选项卡子项-3</li><li class="mui-table-view-cell">第三个选项卡子项-4</li><li class="mui-table-view-cell">第三个选项卡子项-5</li></ul>';
+        var html2 = '';
+        var html3 = '';
         var item2 = document.getElementById('item2mobile');
         var item3 = document.getElementById('item3mobile');
         document.getElementById('slider').addEventListener('slide', function (e) {
@@ -430,7 +392,6 @@
         });
 
     })
-
     (mui);
 </script>
 

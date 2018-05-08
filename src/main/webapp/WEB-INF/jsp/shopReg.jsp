@@ -57,7 +57,9 @@
                           success:function(data){
                               if(data.valueOf()==1)
                               {
-                                  mui.alert("注册成功");
+                                  mui.alert("你已注册成功","登陆提醒","确认",function(){
+                                      window.location.href="/shopLogin";
+                                  })
                               }
                               else
                               {

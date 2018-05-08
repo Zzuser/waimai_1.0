@@ -14,4 +14,11 @@ public interface ShopEvaluateMapper {
     List<ShopEvaluate> selectAll();
 
     int updateByPrimaryKey(ShopEvaluate record);
+
+    List<ShopEvaluate> selectByShopId(Integer shopId);
+
+    List<ShopEvaluate> selectByUserId(Integer userId);
+
+
 }
+//selectByUserId

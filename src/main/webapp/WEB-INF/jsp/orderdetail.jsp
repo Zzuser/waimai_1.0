@@ -27,19 +27,15 @@
                     "shopId": busid
                 },
                 success: function (data) {
-
-
                     $('#订单状态').html(data[q].order_status);
 
                     $('#合计').html("￥"+data[q].order_money);
                     if (data[q].order_status==="未接单"){
                         $('#配送员').html("暂无");
-                        $('#配送员电话').html("暂无");
-                    }
+                        $('#配送员电话').html("暂无");}
                     else{
                         $('#配送员').html(data[q].horseman_id);
-                        $('#配送员电话').html(data[q].horseman_tel);
-                    }
+                        $('#配送员电话').html(data[q].horseman_tel);}
                     $('#客户').html(data[q].user_name);
                     $('#配送地点').html(data[q].user_add);
                     $('#用户电话').html(data[q].user_tel);
@@ -73,7 +69,6 @@
                     foodmoney=foodmoney+(data[q].food_list[food].foodShop.foodPrice*data[q].food_list[food].food_count);
                     }
                     $('#配送费').html("￥"+(data[q].order_money-foodmoney));
-
                 }});
         }
     </script>
@@ -85,9 +80,9 @@
 </head>
 <body onload="qwqw()">
 <div id="pullrefresh" class="mui-content mui-scroll-wrapper">
-
-    <div class="mui-card-content">
-<div class="mui-card">
+    <div class=" mui-row">
+     <div class="mui-col-xs-12 mui-col-sm-7">
+        <div class="mui-card ">
     <div class="mui-card-header">
         <b id="订单状态"></b>
     </div>
@@ -108,7 +103,9 @@
         <b class='mui-pull-right' id="合计" ></b>
     </div>
 </div>
-        <div class="mui-card">
+     </div>
+        <div class="mui-col-xs-12 mui-col-sm-5">
+        <div class="mui-card ">
             <ui class="mui-table-view">
                 <li class="mui-table-view-cell">
                     配送员
@@ -120,7 +117,7 @@
                 </li>
             </ui>
         </div>
-        <div class="mui-card">
+        <div class="mui-card ">
     <ui class="mui-table-view">
         <li class="mui-table-view-cell">
             客户
@@ -136,7 +133,7 @@
         </li>
     </ui>
 </div>
-<div class="mui-card">
+<div class="mui-card ">
     <ui class="mui-table-view">
         <li class="mui-table-view-cell">
             订单号
@@ -152,6 +149,7 @@
         </li>
     </ui>
 </div>
+            </div>
 </div>
 </div>
 <%--下拉刷新--%>

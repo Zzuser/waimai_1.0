@@ -1,11 +1,11 @@
 package cuc.waimai.controller.usercontroller;
 
 import com.google.gson.Gson;
-import cuc.waimai.Dao.OrderFood;
-import cuc.waimai.Dao.Orders;
+import cuc.waimai.Dao.*;
 import cuc.waimai.Vo.FoodVo;
 import cuc.waimai.Vo.OrdersVo;
 import cuc.waimai.controller.MsgPushController.ShopMsgPushController;
+import cuc.waimai.mapper.UserShopMapper;
 import cuc.waimai.po.OrderMessage;
 import cuc.waimai.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +36,10 @@ public class UserHandlerController {
     CategoryService categoryService;
     @Autowired
     FoodShopService foodShopService;
+    @Autowired
+    UserShopService userShopService;
+    @Autowired
+    ShopService shopService;
 
     @RequestMapping("/orderPlace.do")
     @ResponseBody
@@ -80,6 +84,42 @@ public class UserHandlerController {
         }
 
     }
+
+    @RequestMapping("/rewriteAdd.do")
+    @ResponseBody
+    public int rewriteAdd(@RequestParam("userId") String userId,
+                          @RequestParam("newAdd") String newAdd){
+        User user=userService.selectByPrimaryKey(Integer.parseInt(userId));
+        user.setReceiveAdd(newAdd);
+        return userService.updateByPrimaryKey(user);
+    }
+
+    @RequestMapping("/collectionAdd.do")
+    @ResponseBody
+    public int collectionAdd(@RequestParam("userId") String userId,
+                          @RequestParam("shopId") String shopId){
+        UserShop userShop=new UserShop();
+        userShop.setShopId(Integer.parseInt(shopId));
+        userShop.setUserId(Integer.parseInt(userId));
+       Shop shop= shopService.selectByPrimaryKey(Integer.parseInt(shopId));
+       shop.setCollectionNum(shop.getCollectionNum()+1);
+       shopService.updateByPrimaryKey(shop);
+        return userShopService.insert(userShop);
+    }
+
+    @RequestMapping("/selectMyShopByUserId.do")
+    @ResponseBody
+    public List<Shop> selectMyShopByUserId(@RequestParam("userId") String userId){
+
+        List<UserShop> userShopList= userShopService.selectByUserId(Integer.parseInt(userId));
+        List<Shop> shops=new ArrayList<>();
+        for(UserShop userShop:userShopList){
+            Shop shop=shopService.selectByPrimaryKey(userShop.getShopId());
+            shops.add(shop);
+        }
+        return shops;
+    }
+
 
     private OrderMessage parseJson(String msg) {
         Gson gson = new Gson();

@@ -1,7 +1,9 @@
 package cuc.waimai.controller.shopcontroller;
 
 import cuc.waimai.Dao.Shop;
+import cuc.waimai.Dao.ShopEvaluate;
 import cuc.waimai.Vo.ShopVo;
+import cuc.waimai.service.ShopEvaluateService;
 import cuc.waimai.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,8 @@ import java.util.List;
 public class ShopHandlerController {
     @Autowired
     ShopService shopService;
+    @Autowired
+    ShopEvaluateService shopEvaluateService;
     @RequestMapping("/shopSelectAll.do")
     @ResponseBody
     public List<Shop> shopSelectAll(){
@@ -32,5 +36,25 @@ public class ShopHandlerController {
         shopVo.setShopcreateFragment3(shop.getShopCreatetime().toString());
         shopVo.setShopproclamationFragment3(shop.getShopProclamation());
         return shopVo;
+    }
+    @RequestMapping("/shopSelectEvaAllByShopId.do")
+    @ResponseBody
+    public List<ShopEvaluate> shopSelectEvaAll(@RequestParam("shopId") Integer shopId){
+        return shopEvaluateService.selectByShopId(shopId);
+    }
+
+    @RequestMapping("/shopEvaInsert.do")
+    @ResponseBody
+    public int shopEvaInsert(@RequestParam("shopId") Integer shopId,
+                             @RequestParam("userId") Integer userId,
+                             @RequestParam("evAll") String  evAll,
+                             @RequestParam("evComment") String evComment
+                             ){
+        ShopEvaluate shopEvaluate=new ShopEvaluate();
+        shopEvaluate.setShopId(shopId);
+        shopEvaluate.setUserId(userId);
+        shopEvaluate.setEvAll(Double.parseDouble(evAll));
+        shopEvaluate.setEvComment(evComment);
+        return shopEvaluateService.insert(shopEvaluate);
     }
 }

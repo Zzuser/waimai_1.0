@@ -39,4 +39,16 @@
     select ev_id, shop_id, user_id, ev_all, ev_comment, ev_pic
     from shop_evaluate
   </select>
+
+  <select id="selectByShopId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select ev_id, shop_id, user_id, ev_all, ev_comment, ev_pic
+    from shop_evaluate
+    where shop_id = #{shopId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select ev_id, shop_id, user_id, ev_all, ev_comment, ev_pic
+    from shop_evaluate
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
 </mapper>

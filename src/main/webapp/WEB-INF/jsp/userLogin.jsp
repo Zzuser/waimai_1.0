@@ -107,7 +107,7 @@
                 type:'POST',
                 url:"/userLogin.do",
                 data:{
-                    "userId":shopId
+                    "userName":shopId
                     ,"userPsw":shopPsd
                 },
                 success:function(data) {

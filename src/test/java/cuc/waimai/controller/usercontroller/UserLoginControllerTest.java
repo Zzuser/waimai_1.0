@@ -1,9 +1,9 @@
-package cuc.waimai.controller.shopcontroller;
+package cuc.waimai.controller.usercontroller;
 
-import com.google.gson.Gson;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -11,12 +11,13 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 //告诉junit spring的配置文件
 @ContextConfiguration({"classpath:config/spring/applicationContext.xml"})
-public class ShopHandlerControllerTest {
+public class UserLoginControllerTest {
 @Autowired
-ShopHandlerController shopHandlerController;
+UserLoginController userLoginController;
     @Test
-    public void shopSelectAll() {
-        Gson gson=new Gson();
-        System.out.println(gson.toJson(shopHandlerController.shopSelectEvaAll(1)));
+    public void userLogin() {
+        MockHttpSession httpSession=new MockHttpSession();
+        System.out.println(userLoginController.userLogin("1","1",httpSession));
+
     }
 }

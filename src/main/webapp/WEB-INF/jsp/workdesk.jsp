@@ -105,6 +105,7 @@
                 success: function (data) {
                     var peisong=0;
                     var wancheng=0;
+                    var jiedan=0;
                     for(var i=0;i<data.length;i++)
                     {
                         if(data[i].order_status=="未配送")
@@ -119,8 +120,16 @@
                             wancheng=wancheng+1;
                         }
                     }
+                    for(var k=0;k<data.length;k++)
+                    {
+                        if(data[k].order_status=="未接单")
+                        {
+                            jiedan=jiedan+1;
+                        }
+                    }
                     $('#待配送').html(peisong);
                     $('#已完成').html(wancheng);
+                    $('#未接单').html(jiedan);
                 }
             });
 
@@ -133,55 +142,6 @@
 <body id="wrorkdesk">
 <div id="pullrefresh" class="mui-content mui-scroll-wrapper">
 <div class="mui-content">
-<%--<div class="mui-input-row mui-search">--%>
-    <%--<input type="search" class="mui-input-clear" placeholder="" style="background-color: white">--%>
-<%--</div>--%>
-    <%--<div id="slider" class="mui-slider" >--%>
-        <%--<div class="mui-slider-group mui-slider-loop">--%>
-            <%--<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->--%>
-            <%--<div class="mui-slider-item mui-slider-item-duplicate">--%>
-                <%--<a href="#">--%>
-                    <%--<img src="../../resources/img/yuantiao.jpg">--%>
-                <%--</a>--%>
-            <%--</div>--%>
-            <%--<!-- 第一张 -->--%>
-            <%--<div class="mui-slider-item">--%>
-                <%--<a href="#">--%>
-                    <%--<img src="../../resources/img/shuijiao.jpg">--%>
-                <%--</a>--%>
-            <%--</div>--%>
-            <%--<!-- 第二张 -->--%>
-            <%--<div class="mui-slider-item">--%>
-                <%--<a href="#">--%>
-                    <%--<img src="../../resources/img/muwu.jpg">--%>
-                <%--</a>--%>
-            <%--</div>--%>
-            <%--<!-- 第三张 -->--%>
-            <%--<div class="mui-slider-item">--%>
-                <%--<a href="#">--%>
-                    <%--<img src="../../resources/img/cbd.jpg">--%>
-                <%--</a>--%>
-            <%--</div>--%>
-            <%--<!-- 第四张 -->--%>
-            <%--<div class="mui-slider-item">--%>
-                <%--<a href="#">--%>
-                    <%--<img src="../../resources/img/yuantiao.jpg">--%>
-                <%--</a>--%>
-            <%--</div>--%>
-            <%--<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->--%>
-            <%--<div class="mui-slider-item mui-slider-item-duplicate">--%>
-                <%--<a href="#">--%>
-                    <%--<img src="../images/shuijiao.jpg">--%>
-                <%--</a>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="mui-slider-indicator">--%>
-            <%--<div class="mui-indicator mui-active"></div>--%>
-            <%--<div class="mui-indicator"></div>--%>
-            <%--<div class="mui-indicator"></div>--%>
-            <%--<div class="mui-indicator"></div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
 
     <ul class="mui-table-view">
         <li class="mui-table-view-cell">店铺状态
@@ -197,32 +157,31 @@
     <ul class="mui-table-view mui-grid-view mui-grid-9">
         <li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-3"><a href="#">
             <span class="mui-icon" style="color:rgba(247,0,0,.5)" id="daichuli">N/A</span>
-            <div class="mui-media-body">待处理</div></a></li>
-
+            <div class="mui-media-body">动态待处理</div></a></li>
         <li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-3"><a href="#">
-            <span class="mui-icon" style="color:rgba(0,0,247,.5)" id="待配送">200</span>
+            <span class="mui-icon" style="color:rgba(0,0,247,.5)" id="待配送">无</span>
             <div class="mui-media-body">待配送</div></a></li>
         <li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-3"><a href="#">
-            <span class="mui-icon" style="color:rgba(0,0,0,.5)" id="已完成">300</span>
+            <span class="mui-icon" style="color:rgba(0,240,0,.5)" id="已完成">无</span>
             <div class="mui-media-body">已完成</div></a></li>
         <li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-3"><a href="#">
-            <span class="mui-icon">${sessionScope.shop.shopAdd}</span>
-            <div class="mui-media-body">地址</div></a></li>
-        <li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-3"><a href="#">
-            <span class="mui-icon">${sessionScope.shop.shopPsw}</span>
-            <div class="mui-media-body">密码</div></a></li>
-        <li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-3"><a href="#">
-            <span class="mui-icon">${sessionScope.shop.shopTel}</span>
-            <div class="mui-media-body">电话</div></a></li>
+            <span class="mui-icon" style="color:rgba(200,200,0,.5)" id="未接单">无</span>
+            <div class="mui-media-body">待处理</div></a></li>
         <li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-3"　id="daoru"><a onclick="dianji()">
             <span class="mui-icon mui-icon-gear"></span>
             <div class="mui-media-body">批量导入</div></a></li>
         <li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-3"><a href="#">
             <span class="mui-icon mui-icon-info"></span>
             <div class="mui-media-body">about</div></a></li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-12 mui-col-sm-6"><a href="#">
+            <span class="mui-icon">${sessionScope.shop.shopAdd}</span>
+            <div class="mui-media-body">地址</div></a></li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-12 mui-col-sm-6"><a href="#">
+            <span class="mui-icon">${sessionScope.shop.shopTel}</span>
+            <div class="mui-media-body">电话</div></a></li>
+
     </ul>
 
-<div class="mui-text-center">${sessionScope}</div>
 </div>
 </div>
 <script type="text/javascript" charset="UTF-8">

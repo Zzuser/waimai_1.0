@@ -59,4 +59,11 @@
     receive_tel, last_login_time, last_login_ip, user_lon, user_lat, user_createtime
     from user
   </select>
+
+  <select id="selectByUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select user_id, user_name, user_portrait, user_psd, user_tel, receive_add, receive_name,
+    receive_tel, last_login_time, last_login_ip, user_lon, user_lat, user_createtime
+    from user
+    where user_name = #{userName,jdbcType=VARCHAR}
+  </select>
 </mapper>

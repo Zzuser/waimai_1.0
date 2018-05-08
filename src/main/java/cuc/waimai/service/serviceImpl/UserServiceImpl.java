@@ -37,4 +37,9 @@ public class UserServiceImpl implements UserService {
     public int updateByPrimaryKey(User record) {
         return userMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public User selectByUserName(String userName) {
+        return userMapper.selectByUserName(userName);
+    }
 }

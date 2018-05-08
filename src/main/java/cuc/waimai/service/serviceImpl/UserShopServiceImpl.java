@@ -36,4 +36,9 @@ public class UserShopServiceImpl implements UserShopService {
     public int updateByPrimaryKey(UserShop record) {
         return userShopMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public List<UserShop> selectByUserId(Integer userId) {
+        return userShopMapper.selectByUserId(userId);
+    }
 }

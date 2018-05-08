@@ -14,4 +14,6 @@ public interface UserShopMapper {
     List<UserShop> selectAll();
 
     int updateByPrimaryKey(UserShop record);
+
+    List<UserShop> selectByUserId(Integer userId);
 }

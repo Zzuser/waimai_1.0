@@ -155,7 +155,7 @@ public class FileOperationUtil {
             if (f.isFile()) {
                 fileList.add(f);
             } else if (f.isDirectory()) {
-                logCreate(batchLog.getPath(),TAG+"readFiles"+f.getAbsolutePath()+"\r\n");
+                logCreate(batchLog.getPath(),TAG+"readFiles:"+f.getAbsolutePath()+"\r\n");
                 System.out.println(TAG+"readFiles"+f.getAbsolutePath());
                 readFiles(f.getAbsolutePath(),batchLog);
             }

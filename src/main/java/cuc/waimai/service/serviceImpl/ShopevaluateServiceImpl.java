@@ -38,4 +38,14 @@ ShopEvaluateMapper shopevaluateMapper;
     public int updateByPrimaryKey(ShopEvaluate record) {
         return shopevaluateMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public List<ShopEvaluate> selectByShopId(Integer shopId) {
+        return shopevaluateMapper.selectByShopId(shopId);
+    }
+
+    @Override
+    public List<ShopEvaluate> selectByUserId(Integer userId) {
+        return selectByUserId(userId);
+    }
 }

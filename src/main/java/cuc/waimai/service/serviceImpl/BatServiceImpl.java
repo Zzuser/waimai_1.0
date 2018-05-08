@@ -51,11 +51,16 @@ public class BatServiceImpl implements BatService {
         fileOperationUtil.logCreate(batchLog.getPath(), "================================================="+"\r\n");
         try {
             fileOperationUtil.logCreate(batchLog.getPath(), "================================================="+"\r\n");
+            System.out.println("List长度"+list.size());
             for (String[] ss : list) {
+                if (ss[0].equals("")){
+                    System.out.println("break");
+                    break;
+                }
                 int i = 0;
                 fileOperationUtil.logCreate(batchLog.getPath(), TAG + "上传数据内容" + ""+"\r\n");
                 for (String s : ss) {
-                    fileOperationUtil.logCreate(batchLog.getPath(), ">>>"+s+"\r\n");
+                    fileOperationUtil.logCreate(batchLog.getPath(), "["+i+"]"+">>>"+s+"\r\n");
                     i++;
                 }
                 fileOperationUtil.logCreate(batchLog.getPath(), "+++++++++++++++++++++++++++++++++++++++++++++"+"\r\n");
@@ -95,7 +100,7 @@ public class BatServiceImpl implements BatService {
                 foodShop.setShopId(shopId);
                 foodShop.setFoodPrice(Double.parseDouble(ss[2]));
                 foodShop.setFoodDes(ss[1]);
-                String foodImgName = food.getFoodName() + ".jpg";
+                String foodImgName = ss[4]+ ".jpg";
                 for (File file : imgList) {
                     if (foodImgName.equals(file.getName())) {
                         File rename = new File(imgSavePathname + "/" + shopDir + "/" + file.getName());
@@ -134,9 +139,17 @@ public class BatServiceImpl implements BatService {
             fileOperationUtil.logCreate(batchLog.getPath(), "================================================="+"\r\n");
             return 1;
         } catch (Exception e) {
+
             fileOperationUtil.logCreate(batchLog.getPath(), "================================================="+"\r\n");
             fileOperationUtil.logCreate(batchLog.getPath(), TAG + "批量导入失败" + "");
             fileOperationUtil.logCreate(batchLog.getPath(), "================================================="+"\r\n");
+            fileOperationUtil.logCreate(batchLog.getPath(), e.toString()+"\r\n");
+            fileOperationUtil.logCreate(batchLog.getPath(), TAG + "删除缓存" + ""+"\r\n");
+            try {
+                fileOperationUtil.deletefile(ServerPath.RESOURSES_PATH + "resources/batchdata/" + "shop" + shopId + "data",batchLog);
+                fileOperationUtil.deletefile(ServerPath.RESOURSES_PATH + "resources/batchdata/" + "shop" + shopId + "img",batchLog);
+            } catch (Exception e1) {
+            }
             e.printStackTrace();
             return 0;
         }

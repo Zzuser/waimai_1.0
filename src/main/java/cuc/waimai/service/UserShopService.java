@@ -14,4 +14,7 @@ public interface UserShopService {
     List<UserShop> selectAll();
 
     int updateByPrimaryKey(UserShop record);
+
+    List<UserShop> selectByUserId(Integer userId);
 }
+//selectByUserId
