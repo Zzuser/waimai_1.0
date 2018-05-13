@@ -1,6 +1,6 @@
 package cuc.waimai.service;
 
-import cuc.waimai.Dao.Car;
+import cuc.waimai.entity.Car;
 
 import java.util.List;
 

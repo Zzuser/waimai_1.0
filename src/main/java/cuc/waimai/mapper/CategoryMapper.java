@@ -1,6 +1,6 @@
 package cuc.waimai.mapper;
 
-import cuc.waimai.Dao.Category;
+import cuc.waimai.entity.Category;
 import java.util.List;
 
 public interface CategoryMapper {

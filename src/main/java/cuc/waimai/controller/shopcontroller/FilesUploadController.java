@@ -3,8 +3,11 @@ package cuc.waimai.controller.shopcontroller;
 import cuc.waimai.po.ServerPath;
 import cuc.waimai.service.BatService;
 import cuc.waimai.util.FileOperationUtil;
+import cuc.waimai.util.ProgressMapUtil;
 import cuc.waimai.util.XLS2CSV;
 import cuc.waimai.util.XLSX2CSV;
+import cuc.waimai.util.logger.MyLogger;
+import cuc.waimai.util.logger.MyLoggerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,27 +17,31 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 
 @Controller
 public class FilesUploadController {
-    private static final String TAG = "FilesUploadController.class-->";
+    private static final String TAG = "FilesUploadController.class";
+    private FileOperationUtil fileOperationUtil;
+    private MyLogger myLogger;
     @Autowired
     BatService batService;
 
     @RequestMapping(value = "/fileUpload.do", method = RequestMethod.POST)
     public ModelAndView fileUpload(
             @RequestParam("shopId") String shopId
-                 , @RequestParam("uploadFile") MultipartFile file,
-               @RequestParam("uploadZip") MultipartFile zip
+            , @RequestParam("uploadFile") MultipartFile file,
+            @RequestParam("uploadZip") MultipartFile zip,
+            HttpSession session
     ) throws IOException {
-        ModelAndView mav=new ModelAndView();
+        ModelAndView mav = new ModelAndView();
         String logDirName = "shop" + shopId + "log";
-        String logTxtName = "shoplog" + shopId + System.currentTimeMillis()+".log";
-        mav.addObject("logName",logTxtName);
-        mav.addObject("logDirName",logDirName);
+        String logTxtName = "shoplog" + shopId + System.currentTimeMillis() + ".log";
+        mav.addObject("logName", logTxtName);
+        mav.addObject("logDirName", logDirName);
         File batchLog = new File(ServerPath.RESOURSES_PATH +
                 "resources/logofshop/" + logDirName + "/" + logTxtName);
         File batchLogParent = batchLog.getParentFile();
@@ -44,12 +51,12 @@ public class FilesUploadController {
         if (!batchLog.exists()) {
             batchLog.createNewFile();
         }
-        FileOperationUtil fileOperationUtil=new FileOperationUtil();
-        fileOperationUtil.logCreate(batchLog.getPath(),"=================================================\r\n");
-        fileOperationUtil.logCreate(batchLog.getPath(),TAG + "商铺:" + "" + shopId+"\r\n");
-        fileOperationUtil.logCreate(batchLog.getPath(),TAG + "获得数据:" + "" + file.getOriginalFilename()+"\r\n");
-        fileOperationUtil.logCreate(batchLog.getPath(),TAG + "图片压缩包:" + "" + zip.getOriginalFilename()+"\r\n");
-        fileOperationUtil.logCreate(batchLog.getPath(),"=================================================\r\n");
+        myLogger = new MyLoggerImpl(batchLog.getPath(), TAG);
+        fileOperationUtil = new FileOperationUtil(batchLog.getPath());
+        myLogger.doLog("商铺:" + "" + shopId, 0);
+        myLogger.doLog("获得数据:" + "" + file.getOriginalFilename());
+        myLogger.doLog("图片压缩包:" + "" + zip.getOriginalFilename(), 1);
+
         String finalZipPathName = "";
         String finalDataPathName = "";
         if (!zip.isEmpty()) {
@@ -67,25 +74,25 @@ public class FilesUploadController {
                 tool.mkdirs();
             }
             zip.transferTo(new File(pathname + dirName + "/" + mainName + extName));
-            fileOperationUtil.logCreate(batchLog.getPath(),TAG + "上传压缩包文件名:" + "" + pathname + dirName + "/" + mainName + extName+"\r\n");
-
+            myLogger.doLog("上传压缩包文件名:" + "" + pathname + dirName + "/" + mainName + extName);
             finalZipPathName = pathname + dirName + "/";
             File zipper = new File(finalZipPathName + mainName + extName);
             try {
                 if (fileOperationUtil.unZipFile(zipper)) {
-                    fileOperationUtil.logCreate(batchLog.getPath(),TAG + "解压成功:" + ""+"\r\n");
+                    myLogger.doLog("解压成功:", 1);
                 } else {
-                    fileOperationUtil.logCreate(batchLog.getPath(),TAG + "解压失败:" + ""+"\r\n");
+                    myLogger.doLog("解压失败:");
+                    myLogger.doLog("压缩包格式错误或已损坏", 1);
                     mav.setViewName("baterror");
                     return mav;
                 }
             } catch (Exception e) {
-                fileOperationUtil.logCreate(batchLog.getPath(),TAG + "解压失败:" + ""+"\r\n");
+                myLogger.doLog("解压失败:");
+                myLogger.doLog("压缩包格式错误或已损坏", 1);
                 e.printStackTrace();
                 mav.setViewName("baterror");
                 return mav;
             }
-            fileOperationUtil.logCreate(batchLog.getPath(),"================================================="+"\r\n");
         }
 
         if (!file.isEmpty()) {
@@ -103,50 +110,83 @@ public class FilesUploadController {
                 tool.mkdirs();
             }
             file.transferTo(new File(pathname + dirName + "/" + mainName + extName));
-            fileOperationUtil.logCreate(batchLog.getPath(),TAG + "上传数据文件名:" + "" + pathname + dirName + "/" + mainName + extName+"\r\n");
+            myLogger.doLog("上传数据文件名:" + "" + pathname + dirName + "/" + mainName + extName);
             finalDataPathName = pathname + dirName + "/";
             //判断文件类型格式转换
             if (extName.equals(".xls")) {
-                fileOperationUtil.logCreate(batchLog.getPath(),TAG + "上传数据格式为xls" + ""+"\r\n");
+                myLogger.doLog("上传数据格式为xls");
                 try {
                     XLS2CSV xls2CSV = new XLS2CSV(
                             finalDataPathName + mainName + extName,
                             finalDataPathName + mainName + ".csv");
                     xls2CSV.process();
-                    fileOperationUtil.logCreate(batchLog.getPath(),TAG + "上传数据格式转换成功" + "\r\n" + "转换为：" + finalDataPathName + mainName + ".csv"+"\r\n");
+                    myLogger.doLog("上传数据格式转换成功" + "\r\n" + "转换为：" + finalDataPathName + mainName + ".csv");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             } else if (extName.equals(".xlsx")) {
-                fileOperationUtil.logCreate(batchLog.getPath(),TAG + "上传数据格式为xlsx" + ""+"\r\n");
+                myLogger.doLog("上传数据格式为xlsx");
                 try {
                     XLSX2CSV xlsx2CSV = new XLSX2CSV(
                             finalDataPathName + mainName + extName,
                             finalDataPathName + mainName + ".csv");
                     xlsx2CSV.process();
-                    fileOperationUtil.logCreate(batchLog.getPath(),TAG + "上传数据格式转换成功" + "\r\n" + "转换为：" + finalDataPathName + mainName + ".csv"+"\r\n");
+                    myLogger.doLog("上传数据格式转换成功" + "\r\n" + "转换为：" + finalDataPathName + mainName + ".csv");
 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             } else if (extName.equals(".csv")) {
-                fileOperationUtil.logCreate(batchLog.getPath(),TAG + "上传数据格式为csv" + ""+"\r\n");
+                myLogger.doLog("上传数据格式为csv");
             } else {
                 mav.setViewName("baterror");
                 return mav;
             }
-            fileOperationUtil.logCreate(batchLog.getPath(),"================================================="+"\r\n");
-            if (batService.bat(finalDataPathName + mainName + ".csv",
-                    Integer.parseInt(shopId), finalZipPathName,batchLog) == 1) {
-                mav.setViewName("batsuccess");
-                return mav;
+            myLogger.doLog("", 1);
+            switch (batService.bat(finalDataPathName + mainName + ".csv",
+                    Integer.parseInt(shopId), finalZipPathName, batchLog, session)) {
+
+                case 0: {
+                    session.setAttribute("progress",0);
+                    mav.setViewName("baterror");
+                    return mav;
+                }
+                case 1: {
+                    session.setAttribute("progress",0);
+                    mav.addObject("NOTOK", "全部成功");
+                    mav.setViewName("batsuccess");
+                    return mav;
+                }
+                case 2: {
+                    session.setAttribute("progress",0);
+                    mav.addObject("NOTOK", "部分数据存在错误！查看日志的错误记录可找到错误数据");
+                    mav.setViewName("batsuccess");
+                    return mav;
+                }
+                default: {
+                    session.setAttribute("progress",0);
+                    mav.setViewName("baterror");
+                    return mav;
+                }
             }
-            mav.setViewName("baterror");
-            return mav;
         } else {
+            session.setAttribute("progress",0);
             mav.setViewName("baterror");
             return mav;
-       }
+        }
     }
 
+    @RequestMapping(value = "/batchProgress.do", method = RequestMethod.POST)
+    @ResponseBody
+    public int batchProgress(HttpSession session) {
+        try {
+            Integer prg = (int) session.getAttribute("progress");
+            System.out.println(prg);
+            return prg;
+        } catch (Exception e) {
+            return 0;
+        }
+
+
+    }
 }

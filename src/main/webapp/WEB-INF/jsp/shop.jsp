@@ -127,15 +127,15 @@
 </ul>
 <ul class="mui-table-view mui-table-view-chevron">
     <li class="mui-table-view-cell">
-        <a class="mui-navigate-right">修改商户信息</a>
+        <a class="mui-navigate-right" href="/shopReg">修改商户信息</a>
 
     </li>
 </ul >
 <ul class="mui-table-view mui-table-view-chevron">
-    <li class="mui-table-view-cell">总销售额<span class="mui-badge mui-badge-danger">100K</span></li>
-    <li class="mui-table-view-cell">总销量<span class="mui-badge mui-badge-danger">100K</span></li>
-    <li class="mui-table-view-cell">月销售额<span class="mui-badge mui-badge-danger">100K</span></li>
-    <li class="mui-table-view-cell">月销量<span class="mui-badge mui-badge-danger">100K</span></li>
+    <li class="mui-table-view-cell">未接单总额<span class="mui-badge mui-badge-danger" id="001">100K</span></li>
+    <li class="mui-table-view-cell">未配送总额<span class="mui-badge mui-badge-danger" id="002">100K</span></li>
+    <li class="mui-table-view-cell">已完成总额<span class="mui-badge mui-badge-danger" id="003">100K</span></li>
+    <li class="mui-table-view-cell">总销售额<span class="mui-badge mui-badge-danger" id="004">100K</span></li>
 </ul>
 <ul class="mui-table-view mui-table-view-chevron">
     <li class="mui-table-view-cell">
@@ -147,32 +147,69 @@
         <a>退出登录</a>
     </li>
 </ul>
-<div class="mui-card">
-    <div class="mui-card-header">
-        <h1 id="Json大王"></h1>
-    </div>
-    <div class="mui-card-content">
-
-    </div>
-    <div class="mui-card-footer">
-    </div>
-</div>
 <script type="text/javascript" charset="UTF-8">
-    var bussinessid=${sessionScope.shop.shopId};
-    $.ajax({
-            type:'POST',
-            url:"/ordersSelectALLByShopId.do",
-            data:{
-                "shopId":bussinessid
+    var bussinessid =${sessionScope.shop.shopId};
+        $.ajax({
+            type: 'POST',
+            url: "/ordersSelectALLByShopId.do",
+            data: {
+                "shopId": bussinessid
             },
-            success:function(data) {
-                $('#Json大王').html(data[0].user_name);
-            },
-            error:function () {
-            }
-        }
-    )
+            success: function (data){
+                var price1=0;
+                var price2=0;
+                var price3=0;
+                var food;
+                for (z = 0; z < data.length; z++){
+                    for (food=0;food<data[z].food_list.length;food++) {
+                        if (data[z].order_status == "未接单") {
+                            price1 = price1 + data[z].food_list[food].foodShop.foodPrice * data[z].food_list[food].food_count;
+                        }
+                        if (data[z].order_status == "未配送") {
+                            price2 = price2 + data[z].food_list[food].foodShop.foodPrice * data[z].food_list[food].food_count;
+                        }
+                        if (data[z].order_status == "已完成") {
+                            price3 = price3 + data[z].food_list[food].foodShop.foodPrice * data[z].food_list[food].food_count;
+                        }
+                    }
+                }
+                $('#001').html(price1);
+                $('#002').html(price2);
+                $('#003').html(price3);
+                $('#004').html(price1+price2+price3);
+
+
+            }}
+            );
+
 </script>
+
+<%--<div class="mui-card">--%>
+    <%--<div class="mui-card-header">--%>
+        <%--<h1 id="Json大王"></h1>--%>
+    <%--</div>--%>
+    <%--<div class="mui-card-content">--%>
+
+    <%--</div>--%>
+    <%--<div class="mui-card-footer">--%>
+    <%--</div>--%>
+<%--</div>--%>
+<%--<script type="text/javascript" charset="UTF-8">--%>
+    <%--var bussinessid=${sessionScope.shop.shopId};--%>
+    <%--$.ajax({--%>
+            <%--type:'POST',--%>
+            <%--url:"/ordersSelectALLByShopId.do",--%>
+            <%--data:{--%>
+                <%--"shopId":bussinessid--%>
+            <%--},--%>
+            <%--success:function(data) {--%>
+                <%--$('#Json大王').html(data[0].user_name);--%>
+            <%--},--%>
+            <%--error:function () {--%>
+            <%--}--%>
+        <%--}--%>
+    <%--)--%>
+<%--</script>--%>
 
 
 </body>

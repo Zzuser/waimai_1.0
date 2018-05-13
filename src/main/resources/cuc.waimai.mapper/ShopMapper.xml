@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cuc.waimai.mapper.ShopMapper" >
-  <resultMap id="BaseResultMap" type="cuc.waimai.Dao.Shop" >
+  <resultMap id="BaseResultMap" type="cuc.waimai.entity.Shop" >
     <id column="shop_id" property="shopId" jdbcType="INTEGER" />
     <result column="shop_name" property="shopName" jdbcType="VARCHAR" />
     <result column="shop_psw" property="shopPsw" jdbcType="VARCHAR" />
@@ -24,7 +24,7 @@
     delete from shop
     where shop_id = #{shopId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cuc.waimai.Dao.Shop" >
+  <insert id="insert" parameterType="cuc.waimai.entity.Shop" >
     insert into shop (shop_id, shop_name, shop_psw, 
       shop_tel, shop_add, shop_img,
       delivery_fee, shop_proclamation, month_sales,
@@ -38,7 +38,7 @@
       #{provinceId,jdbcType=INTEGER}, #{shopLat,jdbcType=DOUBLE}, #{shopLon,jdbcType=DOUBLE},
       #{shopCreatetime,jdbcType=TIMESTAMP}, #{shopStatus,jdbcType=VARCHAR})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.Shop" >
+  <update id="updateByPrimaryKey" parameterType="cuc.waimai.entity.Shop" >
     update shop
     set shop_name = #{shopName,jdbcType=VARCHAR},
       shop_psw = #{shopPsw,jdbcType=VARCHAR},

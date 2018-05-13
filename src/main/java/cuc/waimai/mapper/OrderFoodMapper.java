@@ -1,6 +1,6 @@
 package cuc.waimai.mapper;
 
-import cuc.waimai.Dao.OrderFood;
+import cuc.waimai.entity.OrderFood;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

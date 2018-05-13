@@ -1,6 +1,6 @@
 package cuc.waimai.mapper;
 
-import cuc.waimai.Dao.Horseman;
+import cuc.waimai.entity.Horseman;
 
 import java.util.List;
 
@@ -14,4 +14,6 @@ public interface HorsemanMapper {
     List<Horseman> selectAll();
 
     int updateByPrimaryKey(Horseman record);
-}
+
+    Horseman selectByName(String horsemanName);
+}//selectByName

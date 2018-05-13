@@ -1,6 +1,6 @@
 package cuc.waimai.service;
 
-import cuc.waimai.Dao.UserShop;
+import cuc.waimai.entity.UserShop;
 
 import java.util.List;
 

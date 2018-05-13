@@ -1,6 +1,6 @@
 package cuc.waimai.service.serviceImpl;
 
-import cuc.waimai.Dao.ShopShopType;
+import cuc.waimai.entity.ShopShopType;
 import cuc.waimai.mapper.ShopShopTypeMapper;
 import cuc.waimai.service.ShopShopTypeService;
 import org.springframework.beans.factory.annotation.Autowired;

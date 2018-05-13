@@ -1,11 +1,12 @@
 package cuc.waimai.util;
 
 import cuc.waimai.po.ServerPath;
-import org.apache.poi.ss.formula.functions.T;
+import cuc.waimai.util.logger.MyLogger;
+import cuc.waimai.util.logger.MyLoggerImpl;
+import org.apache.ibatis.annotations.Param;
 import org.apache.tools.zip.ZipEntry;
 import org.apache.tools.zip.ZipFile;
 
-import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -13,8 +14,13 @@ import java.util.List;
 import java.util.zip.ZipException;
 
 public class FileOperationUtil {
+    private static final String TAG = "FileOperationUtil.class";
+    private MyLogger myLogger;
 
-    private static final String TAG="FileOperationUtil.class-->";
+    public FileOperationUtil(@Param("logPath") String logPath) {
+        myLogger = new MyLoggerImpl(logPath, TAG);
+    }
+
     /**
      * 解压目录/文件
      *
@@ -89,7 +95,7 @@ public class FileOperationUtil {
      * @param oldPath
      * @param newPath
      */
-    public void copyFolder(String oldPath, String newPath,File batchLog) {
+    public void copyFolder(String oldPath, String newPath) {
 
         try {
             (new File(newPath)).mkdirs(); //如果文件夹不存在 则建立新文件夹
@@ -107,14 +113,18 @@ public class FileOperationUtil {
                     FileInputStream input = new FileInputStream(temp);
                     FileOutputStream output = new FileOutputStream(newPath + "/" +
                             (temp.getName()).toString());
-                    logCreate(batchLog.getPath(),TAG+"copyFolder"+"\r\n"+
-                            oldPath+"--->>>"+"\r\n"+
-                            newPath + "/" +
-                            (temp.getName()).toString()+"\r\n");
-                    System.out.println(TAG+"copyFolder"+"\n"+
-                            oldPath+"--->>>"+"\n"+
+                    myLogger.doLog("copyFolder" + "\r\n" +
+                            oldPath + "--->>>" + "\r\n" +
                             newPath + "/" +
                             (temp.getName()).toString());
+//                    logCreate(batchLog.getPath(),TAG+"copyFolder"+"\r\n"+
+//                            oldPath+"--->>>"+"\r\n"+
+//                            newPath + "/" +
+//                            (temp.getName()).toString()+"\r\n");
+//                    System.out.println(TAG+"copyFolder"+"\n"+
+//                            oldPath+"--->>>"+"\n"+
+//                            newPath + "/" +
+//                            (temp.getName()).toString());
                     byte[] b = new byte[1024 * 5];
                     int len;
                     while ((len = input.read(b)) != -1) {
@@ -125,12 +135,13 @@ public class FileOperationUtil {
                     input.close();
                 }
                 if (temp.isDirectory()) {//如果是子文件夹
-                    copyFolder(oldPath + "/" + file[i], newPath + "/" + file[i],batchLog);
+                    copyFolder(oldPath + "/" + file[i], newPath + "/" + file[i]);
                 }
             }
         } catch (Exception e) {
-            logCreate(batchLog.getPath(),"复制整个文件夹内容操作出错"+"\r\n");
-            System.out.println("复制整个文件夹内容操作出错");
+            myLogger.doLog("复制整个文件夹内容操作出错");
+//            logCreate(batchLog.getPath(),"复制整个文件夹内容操作出错"+"\r\n");
+//            System.out.println("复制整个文件夹内容操作出错");
             e.printStackTrace();
 
         }
@@ -143,7 +154,7 @@ public class FileOperationUtil {
      *
      * @param filePath
      */
-    public List<File> readFiles(String filePath,File batchLog) {
+    public List<File> readFiles(String filePath) {
         List<File> fileList = new ArrayList<>();
         File file = new File(filePath);
         File[] files = file.listFiles();// 获取目录下的所有文件或文件夹
@@ -155,14 +166,16 @@ public class FileOperationUtil {
             if (f.isFile()) {
                 fileList.add(f);
             } else if (f.isDirectory()) {
-                logCreate(batchLog.getPath(),TAG+"readFiles:"+f.getAbsolutePath()+"\r\n");
-                System.out.println(TAG+"readFiles"+f.getAbsolutePath());
-                readFiles(f.getAbsolutePath(),batchLog);
+                myLogger.doLog("readFiles:" + f.getAbsolutePath());
+//                logCreate(batchLog.getPath(),TAG+"readFiles:"+f.getAbsolutePath()+"\r\n");
+//                System.out.println(TAG+"readFiles"+f.getAbsolutePath());
+                readFiles(f.getAbsolutePath());
             }
         }
         for (File f1 : fileList) {
-            logCreate(batchLog.getPath(),TAG+"readFiles"+f1.getName()+"\r\n");
-            System.out.println(TAG+"readFiles"+f1.getName());
+//            logCreate(batchLog.getPath(),TAG+"readFiles"+f1.getName()+"\r\n");
+//            System.out.println(TAG+"readFiles"+f1.getName());
+            myLogger.doLog("readFiles:" + f1.getName());
         }
         return fileList;
     }
@@ -170,13 +183,12 @@ public class FileOperationUtil {
     /**
      * 删除某个文件夹下的所有文件夹和文件
      *
-     * @param delpath
-     *            String
+     * @param delpath String
+     * @return boolean
      * @throws FileNotFoundException
      * @throws IOException
-     * @return boolean
      */
-    public boolean deletefile(String delpath,File batchLog) throws Exception {
+    public boolean deletefile(String delpath) throws Exception {
         try {
 
             File file = new File(delpath);
@@ -189,50 +201,24 @@ public class FileOperationUtil {
                     File delfile = new File(delpath + "/" + filelist[i]);
                     if (!delfile.isDirectory()) {
                         delfile.delete();
-                        logCreate(batchLog.getPath(),TAG+delfile.getAbsolutePath() + "删除文件成功"+"\r\n");
-                        System.out.println(TAG+delfile.getAbsolutePath() + "删除文件成功");
+                        myLogger.doLog(delfile.getAbsolutePath() + "删除文件成功");
                     } else if (delfile.isDirectory()) {
-                        deletefile(delpath + "/" + filelist[i],batchLog);
-                        logCreate(batchLog.getPath(),file + "ssss"+"\r\n");
-                        System.out.println(file + "ssss");
+                        deletefile(delpath + "/" + filelist[i]);
+
+                        myLogger.doLog(file + "ssss");
                     }
                 }
-                if (!file.toString().equals(ServerPath.RESOURSES_PATH+"resources/batchdata/")) {
-                    logCreate(batchLog.getPath(),TAG+file.toString() + "已清空"+"\r\n");//选择不删除自身文件夹
-                    System.out.println(TAG+file.toString() + "已清空");
+                if (!file.toString().equals(ServerPath.RESOURSES_PATH + "resources/batchdata/")) {
+                    myLogger.doLog(TAG + file.toString() + "已清空");
                     file.delete();
                 }
             }
 
         } catch (FileNotFoundException e) {
-            logCreate(batchLog.getPath(),TAG+"deletefile() Exception:" + e.getMessage()+"\r\n");
-            System.out.println(TAG+"deletefile() Exception:" + e.getMessage());
+
+            myLogger.doLog("deletefile() Exception:" + e.getMessage());
         }
         return true;
     }
 
-    /**
-     * 追加文件：使用FileWriter
-     *
-     * @param fileName
-     * @param content
-     */
-    public  void logCreate(String fileName, String content) {
-        FileWriter writer = null;
-        try {
-            // 打开一个写文件器，构造函数中的第二个参数true表示以追加形式写文件
-            writer = new FileWriter(fileName, true);
-            writer.write(content);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if(writer != null){
-                    writer.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cuc.waimai.mapper.HorsemanEvaluateMapper" >
-  <resultMap id="BaseResultMap" type="cuc.waimai.Dao.HorsemanEvaluate" >
+  <resultMap id="BaseResultMap" type="cuc.waimai.entity.HorsemanEvaluate" >
     <id column="ev_id" property="evId" jdbcType="INTEGER" />
     <result column="ev_all" property="evAll" jdbcType="REAL" />
     <result column="on_time_count" property="onTimeCount" jdbcType="INTEGER" />
@@ -12,13 +12,13 @@
     delete from horseman_evaluate
     where ev_id = #{evId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cuc.waimai.Dao.HorsemanEvaluate" >
+  <insert id="insert" parameterType="cuc.waimai.entity.HorsemanEvaluate" >
     insert into horseman_evaluate (ev_id, ev_all, on_time_count, 
       out_time_count, on_time_rate)
     values (#{evId,jdbcType=INTEGER}, #{evAll,jdbcType=REAL}, #{onTimeCount,jdbcType=INTEGER}, 
       #{outTimeCount,jdbcType=INTEGER}, #{onTimeRate,jdbcType=DOUBLE})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.HorsemanEvaluate" >
+  <update id="updateByPrimaryKey" parameterType="cuc.waimai.entity.HorsemanEvaluate" >
     update horseman_evaluate
     set ev_all = #{evAll,jdbcType=REAL},
       on_time_count = #{onTimeCount,jdbcType=INTEGER},

@@ -1,6 +1,6 @@
 package cuc.waimai.service;
 
-import cuc.waimai.Dao.ShopType;
+import cuc.waimai.entity.ShopType;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package cuc.waimai.service.serviceImpl;
 
-import cuc.waimai.Dao.FoodShop;
+import cuc.waimai.entity.FoodShop;
 import cuc.waimai.mapper.FoodShopMapper;
 import cuc.waimai.service.FoodShopService;
 import org.springframework.beans.factory.annotation.Autowired;

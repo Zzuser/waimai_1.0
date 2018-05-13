@@ -1,6 +1,6 @@
 package cuc.waimai.mapper;
 
-import cuc.waimai.Dao.Car;
+import cuc.waimai.entity.Car;
 import java.util.List;
 
 public interface CarMapper {

@@ -1,6 +1,6 @@
 package cuc.waimai.service;
 
-import cuc.waimai.Dao.Horseman;
+import cuc.waimai.entity.Horseman;
 
 import java.util.List;
 
@@ -14,4 +14,6 @@ public interface HorsemanService {
     List<Horseman> selectAll();
 
     int updateByPrimaryKey(Horseman record);
+
+    Horseman selectByName(String horsemanName);
 }

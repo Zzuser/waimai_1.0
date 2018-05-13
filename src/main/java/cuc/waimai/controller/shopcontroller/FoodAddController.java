@@ -1,9 +1,6 @@
 package cuc.waimai.controller.shopcontroller;
 
-import cuc.waimai.Dao.Food;
-import cuc.waimai.Dao.FoodCategory;
-import cuc.waimai.Dao.FoodShop;
-import cuc.waimai.Dao.ShopCategory;
+import cuc.waimai.entity.Food;
 import cuc.waimai.Vo.FoodVo;
 import cuc.waimai.service.CategoryService;
 import cuc.waimai.service.FoodService;

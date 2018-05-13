@@ -1,7 +1,6 @@
 package cuc.waimai.controller.usercontroller;
 
-import cuc.waimai.Dao.Shop;
-import cuc.waimai.Dao.User;
+import cuc.waimai.entity.User;
 import cuc.waimai.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cuc.waimai.mapper.UserMapper" >
-  <resultMap id="BaseResultMap" type="cuc.waimai.Dao.User" >
+  <resultMap id="BaseResultMap" type="cuc.waimai.entity.User" >
     <id column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="user_portrait" property="userPortrait" jdbcType="VARCHAR" />
@@ -20,7 +20,7 @@
     delete from user
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cuc.waimai.Dao.User" >
+  <insert id="insert" parameterType="cuc.waimai.entity.User" >
     insert into user (user_id, user_name, user_portrait, 
       user_psd, user_tel, receive_add, 
       receive_name, receive_tel, last_login_time, 
@@ -32,7 +32,7 @@
       #{lastLoginIp,jdbcType=VARCHAR}, #{userLon,jdbcType=DOUBLE}, #{userLat,jdbcType=DOUBLE}, 
       #{userCreatetime,jdbcType=TIMESTAMP})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.User" >
+  <update id="updateByPrimaryKey" parameterType="cuc.waimai.entity.User" >
     update user
     set user_name = #{userName,jdbcType=VARCHAR},
       user_portrait = #{userPortrait,jdbcType=VARCHAR},

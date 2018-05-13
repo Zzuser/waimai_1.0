@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cuc.waimai.mapper.CategoryMapper" >
-  <resultMap id="BaseResultMap" type="cuc.waimai.Dao.Category" >
+  <resultMap id="BaseResultMap" type="cuc.waimai.entity.Category" >
     <id column="cat_id" property="catId" jdbcType="INTEGER" />
     <result column="cat_name" property="catName" jdbcType="VARCHAR" />
   </resultMap>
@@ -9,11 +9,11 @@
     delete from category
     where cat_id = #{catId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" useGeneratedKeys="true"  keyProperty="catId" parameterType="cuc.waimai.Dao.Category" >
+  <insert id="insert" useGeneratedKeys="true"  keyProperty="catId" parameterType="cuc.waimai.entity.Category" >
     insert into category (cat_id, cat_name)
     values (#{catId,jdbcType=INTEGER}, #{catName,jdbcType=VARCHAR})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.Category" >
+  <update id="updateByPrimaryKey" parameterType="cuc.waimai.entity.Category" >
     update category
     set cat_name = #{catName,jdbcType=VARCHAR}
     where cat_id = #{catId,jdbcType=INTEGER}

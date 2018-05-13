@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cuc.waimai.mapper.CarMapper" >
-  <resultMap id="BaseResultMap" type="cuc.waimai.Dao.Car" >
+  <resultMap id="BaseResultMap" type="cuc.waimai.entity.Car" >
     <id column="car_id" property="carId" jdbcType="INTEGER" />
     <result column="order_id" property="orderId" jdbcType="INTEGER" />
     <result column="food_id" property="foodId" jdbcType="INTEGER" />
@@ -11,13 +11,13 @@
     delete from car
     where car_id = #{carId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cuc.waimai.Dao.Car" >
+  <insert id="insert" parameterType="cuc.waimai.entity.Car" >
     insert into car (car_id, order_id, food_id, 
       user_id)
     values (#{carId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{foodId,jdbcType=INTEGER}, 
       #{userId,jdbcType=INTEGER})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.Car" >
+  <update id="updateByPrimaryKey" parameterType="cuc.waimai.entity.Car" >
     update car
     set order_id = #{orderId,jdbcType=INTEGER},
       food_id = #{foodId,jdbcType=INTEGER},

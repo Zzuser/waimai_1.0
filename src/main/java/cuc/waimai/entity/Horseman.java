@@ -1,4 +1,4 @@
-package cuc.waimai.Dao;
+package cuc.waimai.entity;
 
 import java.util.Date;
 

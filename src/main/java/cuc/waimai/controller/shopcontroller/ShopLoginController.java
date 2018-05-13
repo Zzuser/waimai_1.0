@@ -1,6 +1,6 @@
 package cuc.waimai.controller.shopcontroller;
 
-import cuc.waimai.Dao.Shop;
+import cuc.waimai.entity.Shop;
 import cuc.waimai.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,6 +40,7 @@ public class ShopLoginController {
                     httpSession.setAttribute("shop", shop);
                     httpSession.setAttribute("shop_id", shop.getShopId());
                     httpSession.setAttribute("flag", "on");
+                    httpSession.setAttribute("progress",0);
                     return 1;
                 } else {
                     return 0;

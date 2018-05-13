@@ -1,6 +1,6 @@
 package cuc.waimai.mapper;
 
-import cuc.waimai.Dao.HorsemanEvaluate;
+import cuc.waimai.entity.HorsemanEvaluate;
 
 import java.util.List;
 

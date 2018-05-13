@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cuc.waimai.mapper.ShopEvaluateMapper" >
-  <resultMap id="BaseResultMap" type="cuc.waimai.Dao.ShopEvaluate" >
+  <resultMap id="BaseResultMap" type="cuc.waimai.entity.ShopEvaluate" >
     <id column="ev_id" property="evId" jdbcType="INTEGER" />
     <result column="shop_id" property="shopId" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
@@ -13,7 +13,7 @@
     delete from shop_evaluate
     where ev_id = #{evId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cuc.waimai.Dao.ShopEvaluate" >
+  <insert id="insert" parameterType="cuc.waimai.entity.ShopEvaluate" >
     insert into shop_evaluate (ev_id, shop_id, user_id, 
       ev_all, ev_comment, ev_pic
       )
@@ -21,7 +21,7 @@
       #{evAll,jdbcType=DOUBLE}, #{evComment,jdbcType=VARCHAR}, #{evPic,jdbcType=VARCHAR}
       )
   </insert>
-  <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.ShopEvaluate" >
+  <update id="updateByPrimaryKey" parameterType="cuc.waimai.entity.ShopEvaluate" >
     update shop_evaluate
     set shop_id = #{shopId,jdbcType=INTEGER},
       user_id = #{userId,jdbcType=INTEGER},

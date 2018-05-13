@@ -1,6 +1,6 @@
 package cuc.waimai.service.serviceImpl;
 
-import cuc.waimai.Dao.Orders;
+import cuc.waimai.entity.Orders;
 import cuc.waimai.mapper.OrdersMapper;
 import cuc.waimai.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;

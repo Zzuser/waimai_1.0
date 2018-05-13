@@ -1,7 +1,7 @@
 package cuc.waimai.controller.shopcontroller;
 
-import cuc.waimai.Dao.Shop;
-import cuc.waimai.Dao.ShopEvaluate;
+import cuc.waimai.entity.Shop;
+import cuc.waimai.entity.ShopEvaluate;
 import cuc.waimai.Vo.ShopVo;
 import cuc.waimai.service.ShopEvaluateService;
 import cuc.waimai.service.ShopService;

@@ -1,6 +1,6 @@
 package cuc.waimai.service;
 
-import cuc.waimai.Dao.Province;
+import cuc.waimai.entity.Province;
 
 import java.util.List;
 

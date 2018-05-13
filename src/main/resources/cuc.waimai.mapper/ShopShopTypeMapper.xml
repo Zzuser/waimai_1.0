@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cuc.waimai.mapper.ShopShopTypeMapper" >
-  <resultMap id="BaseResultMap" type="cuc.waimai.Dao.ShopShopType" >
+  <resultMap id="BaseResultMap" type="cuc.waimai.entity.ShopShopType" >
     <id column="shop_shoptype_id" property="shopShoptypeId" jdbcType="INTEGER" />
     <result column="shop_id" property="shopId" jdbcType="INTEGER" />
     <result column="shoptype_id" property="shoptypeId" jdbcType="INTEGER" />
@@ -10,13 +10,13 @@
     delete from shop_shop_type
     where shop_shoptype_id = #{shopShoptypeId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cuc.waimai.Dao.ShopShopType" >
+  <insert id="insert" parameterType="cuc.waimai.entity.ShopShopType" >
     insert into shop_shop_type (shop_shoptype_id, shop_id, shoptype_id
       )
     values (#{shopShoptypeId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{shoptypeId,jdbcType=INTEGER}
       )
   </insert>
-  <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.ShopShopType" >
+  <update id="updateByPrimaryKey" parameterType="cuc.waimai.entity.ShopShopType" >
     update shop_shop_type
     set shop_id = #{shopId,jdbcType=INTEGER},
       shoptype_id = #{shoptypeId,jdbcType=INTEGER}

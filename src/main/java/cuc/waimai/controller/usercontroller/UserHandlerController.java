@@ -1,11 +1,10 @@
 package cuc.waimai.controller.usercontroller;
 
 import com.google.gson.Gson;
-import cuc.waimai.Dao.*;
+import cuc.waimai.entity.*;
 import cuc.waimai.Vo.FoodVo;
 import cuc.waimai.Vo.OrdersVo;
 import cuc.waimai.controller.MsgPushController.ShopMsgPushController;
-import cuc.waimai.mapper.UserShopMapper;
 import cuc.waimai.po.OrderMessage;
 import cuc.waimai.service.*;
 import org.springframework.beans.factory.annotation.Autowired;

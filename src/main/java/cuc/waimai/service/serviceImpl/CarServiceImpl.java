@@ -1,6 +1,6 @@
 package cuc.waimai.service.serviceImpl;
 
-import cuc.waimai.Dao.Car;
+import cuc.waimai.entity.Car;
 import cuc.waimai.mapper.CarMapper;
 import cuc.waimai.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;

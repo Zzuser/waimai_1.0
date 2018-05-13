@@ -1,7 +1,7 @@
 package cuc.waimai.service.serviceImpl;
 
 
-import cuc.waimai.Dao.ShopEvaluate;
+import cuc.waimai.entity.ShopEvaluate;
 import cuc.waimai.mapper.ShopEvaluateMapper;
 
 import cuc.waimai.service.ShopEvaluateService;

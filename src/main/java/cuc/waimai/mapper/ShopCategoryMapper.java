@@ -1,6 +1,6 @@
 package cuc.waimai.mapper;
 
-import cuc.waimai.Dao.ShopCategory;
+import cuc.waimai.entity.ShopCategory;
 
 import java.util.List;
 

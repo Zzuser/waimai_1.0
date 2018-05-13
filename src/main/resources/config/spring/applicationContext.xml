@@ -48,7 +48,7 @@
     </bean>
 
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="typeAliasesPackage" value="cuc.waimai.Dao"/>
+        <property name="typeAliasesPackage" value="cuc.waimai.entity"/>
         <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath:cuc.waimai.mapper/*.xml"/>
     </bean>

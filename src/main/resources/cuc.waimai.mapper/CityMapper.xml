@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cuc.waimai.mapper.CityMapper" >
-  <resultMap id="BaseResultMap" type="cuc.waimai.Dao.City" >
+  <resultMap id="BaseResultMap" type="cuc.waimai.entity.City" >
     <id column="city_id" property="cityId" jdbcType="INTEGER" />
     <result column="city_name" property="cityName" jdbcType="VARCHAR" />
     <result column="city_lon" property="cityLon" jdbcType="DOUBLE" />
@@ -11,13 +11,13 @@
     delete from city
     where city_id = #{cityId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cuc.waimai.Dao.City" >
+  <insert id="insert" parameterType="cuc.waimai.entity.City" >
     insert into city (city_id, city_name, city_lon, 
       city_lat)
     values (#{cityId,jdbcType=INTEGER}, #{cityName,jdbcType=VARCHAR}, #{cityLon,jdbcType=DOUBLE}, 
       #{cityLat,jdbcType=DOUBLE})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.City" >
+  <update id="updateByPrimaryKey" parameterType="cuc.waimai.entity.City" >
     update city
     set city_name = #{cityName,jdbcType=VARCHAR},
       city_lon = #{cityLon,jdbcType=DOUBLE},

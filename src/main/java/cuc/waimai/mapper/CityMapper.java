@@ -1,6 +1,6 @@
 package cuc.waimai.mapper;
 
-import cuc.waimai.Dao.City;
+import cuc.waimai.entity.City;
 import java.util.List;
 
 public interface CityMapper {

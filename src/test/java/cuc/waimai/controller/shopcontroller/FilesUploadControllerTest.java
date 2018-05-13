@@ -18,17 +18,22 @@ import static org.junit.Assert.*;
 public class FilesUploadControllerTest {
 @Autowired
 FilesUploadController filesUploadController;
-    @Test
-    public void fileUpload() {
-        try {
-            MockMultipartFile mockMultipartFile1 = new MockMultipartFile(
-                    "/home/zz/ideaprojects/waimai/doc/菜单模板.xls",
-                    new FileInputStream(new File("/home/zz/ideaprojects/waimai/doc/菜单模板.xls")));
-            MockMultipartFile mockMultipartFile2 = new MockMultipartFile(
-                    "/home/zz/ideaprojects/waimai/doc/img.zip",
-                    new FileInputStream(new File("/home/zz/ideaprojects/waimai/doc/img.zip")));
-            filesUploadController.fileUpload("125",mockMultipartFile1,mockMultipartFile2);
-        }catch (Exception e){}
-
-    }
+//    @Test
+//    public void fileUpload() {
+//        try {
+//            MockMultipartFile mockMultipartFile1 = new MockMultipartFile(
+//                    "/home/zz/ideaprojects/waimai/doc/菜单模板.xls",
+//                    new FileInputStream(new File("/home/zz/ideaprojects/waimai/doc/菜单模板.xls")));
+//            MockMultipartFile mockMultipartFile2 = new MockMultipartFile(
+//                    "/home/zz/ideaprojects/waimai/doc/img.zip",
+//                    new FileInputStream(new File("/home/zz/ideaprojects/waimai/doc/img.zip")));
+//            filesUploadController.fileUpload("125",mockMultipartFile1,mockMultipartFile2);
+//        }catch (Exception e){}
+//
+//    }
+//    @Test
+//    public void pro(){
+//        System.out.println(filesUploadController.batchProgress("125"));
+//
+//    }
 }

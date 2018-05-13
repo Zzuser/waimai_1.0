@@ -1,4 +1,4 @@
-package cuc.waimai.Dao;
+package cuc.waimai.entity;
 
 public class UserShop {
     private Integer userShopId;

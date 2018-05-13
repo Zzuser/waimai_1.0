@@ -1,6 +1,6 @@
 package cuc.waimai.controller.shopcontroller;
 
-import cuc.waimai.Dao.Shop;
+import cuc.waimai.entity.Shop;
 import cuc.waimai.Vo.WorkbenchVO;
 import cuc.waimai.service.OrdersService;
 import cuc.waimai.service.ShopService;

@@ -1,6 +1,6 @@
 package cuc.waimai.Vo;
 
-import cuc.waimai.Dao.FoodShop;
+import cuc.waimai.entity.FoodShop;
 
 public class FoodVo {
     private int food_id;

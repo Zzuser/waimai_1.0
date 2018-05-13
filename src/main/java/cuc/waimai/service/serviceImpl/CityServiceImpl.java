@@ -1,6 +1,6 @@
 package cuc.waimai.service.serviceImpl;
 
-import cuc.waimai.Dao.City;
+import cuc.waimai.entity.City;
 import cuc.waimai.mapper.CityMapper;
 import cuc.waimai.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;

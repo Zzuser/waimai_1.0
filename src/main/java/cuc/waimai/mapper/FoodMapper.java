@@ -1,6 +1,6 @@
 package cuc.waimai.mapper;
 
-import cuc.waimai.Dao.Food;
+import cuc.waimai.entity.Food;
 
 import java.util.List;
 

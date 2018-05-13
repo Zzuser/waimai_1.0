@@ -1,6 +1,6 @@
 package cuc.waimai.service.serviceImpl;
 
-import cuc.waimai.Dao.HorsemanEvaluate;
+import cuc.waimai.entity.HorsemanEvaluate;
 import cuc.waimai.mapper.HorsemanEvaluateMapper;
 import cuc.waimai.service.HorsemanEvaluateService;
 import org.springframework.beans.factory.annotation.Autowired;

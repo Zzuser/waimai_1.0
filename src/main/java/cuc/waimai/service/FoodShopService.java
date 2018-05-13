@@ -1,6 +1,6 @@
 package cuc.waimai.service;
 
-import cuc.waimai.Dao.FoodShop;
+import cuc.waimai.entity.FoodShop;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

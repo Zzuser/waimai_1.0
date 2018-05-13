@@ -1,6 +1,6 @@
 package cuc.waimai.mapper;
 
-import cuc.waimai.Dao.Orders;
+import cuc.waimai.entity.Orders;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

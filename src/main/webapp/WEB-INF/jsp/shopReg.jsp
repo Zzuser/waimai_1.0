@@ -80,7 +80,7 @@
   </script>
   <style>
     .mui-card{
-      margin-top: 30% ;
+      margin-top: 130px ;
       background-color: rgba(247,247,247,.75);
     }
     #web_bg{

@@ -12,6 +12,7 @@
 </head>
 <body>
 <h1>批量导入成功</h1>
+<ul>${NOTOK}</ul>
 导入日志：<br>
 <a href="resources/logofshop/${logDirName}/${logName}">日志</a><br>
 </body>

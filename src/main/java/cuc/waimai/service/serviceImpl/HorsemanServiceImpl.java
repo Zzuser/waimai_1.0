@@ -1,6 +1,6 @@
 package cuc.waimai.service.serviceImpl;
 
-import cuc.waimai.Dao.Horseman;
+import cuc.waimai.entity.Horseman;
 import cuc.waimai.mapper.HorsemanMapper;
 import cuc.waimai.service.HorsemanService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +34,10 @@ public class HorsemanServiceImpl implements HorsemanService {
     @Override
     public int updateByPrimaryKey(Horseman record) {
         return horsemanMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public Horseman selectByName(String horsemanName) {
+        return horsemanMapper.selectByName(horsemanName);
     }
 }

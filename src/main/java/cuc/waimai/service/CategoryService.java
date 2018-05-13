@@ -1,6 +1,6 @@
 package cuc.waimai.service;
 
-import cuc.waimai.Dao.Category;
+import cuc.waimai.entity.Category;
 
 import java.util.List;
 

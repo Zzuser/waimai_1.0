@@ -1,7 +1,7 @@
 package cuc.waimai.controller.ordercontroller;
 
-import cuc.waimai.Dao.OrderFood;
-import cuc.waimai.Dao.Orders;
+import cuc.waimai.entity.OrderFood;
+import cuc.waimai.entity.Orders;
 import cuc.waimai.Vo.FoodVo;
 import cuc.waimai.Vo.OrdersVo;
 import cuc.waimai.controller.foodcontroller.FoodController;
@@ -98,8 +98,12 @@ public class OrderController {
             ordersVo.setOrder_number(orders.getOrderNumber());
             ordersVo.setOrder_time(orders.getOrderTime());
             ordersVo.setArrive_time(orders.getArriveTime());
-            ordersVo.setHorseman_id(orders.getHorsemanId());
-            ordersVo.setHorseman_tel(horsemanService.selectByPrimaryKey(orders.getHorsemanId()).getHorsemanTel());
+            if (orders.getHorsemanId() == 0) {
+
+            } else {
+                ordersVo.setHorseman_id(orders.getHorsemanId());
+                ordersVo.setHorseman_tel(horsemanService.selectByPrimaryKey(orders.getHorsemanId()).getHorsemanTel());
+            }
             ordersVo.setUser_name(userService.selectByPrimaryKey(userId).getUserName());
             ordersVo.setUser_tel(userService.selectByPrimaryKey(userId).getUserTel());
             ordersVo.setUser_add(userService.selectByPrimaryKey(userId).getReceiveAdd());

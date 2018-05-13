@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cuc.waimai.mapper.HorsemanMapper" >
-  <resultMap id="BaseResultMap" type="cuc.waimai.Dao.Horseman" >
+  <resultMap id="BaseResultMap" type="cuc.waimai.entity.Horseman" >
     <id column="horseman_id" property="horsemanId" jdbcType="INTEGER" />
     <result column="horseman_name" property="horsemanName" jdbcType="VARCHAR" />
     <result column="horseman_psd" property="horsemanPsd" jdbcType="VARCHAR" />
@@ -18,7 +18,7 @@
     delete from horseman
     where horseman_id = #{horsemanId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cuc.waimai.Dao.Horseman" >
+  <insert id="insert" parameterType="cuc.waimai.entity.Horseman" >
     insert into horseman (horseman_id, horseman_name, horseman_psd, 
       horseman_tel, horseman_status, horeseman_add, 
       takeout_num, accomplish_time, horseman_lon, 
@@ -28,7 +28,7 @@
       #{takeoutNum,jdbcType=TINYINT}, #{accomplishTime,jdbcType=TIMESTAMP}, #{horsemanLon,jdbcType=DOUBLE}, 
       #{horsemanLat,jdbcType=DOUBLE}, #{horsemanCreatetime,jdbcType=TIMESTAMP})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="cuc.waimai.Dao.Horseman" >
+  <update id="updateByPrimaryKey" parameterType="cuc.waimai.entity.Horseman" >
     update horseman
     set horseman_name = #{horsemanName,jdbcType=VARCHAR},
       horseman_psd = #{horsemanPsd,jdbcType=VARCHAR},
@@ -53,4 +53,12 @@
     takeout_num, accomplish_time, horseman_lon, horseman_lat, horseman_createtime
     from horseman
   </select>
+
+  <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select horseman_id, horseman_name, horseman_psd, horseman_tel, horseman_status, horeseman_add,
+    takeout_num, accomplish_time, horseman_lon, horseman_lat, horseman_createtime
+    from horseman
+    where horseman_name = #{horsemanName,jdbcType=VARCHAR}
+  </select>
+
 </mapper>

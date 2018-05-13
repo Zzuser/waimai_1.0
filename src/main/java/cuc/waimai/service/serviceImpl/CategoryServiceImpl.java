@@ -1,6 +1,6 @@
 package cuc.waimai.service.serviceImpl;
 
-import cuc.waimai.Dao.Category;
+import cuc.waimai.entity.Category;
 import cuc.waimai.mapper.CategoryMapper;
 import cuc.waimai.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;

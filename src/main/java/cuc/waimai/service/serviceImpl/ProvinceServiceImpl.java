@@ -1,6 +1,6 @@
 package cuc.waimai.service.serviceImpl;
 
-import cuc.waimai.Dao.Province;
+import cuc.waimai.entity.Province;
 import cuc.waimai.mapper.ProvinceMapper;
 import cuc.waimai.service.ProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
