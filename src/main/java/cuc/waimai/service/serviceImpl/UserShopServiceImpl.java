@@ -41,4 +41,9 @@ public class UserShopServiceImpl implements UserShopService {
     public List<UserShop> selectByUserId(Integer userId) {
         return userShopMapper.selectByUserId(userId);
     }
+
+    @Override
+    public UserShop selectByUserIdAndShopId(Integer userId, Integer shopId) {
+        return userShopMapper.selectByUserIdAndShopId(userId,shopId);
+    }
 }

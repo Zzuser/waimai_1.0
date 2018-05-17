@@ -37,7 +37,8 @@
         //判断当前浏览器是否支持WebSocket
         if('WebSocket' in window){
             websocket = new WebSocket("ws://43.226.69.220:8080/websocket?client"+busesid);
-        }
+            //http://43.226.69.220:8080/
+        }//deliver.apk
         else{
             alert('Not support websocket');
         }
@@ -171,14 +172,14 @@
             <span class="mui-icon mui-icon-gear"></span>
             <div class="mui-media-body">批量导入</div></a></li>
         <li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-3"><a href="#">
-            <span class="mui-icon mui-icon-info"></span>
-            <div class="mui-media-body">about</div></a></li>
+            <span class="mui-icon">${sessionScope.shop.deliveryFee}元</span>
+            <div class="mui-media-body">配送费</div></a></li>
         <li class="mui-table-view-cell mui-media mui-col-xs-12 mui-col-sm-6"><a href="#">
             <span class="mui-icon">${sessionScope.shop.shopAdd}</span>
             <div class="mui-media-body">地址</div></a></li>
         <li class="mui-table-view-cell mui-media mui-col-xs-12 mui-col-sm-6"><a href="#">
             <span class="mui-icon">${sessionScope.shop.shopTel}</span>
-            <div class="mui-media-body">电话</div></a></li>
+            <div class="mui-media-body">电话 </div></a></li>
 
     </ul>
 

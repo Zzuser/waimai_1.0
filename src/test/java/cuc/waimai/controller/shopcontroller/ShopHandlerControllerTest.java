@@ -17,6 +17,6 @@ ShopHandlerController shopHandlerController;
     @Test
     public void shopSelectAll() {
         Gson gson=new Gson();
-        System.out.println(gson.toJson(shopHandlerController.shopSelectEvaAll(1)));
+        System.out.println(gson.toJson(shopHandlerController.shopSelectByShopId(1)));
     }
 }

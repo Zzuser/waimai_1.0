@@ -33,12 +33,14 @@ public class ShopLoginController {
             System.out.println(shop.toString());
             System.out.println("pd" + shop.getShopPsw().equals(psw));
         } catch (Exception e) {
+            shop = shopService.selectByShopTel(shopIdOrTel);
             e.printStackTrace();
         } finally {
             if (shop != null) {
                 if (shop.getShopPsw().equals(psw)) {
                     httpSession.setAttribute("shop", shop);
                     httpSession.setAttribute("shop_id", shop.getShopId());
+                    System.out.println(shop.getShopId());
                     httpSession.setAttribute("flag", "on");
                     httpSession.setAttribute("progress",0);
                     return 1;

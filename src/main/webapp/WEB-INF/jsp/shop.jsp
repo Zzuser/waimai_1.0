@@ -117,18 +117,17 @@
 <ul class="mui-table-view mui-table-view-chevron">
     <li class="mui-table-view-cell mui-media">
         <a class="mui-navigate-right">
-            <img class="mui-media-object mui-pull-left head-img" id="head-img" src="../../resources/img/cbd.jpg">
+            <img class="mui-media-object mui-pull-left head-img" id="head-img" src="${sessionScope.shop.shopImg}">
             <div class="mui-media-body">
-                <b>您好 ${sessionScope.shop.shopId}</b>
-                <p class='mui-ellipsis'>账号:${sessionScope.shop.shopName}</p>
+                <b>您好 ${sessionScope.shop.shopName}</b>
+                <p class='mui-ellipsis'>ID:${sessionScope.shop.shopId}</p>
             </div>
         </a>
     </li>
 </ul>
 <ul class="mui-table-view mui-table-view-chevron">
     <li class="mui-table-view-cell">
-        <a class="mui-navigate-right" href="/shopReg">修改商户信息</a>
-
+        <a class="mui-navigate-right" href="/shopchange">修改商户信息</a>
     </li>
 </ul >
 <ul class="mui-table-view mui-table-view-chevron">

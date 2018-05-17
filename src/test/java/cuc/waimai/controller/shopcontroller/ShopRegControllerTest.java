@@ -21,5 +21,10 @@ ShopLoginController shopLoginController;
         MockHttpSession session=new MockHttpSession();
         shopLoginController.shopLogin("123","12",session);
     }
+    @Test
+    public void shopUP() {
+        MockHttpSession session=new MockHttpSession();
+        shopLoginController.shopLogin("123","12",session);
+    }
 
 }

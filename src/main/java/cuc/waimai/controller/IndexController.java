@@ -87,6 +87,14 @@ public class IndexController {
         modelAndView.addObject("local",z);
         return modelAndView;
     }
+    @RequestMapping("/shopchange")
+    public String shopchange(){
+        return "shopchange";
+    }
+    @RequestMapping("/relogin")
+    public String relogin(){
+        return "relogin";
+    }
 
 
 }

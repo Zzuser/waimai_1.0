@@ -71,7 +71,7 @@ public class BatServiceImpl implements BatService {
                 if (ss[0].equals("")) {
                     System.out.println("break");
                     continue;
-                } else if (ss.length != 5||ss[1].isEmpty()||ss[2].isEmpty()||ss[3].isEmpty()||ss[4].isEmpty()) {
+                } else if (ss[1].isEmpty()||ss[2].isEmpty()||ss[3].isEmpty()||ss[4].isEmpty()) {
                     myLogger.doLog("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                     myLogger.doLog("错误数据", 3);
                     for (String s : ss) {

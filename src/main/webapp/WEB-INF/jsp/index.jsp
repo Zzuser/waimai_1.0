@@ -11,65 +11,143 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link href="../../resources/css/mui.min.css" rel="stylesheet" />
+    <link href="../../resources/css/mui.min.css" rel="stylesheet"/>
     <script src="../../resources/js/mui.min.js"></script>
-    <title>API测试</title>
+    <script src="../../resources/js/jquery-3.3.1.min.js"></script>
+    <title>CUC外卖</title>
     <style>
-        #web_bg{
-            opacity: 0.7;
-            position:fixed;
-            top: 0;
-            left: 0;
-            width:100%;
-            height:100%;
-            min-width: 1000px;
-            z-index:-10;
-            zoom: 1;
-            background-color: #fff;
-            background-repeat: no-repeat;
-            background-size: cover;
-            -webkit-background-size: cover;
-            -o-background-size: cover;
-            background-position: center 0;
+        #web_bar {
+            height: 10%;
+            width: 100%;
+            background-color: #dc322f;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        #title {
+            font-family: Consolas;
+            vertical-align: middle;
+            font-size: 35px;
+            position: absolute;
+            top: 25%;
+            transform: translateX(60%);
+
+        }
+
+        #login {
+            font-family: Consolas;
+            vertical-align: middle;
+            font-size: 15px;
+            position: absolute;
+            top: 45%;
+
+            transform: translateX(1450%);
+
+        }
+
+        #All {
+            /*width: 1400px;*/
+            /*height: 700px;*/
+            background-size: 140% 200%;
+            background-image: url("../../resources/img/GettyImages-545286388n.jpg");
+
+            position: relative;
+        }
+
+        #start {
+            font-size: 120px;
+            color: white;
+            vertical-align: middle;
+            position: absolute;
+            top: 40%;
+            text-align: center;
+        }
+
+        #two {
+            width: 50%;
+            height: 45%;
+            background-size: 100% 100%;
+            background-image: url("../../resources/img/myqr.png");
+            vertical-align: middle;
+            position: absolute;
+            top: 70%;
+            transform: translateX(50%);
+        }
+
+        #iRight {
+            vertical-align: middle;
+            position: absolute;
+            top: 140%;
+            font-size: 14px;
+            color: white;
+            transform: translateX(140%);
+        }
+
+        #waimailogo {
+            background-size: 100% 100%;
+            height: 50px;
+            width: 50px;
+            vertical-align: middle;
+            position: absolute;
+            top: 13%;
+            transform: translateX(110%);
+        }
+        #wingL{
+            vertical-align: middle;
+            position: absolute;
+            top: 75%;
+            transform: translateX(160%);
+        }
+        #wingR{
+            vertical-align: middle;
+            position: absolute;
+            top: 75%;
+            transform: translateX(430%);
         }
     </style>
+    <script type="text/javascript" charset="UTF-8">
+        function showMore() {
+            $("#API").show();
+            $("#start").hide();
+        }
+    </script>
 </head>
-<body>
-<div class="wrapper">
-    <!--背景图片-->
-    <div id="web_bg"  style="background-image:url(../../resources/img/b649c5d4b6be560e382b805b7f253db3.jpeg);"></div>
-    <!--其他代码 ... -->
-</div>
-<header class="mui-bar mui-bar-nav" style="background-color:rgba(247,0,0,0.6);">
-    <a class="mui-icon"></a>
-    <h2 id="title" class="mui-title" style="color: white"><b>外 卖 系 统</b></h2>
+<body id="All">
+<div>
+<header id="web_bar">
+    <h2 id="title" style="color: white"><b>C U C 外 卖</b></h2>
+    <img id="waimailogo" src="../../resources/img/waimailogo.png">
+    <span id="login" class="mui-pull-left">
+        <a href="/shopLogin" style="color: white"><b>登录</b></a>
+        <b style="color: white">|</b>
+        <a href="/shopReg" style="color: white"><b>注册</b></a>
+    </span>
 </header>
-
+<div id="start" onclick="showMore()" align="center" class="mui-title">开始探索</div>
 <div class="mui-content">
-    <div class="mui-row mui-table-view">
-    <div class="mui-table-view-cell mui-col-xs-12 mui-col-sm-6"><a href="/shopLogin" style="color: green">订单管理系统</a></div>
-        <div class="mui-table-view-cell mui-col-xs-12 mui-col-sm-6"><a href="/shopReg">商户注册</a></div>
-        <div class="mui-table-view-cell mui-col-xs-12 mui-col-sm-6"><a href="/session">session</a></div>
-        <div class="mui-col-xs-12 mui-table-view-cell mui-col-sm-6"><a href="/main">订单消息主页面</a></div>
-        <div class="mui-col-xs-12 mui-table-view-cell mui-col-sm-6"><a href="/order">order</a></div>
-        <div class="mui-table-view-cell mui-col-xs-12 mui-col-sm-6"><a href="/orderdetail">orderdetail</a></div>
-        <div class="mui-col-xs-4 mui-table-view-cell mui-col-sm-6"><a href="/shop">shop</a></div>
-        <div class="mui-table-view-cell mui-col-xs-12 mui-col-sm-6"><a href="/workdesk">workdesk</a></div>
-        <div class="mui-col-xs-12 mui-table-view-cell mui-col-sm-6"><a href="/webtest">webtest</a></div>
-        <div class="mui-table-view-cell mui-col-xs-12 mui-col-sm-6"><a href="/webtest2">webtest2</a></div>
-        <div class="mui-col-xs-12 mui-table-view-cell mui-col-sm-6"><a href="/userordertest">orderPlace</a></div>
-        <div class="mui-table-view-cell mui-col-xs-12 mui-col-sm-6"><a href="/ordertiao1">跳转</a></div>
-        <div class="mui-col-xs-12 mui-table-view-cell mui-col-sm-6"><a href="/userLogin">userLogin</a></div>
-        <div class="mui-table-view-cell mui-col-xs-12 mui-col-sm-6"><a href="/userLogin">userReg</a></div>
-        <div class="mui-col-xs-12 mui-table-view-cell mui-col-sm-6"><a href="/test">test</a></div>
+    <div hidden id="API" class="mui-row mui-table-view">
+        <div class="mui-table-view-cell mui-col-xs-12 mui-col-sm-6"><a href="/shopLogin" style="color: white">订单管理系统</a>
+        </div>
+        <div class="mui-table-view-cell mui-col-xs-12 mui-col-sm-6"><a href="/shopReg" style="color: white">商户注册</a>
+        </div>
+        <div class="mui-col-xs-12 mui-table-view-cell mui-col-sm-6"><a href="/main" style="color: white">订单消息主页面</a>
+        </div>
+        <div class="mui-col-xs-12 mui-table-view-cell mui-col-sm-6"><a href="/resources/apk/CucTakeOut1.0.apk" style="color: white">下载外卖app</a>
+        </div>
+        <div class="mui-col-xs-12 mui-table-view-cell mui-col-sm-6"><a href="/resources/apk/deliver.apk" style="color: white">下载骑手app</a>
+        </div>
+    </div>
+    <div id="two">
     </div>
 
+    <div id="iRight">
+        <ul style="color:beige"><h3>cuc外卖1.0@copyright2018</h3> </ul>
+        <ul>Power By JAVA SSM</ul>
+    </div>
+    <%--<BUTTON type="button" onclick="showMore()">API测试</BUTTON>--%>
 
 
-
-
-
-
+</div>
 </div>
 </body>
 </html>

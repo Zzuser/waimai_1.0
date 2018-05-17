@@ -31,6 +31,23 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>
+			org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
 	<!--filter.listener,servlet,and servlet-mapping等元素要在session-config之前-->
 	<session-config> <session-timeout>30</session-timeout> </session-config>
 
@@ -71,5 +88,6 @@
 		<param-value>WEB-INF/classes/resource/config/log4j.properties</param-value>
 	</context-param>
 	<!--log4j监听-->
+
 
 </web-app>

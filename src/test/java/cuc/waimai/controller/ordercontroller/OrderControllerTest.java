@@ -21,14 +21,14 @@ OrderController orderController;
     public void ordersSelectALLByShopId() {
         MockHttpSession session=new MockHttpSession();
         Gson gson=new Gson();
-        System.out.println(gson.toJson( orderController.ordersSelectALLByShopId("125",session)));
+        System.out.println(gson.toJson( orderController.ordersSelectALLByShopId("1",session)));
 
     }
 
     @Test
     public void ordersSelectALLByUserId() {
         Gson gson=new Gson();
-        System.out.println(gson.toJson( orderController.ordersSelectALLByUserId(1)));
+        System.out.println(gson.toJson( orderController.selectOrderByOrderId(24)));
 
     }
     @Test

@@ -17,9 +17,8 @@
     <script src="../../resources/js/jquery-3.3.1.min.js"></script>
     <script src="../../resources/js/mui.min.js"></script>
     <script type="text/javascript" charset="UTF-8">
-
-        setInterval("showLogin()", "2000");
-        function showLogin() {
+        setInterval("showProgress()", "2000");
+        function showProgress() {
             var pg=document.getElementById('pg');
             $.ajax({
                 type: 'POST',
@@ -31,11 +30,9 @@
                         pg.value = data.valueOf();
                         $("#progress").html("导入进度："+data.valueOf() + "%")
                     }
-
                 }
             })
         }
-
     </script>
     <style>
         progress {

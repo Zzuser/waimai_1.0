@@ -12,11 +12,38 @@ public class OrdersVo {
     private Date arrive_time;
     private int horseman_id;
     private int shop_id;
+    private String shop_name;
+    private String shop_tel;
+    private String shop_add;
     private String horseman_tel;
     private String user_name;
     private String user_add;
     private String user_tel;
     private List<FoodVo> food_list;
+
+    public String getShop_add() {
+        return shop_add;
+    }
+
+    public void setShop_add(String shop_add) {
+        this.shop_add = shop_add;
+    }
+
+    public String getShop_name() {
+        return shop_name;
+    }
+
+    public void setShop_name(String shop_name) {
+        this.shop_name = shop_name;
+    }
+
+    public String getShop_tel() {
+        return shop_tel;
+    }
+
+    public void setShop_tel(String shop_tel) {
+        this.shop_tel = shop_tel;
+    }
 
     public int getOrder_id() {
 

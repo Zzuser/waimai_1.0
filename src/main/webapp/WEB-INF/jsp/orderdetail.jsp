@@ -41,7 +41,7 @@
                     $('#用户电话').html(data[q].user_tel);
                     $('#订单号').html(data[q].order_id);
                     var d = new Date(data[q].order_time);
-                    var e = new Date(data[q].order_time+1800000);
+                    var e = new Date(data[q].arrive_time);
                     function datenow(now) {
                         var year = now.getFullYear();
                         var month = now.getMonth() + 1;
@@ -145,7 +145,7 @@
         </li>
         <li class="mui-table-view-cell">
             预计送达时间
-            <b class="mui-pull-right" id="送达时间">送不到</b>
+            <b class="mui-pull-right" id="送达时间">预计30分钟</b>
         </li>
     </ui>
 </div>

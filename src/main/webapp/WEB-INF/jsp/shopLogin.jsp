@@ -10,19 +10,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-  <title></title>
+  <title>
+  </title>
   <script src="../../resources/js/mui.min.js"></script>
   <script src="../../resources/js/jquery-3.3.1.min.js"></script>
   <link href="../../resources/css/mui.min.css" rel="stylesheet"/>
   <link href="../../resources/css/zui.min.css" rel="stylesheet"/>
   <link href="../../resources/css/doc.min.css" rel="stylesheet"/>
+  <link rel="shortcut icon" href="../../resources/img/favicon.ico" type="image/x-icon" />
   <script type="text/javascript" charset="utf-8">
       mui.init();
   </script>
   <style>
     .mui-card{
       top: 130px;
-      background-color: rgba(247,247,247,.75);
+      background-color: rgba(247,247,247,.50);
     }
     .mui-input-clear{
       width: 60%;
@@ -61,18 +63,45 @@
       -o-background-size: cover;
       background-position: center 0;
     }
+    #web_bar {
+      height: 10%;
+      width: 100%;
+      background-color: #dc322f;
+      opacity: 0.9;
+      position: relative;
+    }
+    #title {
+      font-family: Consolas;
+      vertical-align: middle;
+      font-size: 35px;
+      position: absolute;
+      top: 3%;
+      transform: translateX(33%);
 
+    }
+    #waimailogo {
+      background-size: 100% 100%;
+      height: 50px;
+      width: 50px;
+      vertical-align: middle;
+      position: absolute;
+      top: 13%;
+      transform: translateX(110%);
+    }
   </style>
 </head>
 <body>
 <div class="wrapper">
   <!--背景图片-->
-  <div id="web_bg" style="background-image:url(../../resources/img/sign_bg.db29b0fbd2f78dd8c1b7.png);"></div>
+  <div id="web_bg" style="background-image:url(../../resources/img/GettyImages-545286388n.jpg);"></div>
   <!--其他代码 ... -->
 </div>
+<header id="web_bar">
+  <h2 id="title" style="color: white"><b>C U C 外 卖 商 户 端</b></h2>
+  <img id="waimailogo" src="../../resources/img/waimailogo.png">
+</header>
 
-
-
+<div id="IN">
   <div class="mui-card">
     <div class="mui-card-header">
       <div class="mui-input-row">
@@ -105,7 +134,7 @@
     </div>
   </div>
 
-
+</div>
 
 <script type="text/javascript" charset="utf-8">
     mui.init();
